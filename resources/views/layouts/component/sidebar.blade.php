@@ -100,22 +100,6 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ route('material') }}" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            Materi
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('task') }}" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            Tugas
-                        </p>
-                    </a>
-                </li>
                 @endrole
                 @role('teacher|student')
                 <li class="nav-item">

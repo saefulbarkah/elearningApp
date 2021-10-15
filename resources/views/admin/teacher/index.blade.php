@@ -33,12 +33,34 @@
                 <table id="example2" class="table table-bordered table-striped">
                     <thead>
                         <tr>
+                            <th>No</th>
                             <th>Nama</th>
+                            <th>NIP</th>
+                            <th>E-mail</th>
+                            <th>Mata Pelajaran</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
+                            <td>1</td>
                             <td>Saeful Barkah</td>
+                            <td>1930.20.20</td>
+                            <td>Saefulbarkah@gmail.com</td>
+                            <td>PWPB</td>
+                            <td>
+                                <a href="" class="btn-sm btn-info mr-1">
+                                    <i class="fa fa-pencil-alt"></i>
+                                    Ubah
+                                </a>
+                                <a href="" class="btn-sm btn-danger mr-1">
+                                    <i class="fa fa-trash"></i>
+                                    Hapus
+                                </a>
+                                <a href="" class="btn-sm btn-success col-lg-3">
+                                    Detail
+                                </a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

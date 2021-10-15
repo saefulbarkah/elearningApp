@@ -16,6 +16,9 @@
                 Daftar pengumuman
             </div>
             <div class="card-body">
+                <a href="" class="btn btn-primary"> Tambah Pengumuman</a>
+            </div>
+            <div class="card-body">
                 <table id="example2" class="table table-bordered table-striped">
                     <thead>
                         <tr>

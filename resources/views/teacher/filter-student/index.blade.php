@@ -22,6 +22,8 @@
                             <th>No</th>
                             <th>Gambar</th>
                             <th>Nama</th>
+                            <th>NISN</th>
+                            <th>Email</th>
                             <th>Kelas</th>
                             <th>Jurusan</th>
                             <th>Aksi</th>
@@ -35,6 +37,8 @@
                                     alt="" class="img-fluid">
                             </td>
                             <td>Saeful Barkah</td>
+                            <td>1920.10.30</td>
+                            <td>Saeful@gmail.com</td>
                             <td>XII</td>
                             <td>RPL</td>
                             <td>

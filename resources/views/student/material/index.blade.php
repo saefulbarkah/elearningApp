@@ -13,7 +13,7 @@
         <div class="card">
             <div class="card-header">
                 <i class="fa fa-table"></i>
-                Daftar pengumuman
+                Daftar Materi
             </div>
             <div class="card-body">
                 <table id="example2" class="table table-bordered table-striped">
