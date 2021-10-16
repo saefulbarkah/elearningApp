@@ -93,7 +93,7 @@
 
                 @role('student')
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('check-in') }}" class="nav-link">
                         <i class="nav-icon fas fa-user-check"></i>
                         <p>
                             Absen
@@ -101,7 +101,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('manage-material') }}" class="nav-link">
+                    <a href="{{ route('material') }}" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Materi
@@ -109,7 +109,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('manage-task') }}" class="nav-link">
+                    <a href="{{ route('task') }}" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Tugas

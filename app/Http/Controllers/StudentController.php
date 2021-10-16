@@ -87,4 +87,9 @@ class StudentController extends Controller
     {
         return view('teacher.filter-student.index');
     }
+
+    public function checkIn()
+    {
+        return view('student.check-in.index');
+    }
 }

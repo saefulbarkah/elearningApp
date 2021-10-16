@@ -60,4 +60,5 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['role:teacher']], function
 Route::group(['prefix' => 'student', 'middleware' => ['role:student']], function () {
     Route::get('material', [MaterialController::class, 'listMaterial'])->name('material');
     Route::get('task', [TaskController::class, 'listTask'])->name('task');
+    Route::get('check-in', [StudentController::class, 'checkIn'])->name('check-in');
 });
