@@ -13,32 +13,39 @@
         <div class="card">
             <div class="card-header">
                 <i class="fa fa-table"></i>
-                Daftar pengumuman
+                Daftar tugas
             </div>
             <div class="card-body">
-                <table id="example2" class="table table-bordered table-striped">
+                <table id="example2" class="table table-striped">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Judul</th>
-                            <th>Deskripsi</th>
-                            <th>Tanggal di mulai</th>
-                            <th>Tanggal selesai</th>
+                            <th>Informasi tugas</th>
+                            <th>Tipe tugas</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td style="width: 30px">
-                                <img src="https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-vector-avatar-icon-png-image_695765.jpg"
-                                    alt="" class="img-fluid">
-                            </td>
-                            <td>Saeful Barkah</td>
-                            <td>XII</td>
                             <td>
-                                <a href="" class="btn-sm btn-warning">
-                                    <i class="fa fa-search"></i>
-                                    Hapus
+                                <span>Tugas Pemograman dasar kelas XI tanggal 20 Agustus 2021</span>
+                                <br>
+                                <small>
+                                    <span><strong>Kelas</strong> : XI - RPL</span>
+                                </small>
+                                <p>
+                                    <small>
+                                        <strong>Pembuat</strong> : <a href="">Deden alif</a>, 07 Oktober 2021 21:27
+                                    </small>
+                                </p>
+                            </td>
+                            <td>
+                                <span class="badge badge-info"> Ganda</span>
+                            </td>
+                            <td>
+                                <a href="" class="btn-sm btn-info">
+                                    Kerjakan
                                 </a>
                             </td>
                         </tr>

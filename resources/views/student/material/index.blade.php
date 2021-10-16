@@ -13,32 +13,32 @@
         <div class="card">
             <div class="card-header">
                 <i class="fa fa-table"></i>
-                Daftar Materi
+                Daftar materi
             </div>
             <div class="card-body">
-                <table id="example2" class="table table-bordered table-striped">
+                <table id="example2" class="table table-striped">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Judul</th>
-                            <th>Deskripsi</th>
-                            <th>Tanggal di mulai</th>
-                            <th>Tanggal selesai</th>
+                            <th>Informasi materi</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td style="width: 30px">
-                                <img src="https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-vector-avatar-icon-png-image_695765.jpg"
-                                    alt="" class="img-fluid">
-                            </td>
-                            <td>Saeful Barkah</td>
-                            <td>XII</td>
                             <td>
-                                <a href="" class="btn-sm btn-warning">
-                                    <i class="fa fa-search"></i>
-                                    Hapus
+                                <p>Tentang algoritma dan penerapan dalam kehidupan sehari hari</p>
+                                <p>
+                                    <span class="badge badge-success">Terbit</span> / <span
+                                        class="badge badge-success">tertulis</span> / <strong>Pemograman Dasar</strong>
+                                    / KELAS X RPL /
+                                    Pembuat <a href="">Deden alif</a>, 20 agustur 2021 / Di baca 20 kali
+                                </p>
+                            </td>
+                            <td>
+                                <a href="" class="btn-sm btn-info">
+                                    Detail
                                 </a>
                             </td>
                         </tr>
