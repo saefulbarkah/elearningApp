@@ -94,9 +94,25 @@
                 @role('student')
                 <li class="nav-item">
                     <a href="" class="nav-link">
-                        <i class="nav-icon fas fa-scan"></i>
+                        <i class="nav-icon fas fa-user-check"></i>
                         <p>
                             Absen
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('manage-material') }}" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Materi
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('manage-task') }}" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Tugas
                         </p>
                     </a>
                 </li>
