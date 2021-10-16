@@ -22,25 +22,20 @@
                             <th>No</th>
                             <th>Gambar</th>
                             <th>Nama</th>
-                            <th>NIP</th>
-                            <th>Mata pelajaran</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
+                            <td style="width: 25px;">1</td>
                             <td style="width: 30px">
                                 <img src="https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-vector-avatar-icon-png-image_695765.jpg"
                                     alt="" class="img-fluid">
                             </td>
                             <td>Saeful Barkah</td>
-                            <td>NIP</td>
-                            <td>PWPB</td>
                             <td>
                                 <a href="" class="btn-sm btn-success">
-                                    <i class="fa fa-search"></i>
-                                    detail
+                                    Detail
                                 </a>
                             </td>
                         </tr>
