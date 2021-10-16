@@ -6,7 +6,7 @@
 
 @role('student|teacher')
 <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-8">
         <div class="card">
             <div class="card-header">
                 <i class="fa fa-book"></i>
@@ -31,42 +31,6 @@
                     </tr>
                     <tr>
                         <td>Tugas 1</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="card">
-            <div class="card-header">
-                <i class="fa fa-book"></i>
-                Daftar Materi
-            </div>
-            <div class="card-body">
-                <table class="table">
-                    <tr>
-                        <td>Materi 1</td>
-                    </tr>
-                    <tr>
-                        <td>Materi 1</td>
-                    </tr>
-                    <tr>
-                        <td>Materi 1</td>
-                    </tr>
-                    <tr>
-                        <td>Materi 1</td>
-                    </tr>
-                    <tr>
-                        <td>Materi 1</td>
-                    </tr>
-                    <tr>
-                        <td>Materi 1</td>
-                    </tr>
-                    <tr>
-                        <td>Materi 1</td>
-                    </tr>
-                    <tr>
-                        <td>Materi 1</td>
                     </tr>
                 </table>
             </div>
@@ -108,6 +72,46 @@
                 </table>
             </div>
         </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-book"></i>
+                Daftar Materi
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <td>Materi 1</td>
+                    </tr>
+                    <tr>
+                        <td>Materi 1</td>
+                    </tr>
+                    <tr>
+                        <td>Materi 1</td>
+                    </tr>
+                    <tr>
+                        <td>Materi 1</td>
+                    </tr>
+                    <tr>
+                        <td>Materi 1</td>
+                    </tr>
+                    <tr>
+                        <td>Materi 1</td>
+                    </tr>
+                    <tr>
+                        <td>Materi 1</td>
+                    </tr>
+                    <tr>
+                        <td>Materi 1</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
         <div class="card">
             <div class="card-header">
                 <i class="fa fa-users"></i>
