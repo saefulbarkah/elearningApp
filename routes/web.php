@@ -10,6 +10,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\GoogleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,10 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Route Google
+Route::get('auth/google', [GoogleController::class, 'authGoogle']);
+Route::get('auth/google/callback', [GoogleController::class, 'googleCallback']);
 
 Auth::routes();
 
