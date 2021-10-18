@@ -16,7 +16,7 @@
                 Menu
             </div>
             <div class="card-body">
-                <a href="" class="btn btn-primary"> Tambah data pengajar</a>
+                <a href="{{ route('teacher-create') }}" class="btn btn-primary"> Tambah data pengajar</a>
             </div>
         </div>
     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -23,7 +24,11 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        $user = User::join('roles','roles.id','=','users.id')
+                        ->where('roles.name','=','student')
+                        ->get();
+
+        return view('admin.student.create',compact('user'));
     }
 
     /**

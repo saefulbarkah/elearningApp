@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Subject;
+use App\Teacher;
 use Illuminate\Http\Request;
 
-class AnnouncementController extends Controller
+class TeacherSubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,7 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
-        return view('admin.announcement.index');
+        return view('admin.teacher_subject.index');
     }
 
     /**
@@ -23,7 +25,10 @@ class AnnouncementController extends Controller
      */
     public function create()
     {
-        return view('admin.announcement.create');
+        $teacher = Teacher::orderBy('name','asc')->get();
+        $subject = Subject::orderBy('name','asc')->get();
+
+        return view('admin.teacher_subject.create',compact('teacher','subject'));
     }
 
     /**

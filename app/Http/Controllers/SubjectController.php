@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Subject;
+use App\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SubjectController extends Controller
 {
@@ -23,7 +26,11 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        $subject = Subject::orderBy('name','asc')->get();
+        $grade = DB::table('grades')->get();
+                        // dd($grade);
+
+        return view('admin.subject.create',compact('subject','grade'));
     }
 
     /**

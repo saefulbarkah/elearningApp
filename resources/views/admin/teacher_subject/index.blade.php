@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @endpush
-@section('title-page', 'Daftar siswa')
+@section('title-page', 'Daftar guru mapel')
 @section('content')
     <div class="row">
         <div class="col">
@@ -16,7 +16,7 @@
                     Menu
                 </div>
                 <div class="card-body">
-                    <a href="{{ route('student-create') }}" class="btn btn-primary"> Tambah data siswa</a>
+                    <a href="{{ route('teacher-subject-create') }}" class="btn btn-primary"> Tambah data guru mapel</a>
                 </div>
             </div>
         </div>
@@ -27,18 +27,16 @@
             <div class="card">
                 <div class="card-header">
                     <i class="fa fa-table"></i>
-                    Daftar siswa
+                    Daftar guru mapel
                 </div>
                 <div class="card-body">
                     <table id="example2" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama</th>
-                                <th>NISN</th>
-                                <th>E-mail</th>
+                                <th>Pengajar</th>
+                                <th>Mata Pelajaran</th>
                                 <th>Kelas</th>
-                                <th>Jurusan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -46,10 +44,8 @@
                             <tr>
                                 <td>1</td>
                                 <td>Saeful Barkah</td>
-                                <td>1920.10.76</td>
-                                <td>SaefulBarkah@gmail.com</td>
-                                <td>XI</td>
-                                <td>RPL</td>
+                                <td>1930.20.20</td>
+                                <td>X</td>
                                 <td>
                                     <a href="" class="btn-sm btn-info mr-1">
                                         <i class="fa fa-pencil-alt"></i>

@@ -30,110 +30,118 @@
                 </li>
 
                 @role('admin')
-                <li class="nav-item">
-                    <a href="{{ route('manage-teacher') }}" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                            kelola Pengajar
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('manage-student') }}" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                            kelola Siswa
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('manage-subject') }}" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            Kelola mata pelajaran
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('manage-schedule') }}" class="nav-link">
-                        <i class="nav-icon fas fa-clock"></i>
-                        <p>
-                            Jadwal mata pelajaran
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('manage-announcement') }}" class="nav-link">
-                        <i class="nav-icon fas fa-bullhorn"></i>
-                        <p>
-                            Pengumuman
-                        </p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="{{ route('manage-teacher') }}" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                kelola Pengajar
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('manage-student') }}" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                kelola Siswa
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('manage-subject') }}" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Kelola mata pelajaran
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('manage-teacher-subject') }}" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Kelola guru mapel
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('manage-schedule') }}" class="nav-link">
+                            <i class="nav-icon fas fa-clock"></i>
+                            <p>
+                                Jadwal mata pelajaran
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('manage-announcement') }}" class="nav-link">
+                            <i class="nav-icon fas fa-bullhorn"></i>
+                            <p>
+                                Pengumuman
+                            </p>
+                        </a>
+                    </li>
                 @endrole
 
                 @role('teacher')
-                <li class="nav-item">
-                    <a href="{{ route('manage-material') }}" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            Kelola Materi
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('manage-task') }}" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            Kelola Tugas
-                        </p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="{{ route('manage-material') }}" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Kelola Materi
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('manage-task') }}" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Kelola Tugas
+                            </p>
+                        </a>
+                    </li>
                 @endrole
 
                 @role('student')
-                <li class="nav-item">
-                    <a href="{{ route('check-in') }}" class="nav-link">
-                        <i class="nav-icon fas fa-user-check"></i>
-                        <p>
-                            Absen
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('material') }}" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            Materi
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('task') }}" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            Tugas
-                        </p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="{{ route('check-in') }}" class="nav-link">
+                            <i class="nav-icon fas fa-user-check"></i>
+                            <p>
+                                Absen
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('material') }}" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Materi
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('task') }}" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Tugas
+                            </p>
+                        </a>
+                    </li>
                 @endrole
                 @role('teacher|student')
-                <li class="nav-item">
-                    <a href="{{ route('filter-student') }}" class="nav-link">
-                        <i class="nav-icon fas fa-search"></i>
-                        <p>
-                            Filter siswa
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('filter-teacher') }}" class="nav-link">
-                        <i class="nav-icon fas fa-search"></i>
-                        <p>
-                            Filter pengajar
-                        </p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="{{ route('filter-student') }}" class="nav-link">
+                            <i class="nav-icon fas fa-search"></i>
+                            <p>
+                                Filter siswa
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('filter-teacher') }}" class="nav-link">
+                            <i class="nav-icon fas fa-search"></i>
+                            <p>
+                                Filter pengajar
+                            </p>
+                        </a>
+                    </li>
                 @endrole
                 <li class="nav-item">
                     <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
