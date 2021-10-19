@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\MaterialController;
-use App\Http\Controllers\TaskController;
-use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\student\DashboardController;
+use App\Http\Controllers\student\MaterialController;
+use App\Http\Controllers\student\TaskController;
+use App\Http\Controllers\student\TeacherController;
 use App\Http\Controllers\Student\AbsentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
