@@ -125,7 +125,7 @@
                         </a>
                     </li>
                 @endrole
-                @role('teacher|student')
+                @role('teacher')
                     <li class="nav-item">
                         <a href="{{ route('filter-student') }}" class="nav-link">
                             <i class="nav-icon fas fa-search"></i>
@@ -134,14 +134,16 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('filter-teacher') }}" class="nav-link">
-                            <i class="nav-icon fas fa-search"></i>
-                            <p>
-                                Filter pengajar
-                            </p>
-                        </a>
-                    </li>
+                @endrole
+                @role('student')
+                <li class="nav-item">
+                    <a href="{{ route('filter-teacher') }}" class="nav-link">
+                        <i class="nav-icon fas fa-search"></i>
+                        <p>
+                            Filter pengajar
+                        </p>
+                    </a>
+                </li>
                 @endrole
                 <li class="nav-item">
                     <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();

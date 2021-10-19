@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\User;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
-class StudentController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,14 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('admin.student.index');
+        Carbon::setLocale('id');
+        $activityLog = Log::join('users', 'users.id', '=', 'logs.user_id')
+            ->join('roles', 'roles.id', 'logs.user_id')
+            ->select('users.*', 'roles.name as role_name', 'logs.*')
+            ->orderBy('logs.id', 'DESC')
+            ->limit(10)
+            ->get();
+        return view('dashboard', compact('activityLog'));
     }
 
     /**
@@ -24,11 +32,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $user = User::join('roles','roles.id','=','users.id')
-                        ->where('roles.name','=','student')
-                        ->get();
-        return view('admin.student.create',compact('user'));
-
+        //
     }
 
     /**
@@ -85,16 +89,5 @@ class StudentController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-
-    public function filter()
-    {
-        return view('teacher.filter-student.index');
-    }
-
-    public function checkIn()
-    {
-        return view('student.check-in.index');
     }
 }

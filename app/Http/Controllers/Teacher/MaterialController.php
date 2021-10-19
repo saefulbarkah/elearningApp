@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Teacher;
 
-use App\User;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class StudentController extends Controller
+class MaterialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('admin.student.index');
+        return view('teacher.material.index');
+
     }
 
     /**
@@ -24,11 +25,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $user = User::join('roles','roles.id','=','users.id')
-                        ->where('roles.name','=','student')
-                        ->get();
-        return view('admin.student.create',compact('user'));
-
+        //
     }
 
     /**
@@ -85,16 +82,5 @@ class StudentController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-
-    public function filter()
-    {
-        return view('teacher.filter-student.index');
-    }
-
-    public function checkIn()
-    {
-        return view('student.check-in.index');
     }
 }

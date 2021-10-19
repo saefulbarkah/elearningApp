@@ -24,7 +24,9 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        @include('layouts.component.sidebar')
+        @role('admin')
+        @include('layouts.component.sidebar-admin')
+        @endrole
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
