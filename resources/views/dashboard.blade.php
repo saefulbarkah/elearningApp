@@ -97,183 +97,81 @@
         <!-- /.col -->
     </div>
 </div>
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-head">
-                <header>
-                    <i class="fa fa-users"></i>
-                    Aktivitas Login
-                </header>
-            </div>
-            <div class="card-body">
-                <table class="table">
-                    <tr>
-                        <th>No</th>
-                        <th>Nama</th>
-                        <th>Waktu</th>
-                        <th>Role</th>
-                    </tr>
-                    @foreach ($activityLog as $no => $data)
-                    @php
-                    $json = $data->data;
-                    $json_decod = json_decode($json)
-                    @endphp
-                    <tr>
-                        <td>{{ $no+1 }}</td>
-                        <td>{{ $data->name }}</td>
-                        <td>{{ Carbon\Carbon::parse($data->log_date)->diffForHumans(null, true).' yang lalu' }}</td>
-                        <td>
-                            @if ($data->role_name == 'admin')
-                            <span class="badge badge-info">{{ $data->role_name }}</span>
-                            @endif
-                            @if ($data->role_name == 'teacher')
-                            <span class="badge badge-warning">{{ $data->role_name }}</span>
-                            @endif
-                            @if ($data->role_name == 'student')
-                            <span class="badge badge-success">{{ $data->role_name }}</span>
-                            @endif
-                        </td>
-                    </tr>
-                    @endforeach
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
 @endrole
 
 @role('student|teacher')
 <div class="row">
-    <div class="col-lg-8">
-        <div class="card">
-            <div class="card-head">
-                <header>
-                    <i class="fa fa-book"></i>
-                    Daftar tugas
-                </header>
-            </div>
-            <div class="card-body">
-                <table class="table">
-                    <tr>
-                        <td>Tugas 1</td>
-                    </tr>
-                    <tr>
-                        <td>Tugas 1</td>
-                    </tr>
-                    <tr>
-                        <td>Tugas 1</td>
-                    </tr>
-                    <tr>
-                        <td>Tugas 1</td>
-                    </tr>
-                    <tr>
-                        <td>Tugas 1</td>
-                    </tr>
-                    <tr>
-                        <td>Tugas 1</td>
-                    </tr>
-                </table>
+    <div class="col-md-12">
+        <!-- BEGIN PROFILE SIDEBAR -->
+        <div class="profile-sidebar">
+            <div class="card">
+                <div class="card-head">
+
+                    <header><i class="fas fa-bullhorn"></i> Pengumuman</header>
+                </div>
+                <div class="card-body no-padding height-9">
+                    <div class="table-reponsive">
+                        <table class="table table-strip">
+                            <tr>
+                                <td>
+                                    <a href="">Besok libur</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="card">
-            <div class="card-head">
-                <header>
-                    <i class="fa fa-bullhorn"></i>
-                    Pengumuman
-                </header>
+        <!-- END BEGIN PROFILE SIDEBAR -->
+        <!-- BEGIN PROFILE CONTENT -->
+        <div class="profile-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-head">
+                            <header><i class="fas fa-list"></i> Daftar materi</header>
+                        </div>
+                        <div class="card-body no-padding height-9">
+                            <div class="table-reponsive">
+                                <table class="table table-strip">
+                                    <tr>
+                                        <td>
+                                            <a href="">Pemograman Dasar</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="">Pemograman Website</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-head">
+                            <header><i class="fas fa-list"></i> Daftar Tugas</header>
+                        </div>
+                        <div class="card-body no-padding height-9">
+                            <div class="table-reponsive">
+                                <table class="table table-strip">
+                                    <tr>
+                                        <td>
+                                            <a href="">Pemograman dasar: algoritma</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="">Membuat company profile</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <table class="table">
-                    <tr>
-                        <td>
-                            <a href="">Hari ini pulang semua</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="">Minggu depan ujian</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="">Minggu depan ujian</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="">Minggu depan ujian</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="">Minggu depan ujian</a>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-8">
-        <div class="card">
-            <div class="card-head">
-                <header>
-                    <i class="fa fa-book"></i>
-                    Daftar materi
-                </header>
-            </div>
-            <div class="card-body">
-                <table class="table">
-                    <tr>
-                        <td>Materi 1</td>
-                    </tr>
-                    <tr>
-                        <td>Materi 1</td>
-                    </tr>
-                    <tr>
-                        <td>Materi 1</td>
-                    </tr>
-                    <tr>
-                        <td>Materi 1</td>
-                    </tr>
-                    <tr>
-                        <td>Materi 1</td>
-                    </tr>
-                    <tr>
-                        <td>Materi 1</td>
-                    </tr>
-                    <tr>
-                        <td>Materi 1</td>
-                    </tr>
-                    <tr>
-                        <td>Materi 1</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="card">
-            <div class="card-head">
-                <header>
-                    <i class="fa fa-users"></i>
-                    Riwayat login
-                </header>
-            </div>
-            <div class="card-body">
-                <table class="table">
-                    @foreach ($activityLog as $data)
-                    <tr>
-                        <td>{{ $data->name }}</td>
-                        <td>{{ Carbon\Carbon::parse($data->log_date)->diffForHumans(null, true).' yang lalu' }}</td>
-                    </tr>
-                    @endforeach
-                </table>
-            </div>
+            <!-- END PROFILE CONTENT -->
         </div>
     </div>
 </div>
