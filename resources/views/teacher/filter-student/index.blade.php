@@ -1,46 +1,48 @@
 @extends('layouts.master')
-
-@push('styles')
-<!-- DataTables -->
-<link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+@push('css')
+<!-- data tables -->
+<link href="{{ asset('assets/bundles/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
+    type="text/css">
 @endpush
-@section('title-page','Pencarian siswa')
+@section('title-page', 'Filter Siswa')
 @section('content')
 <div class="row">
-    <div class="col">
+    <div class="col-md-12">
         <div class="card">
-            <div class="card-header">
-                <i class="fa fa-table"></i>
-                Daftar siswa
+            <div class="card-head">
+                <header>
+                    <i class="fas fa-table"></i>
+                    Data siswa
+                </header>
+                <div class="tools">
+                    <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+                    <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                    <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+                </div>
             </div>
-            <div class="card-body">
-                <table id="example2" class="table table-bordered table-striped">
+            <div class="card-body ">
+                <table id="example1" class="display" style="width:100%;">
                     <thead>
                         <tr>
-                            <th>No</th>
-                            <th>Gambar</th>
-                            <th>Nama</th>
-                            <th>NISN</th>
+                            <th>Nama lengkap</th>
                             <th>Kelas</th>
                             <th>Jurusan</th>
+                            <th>Gambar</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td style="width: 25px;">1</td>
-                            <td style="width: 30px">
-                                <img src="https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-vector-avatar-icon-png-image_695765.jpg"
-                                    alt="" class="img-fluid">
-                            </td>
                             <td>Saeful Barkah</td>
-                            <td>1920.10.30</td>
                             <td>XII</td>
-                            <td>RPL</td>
+                            <td>RPl</td>
                             <td>
-                                <a href="" class="btn-sm btn-success">
+                                <img src="https://png.pngtree.com/png-clipart/20190924/original/pngtree-user-vector-avatar-png-image_4830521.jpg"
+                                    alt="" width="30px">
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-success">
+                                    <i class="fa fa-search"></i>
                                     Detail
                                 </a>
                             </td>
@@ -51,33 +53,10 @@
         </div>
     </div>
 </div>
-
 @push('js')
-<!-- DataTables  & Plugins -->
-<script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/jszip/jszip.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/pdfmake/pdfmake.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/pdfmake/vfs_fonts.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-<script>
-    $(function () {
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      })
-    })
-</script>
+<!-- data tables -->
+<script src="{{ asset('assets/bundles/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/bundles/datatables/plugins/bootstrap/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/data/table-data.js') }}"></script>
 @endpush
 @endsection

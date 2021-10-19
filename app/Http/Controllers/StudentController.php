@@ -24,11 +24,10 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $user = User::join('roles','roles.id','=','users.id')
-                        ->where('roles.name','=','student')
-                        ->get();
-        return view('admin.student.create',compact('user'));
-
+        $user = User::join('roles', 'roles.id', '=', 'users.id')
+            ->where('roles.name', '=', 'student')
+            ->get();
+        return view('admin.student.create', compact('user'));
     }
 
     /**
@@ -85,16 +84,5 @@ class StudentController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-
-    public function filter()
-    {
-        return view('teacher.filter-student.index');
-    }
-
-    public function checkIn()
-    {
-        return view('student.check-in.index');
     }
 }

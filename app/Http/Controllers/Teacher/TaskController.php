@@ -14,7 +14,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view('teacher.task.index');
+        return view('teacher.manage-task.index');
     }
 
     /**

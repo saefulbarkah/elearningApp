@@ -13,7 +13,7 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        return view('teacher.material.index');
+        return view('student.list-material.index');
     }
 
     /**
@@ -80,10 +80,5 @@ class MaterialController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function listMaterial()
-    {
-        return view('student.material.index');
     }
 }

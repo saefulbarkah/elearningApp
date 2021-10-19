@@ -13,7 +13,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        return view('admin.teacher.index');
+        return view('student.filter-teacher.index');
     }
 
     /**

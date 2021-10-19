@@ -14,7 +14,7 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
-        return view('admin.announcement.index');
+        return view('admin.manage-announcement.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class AnnouncementController extends Controller
      */
     public function create()
     {
-        return view('admin.announcement.create');
+        return view('admin.manage-announcement.create');
     }
 
     /**

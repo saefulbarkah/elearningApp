@@ -1,182 +1,50 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="../../index3.html" class="brand-link text-center">
-        <span class="brand-text font-weight-light">E-learning App</span>
-    </a>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- Sidebar user (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
-                     alt="User Image">
-            </div>
-            <div class="info">
-                <a href="#" class="d-block">{{ auth()->user()->name }}</a>
-            </div>
-        </div>
-
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Dashboard
-                        </p>
-                    </a>
-                </li>
-
-                @role('admin')
-                <li class="nav-item">
-                    <a href="{{ route('manage-teacher') }}" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                            kelola Pengajar
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('manage-student') }}" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                            kelola Siswa
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('manage-subject') }}" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            Kelola mata pelajaran
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('manage-teacher-subject') }}" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            Kelola guru mapel
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('manage-schedule') }}" class="nav-link">
-                        <i class="nav-icon fas fa-clock"></i>
-                        <p>
-                            Jadwal mata pelajaran
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('manage-announcement') }}" class="nav-link">
-                        <i class="nav-icon fas fa-bullhorn"></i>
-                        <p>
-                            Pengumuman
-                        </p>
-                    </a>
-                </li>
-                @endrole
-
-                @role('teacher')
-                <li class="nav-item">
-                    <a href="{{ route('manage-material') }}" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            Kelola Materi
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('manage-task') }}" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            Kelola Tugas
-                        </p>
-                    </a>
-                </li>
-                @endrole
-
-                @role('student')
-                <li class="nav-item">
-                    <a href="{{ route('check-in') }}" class="nav-link">
-                        <i class="nav-icon fas fa-user-check"></i>
-                        <p>
-                            Absen
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('material') }}" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            Materi
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('task') }}" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            Tugas
-                        </p>
-                    </a>
-                </li>
-                @endrole
-                @role('teacher')
-                <li class="nav-item">
-                    <a href="{{ route('filter-student') }}" class="nav-link">
-                        <i class="nav-icon fas fa-search"></i>
-                        <p>
-                            Filter siswa
-                        </p>
-                    </a>
-                </li>
-                @endrole
-                @role('student')
-                <li class="nav-item">
-                    <a href="{{ route('filter-teacher') }}" class="nav-link">
-                        <i class="nav-icon fas fa-search"></i>
-                        <p>
-                            Filter pengajar
-                        </p>
-                    </a>
-                </li>
-                @endrole
-                <li class="nav-item">
-                    <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-                        <i class="nav-icon fas fa-sign-out-alt"></i>
-                        <p>
-                            Logout
-                        </p>
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </li>
-                {{-- <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Master Data
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="../../index.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v1</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li> --}}
-            </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
+<div class="sidemenu-container navbar-collapse collapse fixed-menu">
+    <div id="remove-scroll" class="left-sidemenu">
+        <ul class="sidemenu  page-header-fixed slimscroll-style" data-keep-expanded="false" data-auto-scroll="true"
+            data-slide-speed="200" style="padding-top: 20px">
+            <li class="sidebar-toggler-wrapper hide">
+                <div class="sidebar-toggler">
+                    <span></span>
+                </div>
+            </li>
+            <li class="sidebar-user-panel">
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="{{ asset('assets/img/dp.jpg') }}" class="img-circle user-img-circle"
+                            alt="User Image" />
+                    </div>
+                    <div class="pull-left info">
+                        <p> {{ auth()->user()->name }}</p>
+                        <a href="#"><i class="fa fa-circle user-online"></i><span class="txtOnline">
+                                Online</span></a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item {{ Request::is('dashboard') ? 'active' : '' }}">
+                <a href="{{ route('dashboard') }}" class="nav-link nav-toggle"> <i class="fas fa-tachometer-alt"></i>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item {{ Request::is('absent') ? 'active' : '' }}">
+                <a href="{{ route('absent') }}" class="nav-link nav-toggle"> <i class="fas fa-user-check"></i>
+                    <span class="title">Absen</span>
+                </a>
+            </li>
+            <li class="nav-item {{ Request::is('list-material') ? 'active' : '' }}">
+                <a href="{{ route('list-material') }}" class="nav-link nav-toggle"> <i class="fas fa-book"></i>
+                    <span class="title">Daftar materi</span>
+                </a>
+            </li>
+            <li class="nav-item {{ Request::is('list-task') ? 'active' : '' }}">
+                <a href="{{ route('list-task') }}" class="nav-link nav-toggle"> <i class="fas fa-book"></i>
+                    <span class="title">Daftar tugas</span>
+                </a>
+            </li>
+            <li class="nav-item {{ Request::is('filter-teacher') ? 'active' : '' }}">
+                <a href="{{ route('filter-teacher') }}" class="nav-link nav-toggle"> <i class="fas fa-search"></i>
+                    <span class="title">Filter pengajar</span>
+                </a>
+            </li>
+        </ul>
     </div>
-    <!-- /.sidebar -->
-</aside>
+</div>

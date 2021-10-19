@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Teacher;
+use App\Subject;
 
 class TeacherSubjectController extends Controller
 {
@@ -14,7 +16,7 @@ class TeacherSubjectController extends Controller
      */
     public function index()
     {
-        return view('admin.teacher_subject.index');
+        return view('admin.teacher-subject.index');
     }
 
     /**
@@ -24,10 +26,10 @@ class TeacherSubjectController extends Controller
      */
     public function create()
     {
-        $teacher = Teacher::orderBy('name','asc')->get();
-        $subject = Subject::orderBy('name','asc')->get();
+        $teacher = Teacher::orderBy('name', 'asc')->get();
+        $subject = Subject::orderBy('name', 'asc')->get();
 
-        return view('admin.teacher_subject.create',compact('teacher','subject'));
+        return view('admin.teacher-subject.create', compact('teacher', 'subject'));
     }
 
     /**

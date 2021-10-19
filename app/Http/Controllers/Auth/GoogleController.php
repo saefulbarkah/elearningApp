@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
 class GoogleController extends Controller
@@ -14,24 +16,20 @@ class GoogleController extends Controller
 
     public function googleCallback(){
         $user = Socialite::driver('google')->user();
-
-        $find_user = User::whereEmail($user->getEmail())->first();
-        if ($find_user){
+        $find_user = User::where('google_id',$user->getId())->first();
+        if($find_user){
             Auth::login($find_user);
-
-            if ($find_user->hasRole('admin')){
-                return redirect ('admin');
-            } elseif ($find_user->hasRole('teacher')){
-                return redirect ('teacher');
-            } elseif ($find_user->hasRole('student')){
-                return redirect ('dashboard');
-            } else {
-                return redirect('asdf');
-            }
-        } else {
-            return redirect('login');
-        }
-
-
+            return redirect('dashboard');
+        }else{
+            $newUser = User::create([
+                'name'      => $user->name,
+                'email'     => $user->email,
+                'google_id' => $user->id,
+                'password'  => bcrypt('12345678'),
+            ]);
+            $newUser->assignRole('student');
+            Auth::login($newUser);
+            return redirect('dashboard');
+            
     }
 }
