@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Subject;
 
 class SubjectController extends Controller
 {
@@ -15,7 +16,7 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        return view('admin.subject.index');
+        return view('admin.manage-subject.index');
     }
 
     /**
@@ -25,11 +26,11 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        $subject = Subject::orderBy('name','asc')->get();
+        $subject = Subject::orderBy('name', 'asc')->get();
         $grade = DB::table('grades')->get();
         // dd($grade);
 
-        return view('admin.subject.create',compact('subject','grade'));
+        return view('admin.manage-subject.create', compact('subject', 'grade'));
     }
 
     /**

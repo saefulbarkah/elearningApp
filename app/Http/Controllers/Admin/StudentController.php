@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+
 class StudentController extends Controller
 {
     /**
@@ -14,7 +15,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('admin.student.index');
+        return view('admin.manage-student.index');
     }
 
     /**
@@ -24,10 +25,10 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $user = User::join('roles','roles.id','=','users.id')
-            ->where('roles.name','=','student')
+        $user = User::join('roles', 'roles.id', '=', 'users.id')
+            ->where('roles.name', '=', 'student')
             ->get();
-        return view('admin.student.create',compact('user'));
+        return view('admin.manage-student.create', compact('user'));
     }
 
     /**

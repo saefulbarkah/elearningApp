@@ -1,79 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- BEGIN HEAD -->
+
+
+<!-- Mirrored from radixtouch.com/templates/admin/redstar/source/light/blank_page.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 18 Oct 2021 14:50:45 GMT -->
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Blank Page</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="description" content="Responsive Admin Template" />
+    <meta name="author" content="RedstarHospital" />
+    <title>Elearning</title>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />
+    <!-- icons -->
+    <link href="{{ asset('assets/bundles/simple-line-icons/simple-line-icons.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--bootstrap -->
+    <link href="{{ asset('assets/bundles/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Material Design Lite CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/bundles/material/material.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/material_style.css') }}">
+    <!-- Theme Styles -->
+    <link href="{{ asset('assets/css/theme_style.css') }}" rel="stylesheet" id="rt_style_components" type="text/css" />
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/plugins.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/theme-color.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
-    @stack('styles')
+    @stack('css')
+    <!-- favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" />
 </head>
+<!-- END HEAD -->
 
-<body class="hold-transition sidebar-mini">
-    <!-- Site wrapper -->
-    <div class="wrapper">
-        <!-- Navbar -->
-        @include('layouts.component.navbar')
-        <!-- /.navbar -->
-
-        <!-- Main Sidebar Container -->
-        @role('admin')
-        @include('layouts.component.sidebar-admin')
-        @endrole
-
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-12">
-                            <h1>@yield('title-page')</h1>
+<body
+    class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white white-sidebar-color logo-indigo">
+    <div class="page-wrapper">
+        <!-- start header -->
+        <div class="page-header navbar navbar-fixed-top">
+            @include('layouts.component.navbar')
+        </div>
+        <!-- end header -->
+        <!-- start color quick setting -->
+        <div class="settingSidebar">
+            <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
+            </a>
+            <div class="settingSidebar-body ps-container ps-theme-default">
+                <div class=" fade show active">
+                    <div class="setting-panel-header">Setting Panel
+                    </div>
+                    <div class="quick-setting slimscroll-style">
+                        <ul id="themecolors">
+                            <li>
+                                <p class="sidebarSettingTitle">Sidebar Color</p>
+                            </li>
+                            <li class="complete">
+                                <div class="theme-color sidebar-theme">
+                                    <a href="#" data-theme="white"><span class="head"></span><span
+                                            class="cont"></span></a>
+                                    <a href="#" data-theme="dark"><span class="head"></span><span
+                                            class="cont"></span></a>
+                                    <a href="#" data-theme="blue"><span class="head"></span><span
+                                            class="cont"></span></a>
+                                    <a href="#" data-theme="indigo"><span class="head"></span><span
+                                            class="cont"></span></a>
+                                    <a href="#" data-theme="cyan"><span class="head"></span><span
+                                            class="cont"></span></a>
+                                    <a href="#" data-theme="green"><span class="head"></span><span
+                                            class="cont"></span></a>
+                                    <a href="#" data-theme="red"><span class="head"></span><span
+                                            class="cont"></span></a>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="sidebarSettingTitle">Header Brand color</p>
+                            </li>
+                            <li class="theme-option">
+                                <div class="theme-color logo-theme">
+                                    <a href="#" data-theme="logo-white"><span class="head"></span><span
+                                            class="cont"></span></a>
+                                    <a href="#" data-theme="logo-dark"><span class="head"></span><span
+                                            class="cont"></span></a>
+                                    <a href="#" data-theme="logo-blue"><span class="head"></span><span
+                                            class="cont"></span></a>
+                                    <a href="#" data-theme="logo-indigo"><span class="head"></span><span
+                                            class="cont"></span></a>
+                                    <a href="#" data-theme="logo-cyan"><span class="head"></span><span
+                                            class="cont"></span></a>
+                                    <a href="#" data-theme="logo-green"><span class="head"></span><span
+                                            class="cont"></span></a>
+                                    <a href="#" data-theme="logo-red"><span class="head"></span><span
+                                            class="cont"></span></a>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="sidebarSettingTitle">Header color</p>
+                            </li>
+                            <li class="theme-option">
+                                <div class="theme-color header-theme">
+                                    <a href="#" data-theme="header-white"><span class="head"></span><span
+                                            class="cont"></span></a>
+                                    <a href="#" data-theme="header-dark"><span class="head"></span><span
+                                            class="cont"></span></a>
+                                    <a href="#" data-theme="header-blue"><span class="head"></span><span
+                                            class="cont"></span></a>
+                                    <a href="#" data-theme="header-indigo"><span class="head"></span><span
+                                            class="cont"></span></a>
+                                    <a href="#" data-theme="header-cyan"><span class="head"></span><span
+                                            class="cont"></span></a>
+                                    <a href="#" data-theme="header-green"><span class="head"></span><span
+                                            class="cont"></span></a>
+                                    <a href="#" data-theme="header-red"><span class="head"></span><span
+                                            class="cont"></span></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end color quick setting -->
+        <!-- start page container -->
+        <div class="page-container">
+            <!-- start sidebar menu -->
+            <div class="sidebar-container">
+                @role('admin')
+                @include('layouts.component.sidebar-admin')
+                @endrole
+                @role('teacher')
+                @include('layouts.component.sidebar-teacher')
+                @endrole
+                @role('student')
+                @include('layouts.component.sidebar-student')
+                @endrole
+            </div>
+            <!-- end sidebar menu -->
+            <!-- start page content -->
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    <div class="page-bar">
+                        <div class="page-title-breadcrumb">
+                            <div class=" pull-left">
+                                <div class="page-title">@yield('title-page')</div>
+                            </div>
                         </div>
                     </div>
-                </div><!-- /.container-fluid -->
-            </section>
-
-            <!-- Main content -->
-            <section class="content">
-                @yield('content')
-            </section>
-            <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
-
-        <footer class="main-footer">
-            <div class="float-right d-none d-sm-block">
-                <b>Version</b> 1.0
+                    <!-- add content here -->
+                    @yield('content')
+                </div>
             </div>
-            <strong>Copyright &copy; 2014-2021 <a href="">Kelompok 2</a>.</strong> All rights
-            reserved.
-        </footer>
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
+            <!-- end page content -->
+        </div>
+        <!-- end page container -->
+        <!-- start footer -->
+        @include('layouts.component.footer')
+        <!-- end footer -->
     </div>
-    <!-- ./wrapper -->
-
-    <!-- jQuery -->
-    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('assets/dist/js/demo.js') }}"></script>
+    <script src="{{ asset('assets/bundles/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/bundles/popper/popper.js') }}"></script>
+    <script src="{{ asset('assets/bundles/jquery-blockUI/jquery.blockui.min.js') }}"></script>
+    <script src="{{ asset('assets/bundles/jquery.slimscroll/jquery.slimscroll.js') }}"></script>
+    <!-- bootstrap -->
+    <script src="{{ asset('assets/bundles/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/bundles/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
+    <!-- Common js-->
+    <script src="{{ asset('assets/app.js') }}"></script>
+    <script src="{{ asset('assets/layout.js') }}"></script>
+    <script src="{{ asset('assets/theme-color.js') }}"></script>
+    <!-- Material -->
+    <script src="{{ asset('assets/bundles/material/material.min.js') }}"></script>
+    <!-- end js include path -->
     @stack('js')
 </body>
+
+
+<!-- Mirrored from radixtouch.com/templates/admin/redstar/source/light/blank_page.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 18 Oct 2021 14:50:45 GMT -->
 
 </html>

@@ -14,7 +14,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        return view('admin.teacher.index');
+        return view('admin.manage-teacher.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('admin.teacher.create');
+        return view('admin.manage-teacher.create');
     }
 
     /**

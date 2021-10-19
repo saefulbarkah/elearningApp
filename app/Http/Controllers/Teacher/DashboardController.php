@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use App\Log;
 
 class DashboardController extends Controller
 {
@@ -14,7 +16,14 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        //
+        Carbon::setLocale('id');
+        $activityLog = Log::join('users', 'users.id', '=', 'logs.user_id')
+            ->join('roles', 'roles.id', 'logs.user_id')
+            ->select('users.*', 'roles.name as role_name', 'logs.*')
+            ->orderBy('logs.id', 'DESC')
+            ->limit(10)
+            ->get();
+        return view('dashboard', compact('activityLog'));
     }
 
     /**
