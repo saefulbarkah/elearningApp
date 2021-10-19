@@ -30,6 +30,6 @@ class GoogleController extends Controller
             $newUser->assignRole('student');
             Auth::login($newUser);
             return redirect('dashboard');
-            
+        }
     }
 }
