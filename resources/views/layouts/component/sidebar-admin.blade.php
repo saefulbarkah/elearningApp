@@ -40,11 +40,6 @@
                     <span class="title">Kelola mata pelajaran</span>
                 </a>
             </li>
-            <li class="nav-item {{ Request::is('admin/manage-teacher-subject') ? 'active' : '' }}">
-                <a href="{{ route('manage-teacher-subject') }}" class="nav-link nav-toggle"> <i class="fas fa-book"></i>
-                    <span class="title">Kelola guru mapel</span>
-                </a>
-            </li>
             <li class="nav-item {{ Request::is('admin/manage-schedule') ? 'active' : '' }}">
                 <a href="{{ route('manage-schedule') }}" class="nav-link nav-toggle"> <i class="fas fa-clock"></i>
                     <span class="title">Jadwal mata pelajaran</span>

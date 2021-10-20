@@ -15,15 +15,12 @@ class CreateScheduleSubjectsTable extends Migration
     {
         Schema::create('schedule_subjects', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->unsignedBigInteger('day_id');
             $table->foreign('day_id')->references('id')->on('days')->onDelete('cascade');
-            $table->unsignedBigInteger('grade_id');
-            $table->foreign('grade_id')->references('id')->on('grades')->onDelete('cascade');
-            $table->unsignedBigInteger('major_id');
-            $table->foreign('major_id')->references('id')->on('majors')->onDelete('cascade');
             $table->unsignedBigInteger('subject_id');
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
+            $table->unsignedBigInteger('grade_major_id');
+            $table->foreign('grade_major_id')->references('id')->on('grade_majors')->onDelete('cascade');
             $table->time('start_time');
             $table->time('end_time');
             $table->timestamps();

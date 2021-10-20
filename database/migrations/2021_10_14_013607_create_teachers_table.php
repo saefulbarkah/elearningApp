@@ -15,12 +15,11 @@ class CreateTeachersTable extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('nip')->unique();
-            $table->string('name');
-            $table->tinyInteger('gender');
-            $table->string('birth_place');
-            $table->dateTime('birth_date');
-            $table->string('religion_name');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('nip')->unique();
+            $table->string('gender');
+            $table->string('religion');
             $table->text('address');
             $table->string('image')->nullable();
             $table->timestamps();

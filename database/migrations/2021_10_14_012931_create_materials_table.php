@@ -15,13 +15,11 @@ class CreateMaterialsTable extends Migration
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
-            $table->string('tilte');
+            $table->string('title');
             $table->unsignedBigInteger('subject_id');
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
-            $table->unsignedBigInteger('grade_id');
-            $table->foreign('grade_id')->references('id')->on('grades')->onDelete('cascade');
-            $table->unsignedBigInteger('major_id');
-            $table->foreign('major_id')->references('id')->on('majors')->onDelete('cascade');
+            $table->unsignedBigInteger('grade_major_id');
+            $table->foreign('grade_major_id')->references('id')->on('grade_majors')->onDelete('cascade');
             $table->text('description')->nullable();
             $table->string('file')->nullable();
             $table->timestamps();

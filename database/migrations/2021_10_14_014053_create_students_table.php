@@ -17,12 +17,9 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->bigInteger('nis')->unique();
-            $table->string('name');
-            $table->tinyInteger('gender');
-            $table->string('birth_place');
-            $table->dateTime('birth_date');
-            $table->string('religion_name');
+            $table->string('nis')->unique();
+            $table->string('gender');
+            $table->string('religion');
             $table->text('address');
             $table->string('image')->nullable();
             $table->timestamps();

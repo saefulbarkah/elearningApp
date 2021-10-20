@@ -15,8 +15,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
     Route::get('/student-create', [StudentController::class, 'create'])->name('student-create');
     Route::get('/manage-subject', [SubjectController::class, 'index'])->name('manage-subject');
     Route::get('/subject-create', [SubjectController::class, 'create'])->name('subject-create');
-    Route::get('/manage-teacher-subject', [TeacherSubjectController::class, 'index'])->name('manage-teacher-subject');
-    Route::get('/teacher-subject-create', [TeacherSubjectController::class, 'create'])->name('teacher-subject-create');
     Route::get('/manage-schedule', [ScheduleController::class, 'index'])->name('manage-schedule');
     Route::get('/manage-announcement', [AnnouncementController::class, 'index'])->name('manage-announcement');
     Route::get('/annnouncement-create', [AnnouncementController::class, 'create'])->name('announcement-create');
