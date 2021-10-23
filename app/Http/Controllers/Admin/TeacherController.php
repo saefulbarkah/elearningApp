@@ -192,7 +192,7 @@ class TeacherController extends Controller
                 $teacher->image = 'student-l.png';
             }
             if ($request->input('gender') == 'P') {
-                $teacher->image = 'teacher-p.png';
+                $teacher->image = 'student-p.png';
             }
         }
         $teacher->save();
