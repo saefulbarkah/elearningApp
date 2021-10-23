@@ -74,8 +74,8 @@
                             <option value="{{ $data->gm_id }}" {{ ($data->gm_id == $student->grade_major_id) ?
                                 'selected' : '' }}
                                 >{{
-                                $data->grade }} - {{
-                                $data->major
+                                $data->grade_name }} - {{
+                                $data->major_name
                                 }}</option>
                             @endforeach
                         </select>
