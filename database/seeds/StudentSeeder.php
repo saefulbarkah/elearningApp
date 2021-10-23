@@ -12,28 +12,26 @@ class StudentSeeder extends Seeder
      */
     public function run()
     {
+        // s1
         Student::create([
-            'user_id' => '5',
-            'nis' => '1920.10.21',
-            'gender' => 'Laki-laki',
+            'user_id' => '3',
+            'grade_major_id' => '1',
+            'nis' => '19201021',
+            'gender' => 'L',
             'religion' => 'Islam',
-            'address' => 'Kp.Sukamaju'
+            'image' => 'student-l.png',
+            'address' => 'Kp.bojong'
         ]);
 
+        // s2
         Student::create([
-            'user_id' => '6',
-            'nis' => '1920.10.22',
-            'gender' => 'Perempuan',
+            'user_id' => '4',
+            'grade_major_id' => '3',
+            'nis' => '19201022',
+            'gender' => 'L',
             'religion' => 'Islam',
-            'address' => 'Kp.Bojong'
-        ]);
-
-        Student::create([
-            'user_id' => '7',
-            'nis' => '1920.10.23',
-            'gender' => 'Laki-laki',
-            'religion' => 'Islam',
-            'address' => 'Kp.Pesantren'
+            'image' => 'student-l.png',
+            'address' => 'Kp.sompok'
         ]);
     }
 }

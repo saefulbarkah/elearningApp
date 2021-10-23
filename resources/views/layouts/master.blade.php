@@ -21,18 +21,19 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!--bootstrap -->
     <link href="{{ asset('assets/bundles/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/bundles/flatpicker/css/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- Material Design Lite CSS -->
     <link rel="stylesheet" href="{{ asset('assets/bundles/material/material.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/material_style.css') }}">
+    <link rel="stylesheet" href="css/material_style.css">
     <!-- Theme Styles -->
     <link href="{{ asset('assets/css/theme_style.css') }}" rel="stylesheet" id="rt_style_components" type="text/css" />
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/plugins.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/formlayout.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/theme-color.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-
     @stack('css')
     <!-- favicon -->
     <link rel="shortcut icon" href="img/favicon.ico" />
@@ -163,6 +164,7 @@
         <!-- end footer -->
     </div>
     <script src="{{ asset('assets/bundles/jquery/jquery.min.js') }}"></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
     <script src="{{ asset('assets/bundles/popper/popper.js') }}"></script>
     <script src="{{ asset('assets/bundles/jquery-blockUI/jquery.blockui.min.js') }}"></script>
     <script src="{{ asset('assets/bundles/jquery.slimscroll/jquery.slimscroll.js') }}"></script>
@@ -177,6 +179,7 @@
     <script src="{{ asset('assets/bundles/material/material.min.js') }}"></script>
     <!-- end js include path -->
     @stack('js')
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 

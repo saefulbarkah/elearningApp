@@ -1,8 +1,11 @@
 @extends('layouts.master')
 @push('css')
 <!-- data tables -->
+<link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" rel="stylesheet"
+    type="text/css">
 <link href="{{ asset('assets/bundles/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
     type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 @endpush
 @section('title-page', 'Daftar siswa')
 @section('content')
@@ -21,7 +24,6 @@
         </div>
     </div>
 </div>
-
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -37,7 +39,7 @@
                 </div>
             </div>
             <div class="card-body ">
-                <table id="example1" class="display" style="width:100%;">
+                <table id="example1" class="display nowrap table-hover" style="width:100%;">
                     <thead>
                         <tr>
                             <th>NIS</th>
@@ -52,29 +54,30 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($student as $data)
                         <tr>
-                            <td>9908123</td>
-                            <td>Saeful Barkah</td>
-                            <td>Laki Laki</td>
-                            <td>Islam</td>
-                            <td>Bandung</td>
-                            <td>XI</td>
-                            <td>RPL</td>
+                            <td>{{ $data->nis }}</td>
+                            <td>{{ $data->name }}</td>
+                            <td>{{ $data->gender }}</td>
+                            <td>{{ $data->religion }}</td>
+                            <td>{{ $data->address }}</td>
+                            <td>{{ $data->grade_name }}</td>
+                            <td>{{ $data->major_name }}</td>
                             <td>
-                                <img src="https://png.pngtree.com/png-clipart/20190924/original/pngtree-user-vector-avatar-png-image_4830521.jpg"
-                                    alt="" width="30px">
+                                <img src="{{ asset('images/'.$data->image) }}" alt="" class="img fluid"
+                                    style="width: 50px">
                             </td>
                             <td>
-                                <a href="" class="btn btn-info">
+                                <a href="{{ url('admin/manage-student/'.$data->id.'/edit') }}" class="btn btn-info">
                                     <i class="fa fa-edit"></i>
-                                    Edit
                                 </a>
-                                <a href="" class="btn btn-danger">
+                                <a href="#delete?id={{ $data->id }}" class="btn btn-danger delete"
+                                    data-id="{{ $data->id }}" data-name="{{ $data->name }}">
                                     <i class="fa fa-trash"></i>
-                                    Hapus
                                 </a>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -85,6 +88,34 @@
 <!-- data tables -->
 <script src="{{ asset('assets/bundles/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/bundles/datatables/plugins/bootstrap/dataTables.bootstrap4.min.js') }}"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
 <script src="{{ asset('assets/data/table-data.js') }}"></script>
+<script>
+    $('.delete').click( function(){
+        var dataId = $(this).attr('data-id');
+        var dataName = $(this).attr('data-name');
+        swal({
+            title: "Yakin ?",
+            text: "Kamu akan menghapus data dengan id "+dataId+" Nama data "+dataName+"",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            timer: 3000,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                window.location.href = "manage-student/"+dataId+"/delete"
+            } else {
+                swal("Gagal menghapus data");
+            }
+        });
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+@if (Session::has('success'))
+<script>
+    toastr.success("{!! Session::get('success') !!}");
+</script>
+@endif
 @endpush
 @endsection

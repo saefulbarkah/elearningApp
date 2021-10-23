@@ -23,7 +23,7 @@ use App\Http\Controllers\Auth\GoogleController;
 Auth::routes();
 
 Route::get('/', function () {
-    return view('auth.login');
+    return redirect()->route('login');
 });
 
 //Route Google

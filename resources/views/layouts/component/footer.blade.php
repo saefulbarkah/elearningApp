@@ -1,7 +1,7 @@
-<div class="page-footer">
-    <div class="page-footer-inner"> 2021 &copy; Elearning
+{{-- <div class="page-footer fixed">
+    <div class=""> 2021 &copy; Elearning
     </div>
-    <div class="scroll-to-top">
-        <i class="icon-arrow-up"></i>
-    </div>
+</div> --}}
+<div class="scroll-to-top">
+    <i class="icon-arrow-up"></i>
 </div>

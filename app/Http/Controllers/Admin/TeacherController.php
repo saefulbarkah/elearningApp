@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Teacher;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class TeacherController extends Controller
 {
@@ -14,7 +18,10 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        return view('admin.manage-teacher.index');
+        $teacher = Teacher::join('users', 'users.id', '=', 'teachers.user_id')
+            ->select('users.name', 'teachers.*')
+            ->get();
+        return view('admin.manage-teacher.index', compact('teacher'));
     }
 
     /**
@@ -35,7 +42,69 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $message = [
+
+            // required
+            'nip.required' => "Kolom nip tidak boleh kosong",
+            'name.required' => "Kolom nama tidak boleh kosong",
+            'email.required' => "Kolom email tidak boleh kosong",
+            'gender.required' => "Jenis kelamin wajib di pilih",
+            'grade_major_id.required' => "Kelas dan jurusan wajib di pilih",
+            'address.required' => "Kolom alamat tidak boleh kosong",
+            'religion.required' => "Agama wajib di pilih",
+
+            // unique
+            'email.unique'   => "Email sudah di gunakan",
+            'nip.unique'   => "NIP sudah di gunakan",
+
+            // mimes
+            'image.mimes'   => 'Gambar wajib menggunakan format png dan jpg'
+        ];
+        $validate = Validator::make($request->all(), [
+            'name'           => 'required',
+            'email'          => 'required|unique:users,email',
+            'nip'            => 'required|unique:teachers,nip',
+            'gender'         => 'required',
+            'religion'       => 'required',
+            'address'        => 'required',
+            'image'          => 'mimes:jpg,png'
+        ], $message);
+        if ($validate->fails()) {
+            return redirect()->back()->with('error', 'Data gagal di tambahkan')->withErrors($validate)->withInput();
+        }
+        // dd($request->all());
+        // new User
+        $newUserteacher = new User();
+        $newUserteacher->name = $request->name;
+        $newUserteacher->email = $request->email;
+        $newUserteacher->password = Hash::make('rahasia1234');
+        $newUserteacher->save();
+
+        // new Teacher
+        $teacher = new Teacher();
+        $teacher->user_id           = $newUserteacher->id;
+        $teacher->nip               = $request->nip;
+        $teacher->gender            = $request->gender;
+        $teacher->religion          = $request->religion;
+        $teacher->address           = $request->address;
+        if ($request->hasFile('image')) {
+            $imageName = pathinfo($request->image->getClientOriginalName(), PATHINFO_FILENAME);
+            $imageEx   = $request->image->getClientOriginalExtension();
+            $imageGroup = $imageName . '-' . time() . '.' . $imageEx;
+            $imageMove = $request->image->move('images', $imageGroup);
+            $teacher->image = $imageGroup;
+        }
+        if ($request->image == NULL) {
+            if ($request->input('gender') == 'L') {
+                $teacher->image = 'student-l.png';
+            }
+            if ($request->input('gender') == 'P') {
+                $teacher->image = 'student-p.png';
+            }
+        }
+        // dd($teacher);
+        $teacher->save();
+        return redirect()->route('manage-teacher')->with('success', 'Data berhasil di tambahkan');
     }
 
     /**
@@ -57,7 +126,10 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
-        //
+        $teacher = Teacher::join('users', 'users.id', '=', 'teachers.user_id')
+            ->select('users.name as user_name', 'users.email as user_email', 'teachers.*')
+            ->find($id);
+        return view('admin.manage-teacher.edit', compact('teacher'));
     }
 
     /**
@@ -69,7 +141,67 @@ class TeacherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $message = [
+            // required
+            'nip.required' => "Kolom nip tidak boleh kosong",
+            'name.required' => "Kolom nama tidak boleh kosong",
+            'email.required' => "Kolom email tidak boleh kosong",
+            'gender.required' => "Jenis kelamin wajib di pilih",
+            'address.required' => "Kolom alamat tidak boleh kosong",
+            'religion.required' => "Agama wajib di pilih",
+
+            // unique
+            'email.unique'   => "Email sudah di gunakan",
+            'nip.unique'   => "NIP sudah di gunakan",
+
+            // mimes
+            'image.mimes'   => 'Gambar wajib menggunakan format png dan jpg'
+        ];
+        $validate = Validator::make($request->all(), [
+            'name'           => 'required',
+            'email'          => 'required|unique:users,email,' . $request->user_id,
+            'nip'            => 'required|unique:teachers,nip,' . $id,
+            'gender'         => 'required',
+            'religion'  => 'required',
+            'address'        => 'required',
+            'image'          => 'mimes:jpg,png'
+        ], $message);
+
+        // if validate fails return redirect to edit page with message
+        if ($validate->fails()) {
+            return redirect()->back()->with('error', 'Data gagal di tambahkan')->withErrors($validate)->withInput();
+        }
+
+        // new Student
+        $teacher = Teacher::find($id);
+        $teacher->user_id           = $request->user_id;
+        $teacher->nip               = $request->nip;
+        $teacher->gender            = $request->gender;
+        $teacher->religion          = $request->religion;
+        $teacher->address           = $request->address;
+        if ($request->hasFile('image')) {
+            $imageName = pathinfo($request->image->getClientOriginalName(), PATHINFO_FILENAME);
+            $imageEx   = $request->image->getClientOriginalExtension();
+            $imageGroup = $imageName . '-' . time() . '.' . $imageEx;
+            $imageMove = $request->image->move('images', $imageGroup);
+            $teacher->image = $imageGroup;
+        }
+        // dd($teacher->image);
+        if ($teacher->image == 'student-l.png' or $teacher->image == 'student-p.png') {
+            if ($request->input('gender') == 'L') {
+                $teacher->image = 'student-l.png';
+            }
+            if ($request->input('gender') == 'P') {
+                $teacher->image = 'teacher-p.png';
+            }
+        }
+        $teacher->save();
+        // Update User
+        $newUserTeacher = User::find($teacher->user_id);
+        $newUserTeacher->name = $request->name;
+        $newUserTeacher->email = $request->email;
+        $newUserTeacher->save();
+        return redirect()->route('manage-teacher')->with('success', 'Data berhasil di update');
     }
 
     /**
@@ -80,6 +212,10 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $student  = Teacher::find($id);
+        $findUser = User::where('id', $student->user_id)->first();
+        $findUser->delete();
+        $student->delete();
+        return redirect()->route('manage-teacher')->with('success', 'Data berhasil di hapus');
     }
 }

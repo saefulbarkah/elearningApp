@@ -14,6 +14,8 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        // for admin 'a'
+        // a1
         $admin = User::create([
             'name' => 'admin',
             'email' => 'admin@gmail.com',
@@ -21,37 +23,29 @@ class UserSeeder extends Seeder
         ]);
         $admin->assignRole('admin');
 
+        // for teacher 't'
+        // t1
         $teacher = User::create([
-            'name'      => 'teacher',
-            'email'     => 'teacher@gmail.com',
-            'password'  => Hash::make('teacher'),
-        ]);
-        $teacher = User::create([
-            'name'      => 'guru1',
-            'email'     => 'guru1@gmail.com',
-            'password'  => Hash::make('guru1'),
-        ]);
-        $teacher = User::create([
-            'name'      => 'guru2',
-            'email'     => 'guru2@gmail.com',
-            'password'  => Hash::make('guru2'),
+            'name'      => 'Raynaldi Syahputra Nonci',
+            'email'     => 'raynaldi@gmail.com',
+            'password'  => Hash::make('12345678'),
         ]);
         $teacher->assignRole('teacher');
 
+        // for student 's'
+        // s1
         $student = User::create([
-            'name'      => 'student',
-            'email'     => 'student@gmail.com',
-            'password'  => Hash::make('student'),
+            'name'      => 'Saeful Barkah',
+            'email'     => 'saefulbarkah650@gmail.com',
+            'password'  => Hash::make('12345678'),
         ]);
+        $student->assignRole('student');
+
+        // s2
         $student = User::create([
-            'name'      => 'siswa1',
-            'email'     => 'siswa1@gmail.com',
-            'password'  => Hash::make('siswa1'),
-        ]);
-        $student = User::create([
-            'name'      => 'siswa2',
-            'email'     => 'siswa2@gmail.com',
-            'password'  => Hash::make('siswa'),
+            'name'      => 'Deden Alif',
+            'email'     => 'denlif@gmail.com',
+            'password'  => Hash::make('12345678'),
         ]);
         $student->assignRole('student');
     }

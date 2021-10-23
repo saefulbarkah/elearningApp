@@ -3,7 +3,7 @@
 {{-- toastr --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 @endpush
-@section('title-page', 'Tambah data siswa')
+@section('title-page', 'Tambah pengajar')
 @section('content')
 <div class="row">
     <div class="col">
@@ -15,7 +15,7 @@
                 </header>
             </div>
             <div class="card-body">
-                <a href="{{ route('manage-student') }}" class="btn btn-warning">
+                <a href="{{ route('manage-teacher') }}" class="btn btn-warning">
                     <i class="fas fa-arrow-left"></i>
                     Kembali
                 </a>
@@ -29,24 +29,28 @@
             <div class="card-head">
                 <header>
                     <i class="fas fa-edit"></i>
-                    Form input data siswa
+                    Form edit data guru
                 </header>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('student-store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ url('admin/manage-teacher/'.$teacher->id.'/update') }}"
+                    enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="user_id" id="" value="{{ $teacher->user_id }}">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">NIS</label>
-                        <input type="number" class="form-control @error('nis') is-invalid @enderror" name="nis"
-                            id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off">
-                        @error('nis')
+                        <label for="exampleInputEmail1">NIP</label>
+                        <input type="number" class="form-control @error('nip') is-invalid @enderror" name="nip"
+                            id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off"
+                            value="{{ $teacher->nip }}">
+                        @error('nip')
                         <div class="text-danger">* {{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nama Lengkap</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-                            id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off">
+                            id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off"
+                            value="{{ $teacher->user_name }}">
                         @error('name')
                         <div class="text-danger">* {{ $message }}</div>
                         @enderror
@@ -54,24 +58,9 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Alamat Email</label>
                         <input type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-                            id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off">
+                            id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off"
+                            value="{{ $teacher->user_email }}">
                         @error('email')
-                        <div class="text-danger">* {{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Kelas dan Jurusan</label>
-                        <select name="grade_major_id" class="form-control custom-select @error('gender')
-                        is-invalid
-                    @enderror" id="exampleFormControlSelect1">
-                            <option selected="" disabled="">---Pilih kelas ---</option>
-                            @foreach ($gradeMajors as $data)
-                            <option value="{{ $data->gm_id }}">{{ $data->grade_name }} - {{
-                                $data->major_name
-                                }}</option>
-                            @endforeach
-                        </select>
-                        @error('grade_major_id')
                         <div class="text-danger">* {{ $message }}</div>
                         @enderror
                     </div>
@@ -81,9 +70,16 @@
                             is-invalid
                         @enderror" id="exampleFormControlSelect1">
                             <option selected="" disabled="">---Pilih Jenis Kelamin---</option>
-                            <option value="L" class="laki">
-                                Laki-laki</option>
-                            <option value="P">Perempuan</option>
+                            <option value="L" @if ($teacher->gender == "L")
+                                selected
+                                @endif>
+                                Laki-laki
+                            </option>
+                            <option value="P" @if ($teacher->gender == "P")
+                                selected
+                                @endif>
+                                Perempuan
+                            </option>
                         </select>
                         @error('gender')
                         <div class="text-danger">* {{ $message }}</div>
@@ -95,12 +91,27 @@
                         is-invalid
                         @enderror " name="religion" id="exampleFormControlSelect1">
                             <option selected="" disabled="">---Pilih Agama---</option>
-                            <option value="Islam">Islam</option>
-                            <option value="Kristen">Kristen</option>
-                            <option value="Katolik">Katolik</option>
-                            <option value="Hindu">Hindu</option>
-                            <option value="Buddha">Buddha</option>
-                            <option value="Konghucu">Konghucu</option>
+                            <option value="Islam" @if ($teacher->religion == "Islam")
+                                selected
+                                @endif>Islam
+                            </option>
+                            <option value="Kristen" @if ($teacher->religion == "Kristen")
+                                selected
+                                @endif>
+                                Kristen
+                            </option>
+                            <option value="Katolik" @if ($teacher->religion == "Katolik")
+                                selected
+                                @endif>Katolik</option>
+                            <option value="Hindu" @if ($teacher->religion == "Hindu")
+                                selected
+                                @endif>Hindu</option>
+                            <option value="Buddha" @if ($teacher->religion == "Buddha")
+                                selected
+                                @endif>Buddha</option>
+                            <option value="Konghucu" @if ($teacher->religion == "Konghucu")
+                                selected
+                                @endif>Konghucu</option>
                         </select>
                         @error('religion')
                         <div class="text-danger">* {{ $message }}</div>
@@ -110,7 +121,8 @@
                         <label for="exampleFormControlTextarea1">Alamat</label>
                         <textarea class="form-control @error('address')
                             is-invalid
-                        @enderror" name="address" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        @enderror" name="address" id="exampleFormControlTextarea1"
+                            rows="3">{{ $teacher->address }}</textarea>
                         @error('address')
                         <div class="text-danger">* {{ $message }}</div>
                         @enderror
