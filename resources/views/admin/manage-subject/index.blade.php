@@ -54,7 +54,7 @@
                                             class="btn btn-info">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="#delete?id={{ $sbj->id }}" class="btn btn-danger delete"
+                                        <a href="javascript:void(0);" class="btn btn-danger delete"
                                             data-id="{{ $sbj->id }}" data-name="{{ $sbj->name }}">
                                             <i class="fa fa-trash"></i>
                                         </a>
@@ -74,25 +74,25 @@
         <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
         <script src="{{ asset('assets/data/table-data.js') }}"></script>
         <script>
-            $('.delete').click(function() {
-                var dataId = $(this).attr('data-id');
-                var dataName = $(this).attr('data-name');
-                swal({
-                        title: "Yakin ?",
-                        text: "Kamu akan menghapus data dengan id " + dataId + " Nama data " + dataName + "",
-                        icon: "warning",
-                        buttons: true,
-                        dangerMode: true,
-                        timer: 3000,
-                    })
-                    .then((willDelete) => {
-                        if (willDelete) {
-                            window.location.href = "manage-subject/" + dataId + "/delete"
-                        } else {
-                            swal("Gagal menghapus data");
-                        }
-                    });
-            });
+    $("#example1").on("click", ".delete", function(){
+        var dataId = $(this).attr('data-id');
+        var dataName = $(this).attr('data-name');
+        swal({
+            title: "Yakin ?",
+            text: "Kamu akan menghapus data dengan id "+dataId+" Nama data "+dataName+"",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            timer: 3000,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                window.location.href = "manage-subject/"+dataId+"/delete"
+            } else {
+                swal("Gagal menghapus data");
+            }
+        });
+    });
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
         @if (Session::has('success'))

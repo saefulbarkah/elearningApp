@@ -68,7 +68,7 @@
                                 <a href="{{ url('admin/manage-teacher/'.$data->id.'/edit') }}" class="btn btn-info">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                                <a href="#delete?id={{ $data->id }}" class="btn btn-danger delete"
+                                <a href="javascript:void(0);" class="btn btn-danger delete"
                                     data-id="{{ $data->id }}" data-name="{{ $data->name }}">
                                     <i class="fa fa-trash"></i>
                                 </a>
@@ -88,7 +88,7 @@
 <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
 <script src="{{ asset('assets/data/table-data.js') }}"></script>
 <script>
-    $('.delete').click( function(){
+    $("#example1").on("click", ".delete", function(){
         var dataId = $(this).attr('data-id');
         var dataName = $(this).attr('data-name');
         swal({
