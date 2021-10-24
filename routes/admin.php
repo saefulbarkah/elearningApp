@@ -27,7 +27,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
 
     // manage subject
     Route::get('/manage-subject', [SubjectController::class, 'index'])->name('manage-subject');
-    Route::get('/subject-create', [SubjectController::class, 'create'])->name('subject-create');
+    Route::get('/manage-subject/create', [SubjectController::class, 'create'])->name('subject-create');
+    Route::post('/manage-subject/store',[SubjectController::class, 'store'])->name('subject-store');
+    Route::get('/manage-subject/{id}/edit',[SubjectController::class, 'edit'])->name('subject-edit');
+    Route::post('/manage-subject/{id}/update',[SubjectController::class, 'update'])->name('subject-update');
+    Route::get('/manage-subject/{id}/delete',[SubjectController::class, 'destroy'])->name('subject-delete');
 
     // manage schedule
     Route::get('/manage-schedule', [ScheduleController::class, 'index'])->name('manage-schedule');

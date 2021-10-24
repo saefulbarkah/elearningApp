@@ -33,13 +33,13 @@
                     </header>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('subject-store') }}" method="POST">
+                    <form action="{{ url('admin/manage-subject/' . $subject->id . '/update') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Mata Pelajaran</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
                                 id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off"
-                                value="{{ old('name') }}">
+                                value="{{ old('name', $subject->name) }}">
                             @error('name')
                                 <div class="text-danger">* {{ $message }}</div>
                             @enderror
@@ -53,7 +53,7 @@
     @push('js')
         </script>
         <script src="{{ asset('assets/bundles/jquery-validation/js/jquery.validate.min.js') }}"></script>
-        <script src="{{ asset('assets/bundles/jquery-validation/js/additional-methods.min.js') }}"></script>
+        <script src="{{ asset('assets/bundles/jquery-validation/js/additional-methods.min.js') }}"></script>\
         <script src="{{ asset('assets/data/form-validation.js') }}"></script>
 
         {{-- toastr --}}

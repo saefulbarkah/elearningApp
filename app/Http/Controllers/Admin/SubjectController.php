@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use App\Subject;
 
 class SubjectController extends Controller
@@ -16,7 +16,9 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        return view('admin.manage-subject.index');
+        $subject = Subject::orderBy('name')->get();
+
+        return view('admin.manage-subject.index',compact('subject'));
     }
 
     /**
@@ -27,10 +29,8 @@ class SubjectController extends Controller
     public function create()
     {
         $subject = Subject::orderBy('name', 'asc')->get();
-        $grade = DB::table('grades')->get();
-        // dd($grade);
 
-        return view('admin.manage-subject.create', compact('subject', 'grade'));
+        return view('admin.manage-subject.create', compact('subject'));
     }
 
     /**
@@ -41,7 +41,30 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate
+
+        $message = [
+
+            // required
+            'name.required' => "Kolom nama tidak boleh kosong",
+
+            // unique
+            'name.unique'   => "Nama sudah di gunakan",
+
+        ];
+        $validate = Validator::make($request->all(), [
+            'name'           => 'required|unique:subjects,name',
+        ], $message);
+        if ($validate->fails()) {
+            return redirect()->back()->with('error', 'Data gagal di tambahkan')->withErrors($validate)->withInput();
+        }
+        // dd($request->all());
+        // new User
+        $newSubject = new Subject();
+        $newSubject->name = $request->name;
+        $newSubject->save();
+
+        return redirect()->route('manage-subject')->with('success', 'Data berhasil di tambahkan');
     }
 
     /**
@@ -63,7 +86,9 @@ class SubjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $subject = Subject::findOrFail($id);
+
+        return view('admin.manage-subject.edit',compact('subject'));
     }
 
     /**
@@ -75,7 +100,30 @@ class SubjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         // validate
+
+         $message = [
+
+            // required
+            'name.required' => "Kolom nama tidak boleh kosong",
+
+            // unique
+            'name.unique'   => "Nama sudah di gunakan",
+
+        ];
+        $validate = Validator::make($request->all(), [
+            'name'           => 'required|unique:subjects,name,' .$id
+        ], $message);
+        if ($validate->fails()) {
+            return redirect()->back()->with('error', 'Data gagal di tambahkan')->withErrors($validate)->withInput();
+        }
+        // dd($request->all());
+        // new User
+        $newSubject = Subject::findOrFail($id);
+        $newSubject->name = $request->name;
+        $newSubject->save();
+
+        return redirect()->route('manage-subject')->with('success', 'Data berhasil di update');
     }
 
     /**
@@ -86,6 +134,8 @@ class SubjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $subject = Subject::findOrFail($id)->delete();
+
+        return redirect()->route('manage-subject')->with('success', 'Data berhasil di hapus');
     }
 }
