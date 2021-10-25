@@ -117,6 +117,11 @@
                                     <a href="">Besok libur</a>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    <a href="">Lusa Masuk</a>
+                                </td>
+                            </tr>
                         </table>
                     </div>
                 </div>
