@@ -20,7 +20,8 @@
                     <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
                 </div>
             </div>
-            <div class="card-body ">
+            <div class="card-body table-responsive ">
+{{--                <div class="table-responsive">--}}
                 <table id="example1" class="display" style="width:100%;">
                     <thead>
                         <tr>
@@ -53,6 +54,7 @@
                         </tr>
                     </tbody>
                 </table>
+{{--                </div>--}}
             </div>
         </div>
     </div>

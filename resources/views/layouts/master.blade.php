@@ -24,7 +24,7 @@
     <link href="{{ asset('assets/bundles/flatpicker/css/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- Material Design Lite CSS -->
     <link rel="stylesheet" href="{{ asset('assets/bundles/material/material.min.css') }}">
-    <link rel="stylesheet" href="css/material_style.css">
+    <link rel="stylesheet" href="{{asset('css/material_style.css')}}">
     <!-- Theme Styles -->
     <link href="{{ asset('assets/css/theme_style.css') }}" rel="stylesheet" id="rt_style_components" type="text/css" />
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css" />

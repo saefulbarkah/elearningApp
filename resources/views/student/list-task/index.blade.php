@@ -7,7 +7,7 @@
 @section('title-page', 'Daftar tugas')
 @section('content')
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-sm-12">
         <div class="card">
             <div class="card-head">
                 <header>
@@ -20,7 +20,7 @@
                     <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
                 </div>
             </div>
-            <div class="card-body ">
+            <div class="card-body table-responsive">
                 <table id="example1" class="display" style="width:100%;">
                     <thead>
                         <tr>
@@ -28,7 +28,7 @@
                             <th>Tanggal</th>
                             <th>Tipe Tugas</th>
                             <th>Waktu</th>
-                            <th>Aksi</th>
+                            <th class="ml-4">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,8 +54,8 @@
                             <td>
                                 1 Jam
                             </td>
-                            <td>
-                                <a href="" class="btn-sm btn-success"> <i class="fas fa-edit"></i> Kerjakan</a>
+                            <td class="mr-auto">
+                                <a href="" class="btn-sm btn-success"> Kerjakan</a>
                             </td>
                         </tr>
                     </tbody>
