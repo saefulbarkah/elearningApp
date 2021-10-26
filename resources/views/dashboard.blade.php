@@ -99,38 +99,14 @@
     </div>
     @endrole
 
-<<<<<<< HEAD
+
     @role('student|teacher')
     <div class="row">
         <div class="col-md-12">
             <!-- BEGIN PROFILE SIDEBAR -->
-=======
-                    <header><i class="fas fa-bullhorn"></i> Pengumuman</header>
-                </div>
-                <div class="card-body no-padding height-9">
-                    <div class="table-reponsive">
-                        <table class="table table-strip">
-                            <tr>
-                                <td>
-                                    <a href="">Besok libur</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="">Lusa Masuk</a>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END BEGIN PROFILE SIDEBAR -->
-        <!-- BEGIN PROFILE CONTENT -->
-        <div class="profile-content">
->>>>>>> 15fe0b3ac7c72779e26df008672ca1cce76932f3
+
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <div class="card">
                         <div class="card-head">
                             <header><i class="fas fa-list"></i> Daftar Tugas</header>
@@ -153,8 +129,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="profile-sidebar">
-                    <div class="col-md-12">
+                <div class="profile-sidebar col-lg-12">
+                    <div class="col-md-12 col-lg-12">
                         <div class="card">
                             <div class="card-head">
 
@@ -180,7 +156,7 @@
             <!-- BEGIN PROFILE CONTENT -->
             <div class="profile-content">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <div class="card">
                             <div class="card-head">
                                 <header><i class="fas fa-list"></i> Daftar materi</header>
