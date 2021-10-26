@@ -25,8 +25,15 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-default">
                     <li>
-                        <a href="">
-                            <i class="icon-user"></i> Profil </a>
+                        <a href="
+                                @hasrole('student')
+                                 {{route('profile-student')}}
+                                @endhasrole
+                                @hasrole('teacher')
+                                 {{route('profile-teacher')}}
+                                 @endhasrole
+">
+                            <i class="icon-user"></i> Profile </a>
                     </li>
                     <li>
                         <a href="login.html" onclick="event.preventDefault();

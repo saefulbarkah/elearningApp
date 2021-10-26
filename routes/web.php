@@ -40,4 +40,5 @@ Route::group(['prefix' => 'student', 'middleware' => ['role:student']], function
     Route::get('material', [MaterialController::class, 'index'])->name('list-material');
     Route::get('task', [TaskController::class, 'index'])->name('list-task');
     Route::get('filter-teacher', [TeacherController::class, 'index'])->name('filter-teacher');
+    Route::get('profile', [\App\Http\Controllers\Student\ProfileController::class, 'index'])->name('profile-student');
 });

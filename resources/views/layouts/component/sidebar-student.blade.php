@@ -32,17 +32,17 @@
             </li>
             <li class="nav-item {{ Request::is('list-material') ? 'active' : '' }}">
                 <a href="{{ route('list-material') }}" class="nav-link nav-toggle"> <i class="fas fa-book"></i>
-                    <span class="title">Daftar materi</span>
+                    <span class="title">Daftar Materi</span>
                 </a>
             </li>
             <li class="nav-item {{ Request::is('list-task') ? 'active' : '' }}">
                 <a href="{{ route('list-task') }}" class="nav-link nav-toggle"> <i class="fas fa-book"></i>
-                    <span class="title">Daftar tugas</span>
+                    <span class="title">Daftar Tugas</span>
                 </a>
             </li>
             <li class="nav-item {{ Request::is('filter-teacher') ? 'active' : '' }}">
                 <a href="{{ route('filter-teacher') }}" class="nav-link nav-toggle"> <i class="fas fa-search"></i>
-                    <span class="title">Filter pengajar</span>
+                    <span class="title">Filter Pengajar</span>
                 </a>
             </li>
         </ul>
