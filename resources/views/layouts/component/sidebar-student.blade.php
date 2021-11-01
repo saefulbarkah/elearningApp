@@ -40,11 +40,6 @@
                     <span class="title">Daftar Tugas</span>
                 </a>
             </li>
-            <li class="nav-item {{ Request::is('filter-teacher') ? 'active' : '' }}">
-                <a href="{{ route('filter-teacher') }}" class="nav-link nav-toggle"> <i class="fas fa-search"></i>
-                    <span class="title">Filter Pengajar</span>
-                </a>
-            </li>
         </ul>
     </div>
 </div>

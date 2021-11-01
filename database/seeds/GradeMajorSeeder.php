@@ -23,6 +23,11 @@ class GradeMajorSeeder extends Seeder
         ]);
 
         GradeMajor::create([
+            'grade_id' => '1',
+            'major_id' => '3'
+        ]);
+
+        GradeMajor::create([
             'grade_id' => '2',
             'major_id' => '1'
         ]);
@@ -33,6 +38,11 @@ class GradeMajorSeeder extends Seeder
         ]);
 
         GradeMajor::create([
+            'grade_id' => '2',
+            'major_id' => '3'
+        ]);
+
+        GradeMajor::create([
             'grade_id' => '3',
             'major_id' => '1'
         ]);
@@ -40,6 +50,11 @@ class GradeMajorSeeder extends Seeder
         GradeMajor::create([
             'grade_id' => '3',
             'major_id' => '2'
+        ]);
+
+        GradeMajor::create([
+            'grade_id' => '3',
+            'major_id' => '3'
         ]);
     }
 }

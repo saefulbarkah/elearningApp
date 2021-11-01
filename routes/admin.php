@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\TeacherSubjectController;
+use App\ScheduleSubject;
 
 Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () {
     // manage teacher
@@ -35,6 +36,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
 
     // manage schedule
     Route::get('/manage-schedule', [ScheduleController::class, 'index'])->name('manage-schedule');
+    Route::get('/manage-schedule/create',[ScheduleController::class, 'create'])->name('schedule-create');
+    Route::post('/manage-schedule/store',[ScheduleController::class, 'store'])->name('schedule-store');
+    Route::get('/manage-schedule/{id}/edit',[ScheduleController::class, 'edit'])->name('shedule-edit');
+    Route::post('/manage-schedule/{id}/update',[ScheduleController::class, 'update'])->name('schedule-update');
 
     // manage announcement
     Route::get('manage-announcement', [AnnouncementController::class, 'index'])->name('manage-announcement');

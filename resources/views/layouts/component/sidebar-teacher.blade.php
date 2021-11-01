@@ -35,11 +35,6 @@
                     <span class="title">Kelola Tugas</span>
                 </a>
             </li>
-            <li class="nav-item {{ Request::is('filter-student') ? 'active' : '' }}">
-                <a href="{{ route('filter-student') }}" class="nav-link nav-toggle"> <i class="fas fa-search"></i>
-                    <span class="title">Filter Siswa</span>
-                </a>
-            </li>
         </ul>
     </div>
 </div>

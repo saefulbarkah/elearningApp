@@ -13,11 +13,15 @@ class MajorSeeder extends Seeder
     public function run()
     {
         Major::create([
-            'name' => 'Rekayasa Perangkat Lunak'
+            'name' => 'MM1'
         ]);
 
         Major::create([
-            'name' => 'Multimedia'
+            'name' => 'MM2'
+        ]);
+
+        Major::create([
+            'name' => 'RPL'
         ]);
 
     }

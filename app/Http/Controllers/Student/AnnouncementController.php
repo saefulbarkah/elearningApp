@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Student;
 
+use App\Announcement;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
-        return view('student.announcement.index');
+
     }
 
     /**
@@ -46,7 +47,11 @@ class AnnouncementController extends Controller
      */
     public function show($id)
     {
-        //
+        $announc = Announcement::findOrFail($id);
+        $announcement = Announcement::where('id','!=',$id)->get();
+        // dd($announcement);
+
+        return view('student.announcement.detail',compact('announc','announcement'));
     }
 
     /**
