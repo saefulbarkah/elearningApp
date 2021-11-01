@@ -14,7 +14,7 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
-        return view('admin.announcement.index');
+        return view('student.announcement.index');
     }
 
     /**

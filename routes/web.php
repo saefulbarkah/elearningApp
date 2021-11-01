@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\student\AnnouncementController;
 use App\Http\Controllers\student\DashboardController;
 use App\Http\Controllers\student\MaterialController;
 use App\Http\Controllers\student\TaskController;
 use App\Http\Controllers\student\TeacherController;
 use App\Http\Controllers\Student\AbsentController;
+use App\Http\Controllers\Student\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\GoogleController;
@@ -40,5 +42,9 @@ Route::group(['prefix' => 'student', 'middleware' => ['role:student']], function
     Route::get('material', [MaterialController::class, 'index'])->name('list-material');
     Route::get('task', [TaskController::class, 'index'])->name('list-task');
     Route::get('filter-teacher', [TeacherController::class, 'index'])->name('filter-teacher');
-    Route::get('profile', [\App\Http\Controllers\Student\ProfileController::class, 'index'])->name('profile-student');
+    Route::get('profile', [ProfileController::class, 'index'])->name('profile-student');
+
+
+    // announcement
+    Route::get('announcement/{id}/detail',[AnnouncementController::class, 'index'])->name('announcement-detail');
 });

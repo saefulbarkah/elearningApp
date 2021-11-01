@@ -50,7 +50,7 @@
                         <label for="exampleInputEmail1">Nama Lengkap</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
                             id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off"
-                            value="{{ $student->user }}">
+                            value="{{ $student->user_name }}">
                         @error('name')
                         <div class="text-danger">* {{ $message }}</div>
                         @enderror
@@ -151,7 +151,7 @@
                             <label for="exampleInputEmail1" class="mb-4">Upload gambar</label>
                         </div>
                         <img class="img-preview img-fluid mb-3" src="{{ asset('images/'.$student->image) }}"
-                            width="500px">
+                            width="100px">
                         <div class="custom-file mb-3">
                             <input type="file" class="custom-file-input" id="image" name="image"
                                 onchange="previewImage()" aria-describedby="inputGroupFileAddon01">

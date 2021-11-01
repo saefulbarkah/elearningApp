@@ -9,7 +9,6 @@ $(document).ready(function () {
     'use strict';
     $('#example1').DataTable({
         "paging": true,
-        "order": [[1, "asc"]],
         responsive: true
     });
 

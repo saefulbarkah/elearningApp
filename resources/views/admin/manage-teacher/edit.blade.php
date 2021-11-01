@@ -128,10 +128,13 @@
                         @enderror
                     </div>
                     <div class="form-group mb-4">
-                        <label for="exampleInputEmail1" class="mb-4">Upload gambar</label>
-                        <img class="img-preview img-fluid mb-3 col-sm-5">
+                        <div class="row">
+                            <label for="exampleInputEmail1" class="mb-4">Upload gambar</label>
+                        </div>
+                        <img class="img-preview img-fluid mb-3" src="{{ asset('images/'.$teacher->image) }}"
+                            width="100px">
                         <div class="custom-file mb-3">
-                            <input type="file" class="custom-file-input myImage" id="image" name="image"
+                            <input type="file" class="custom-file-input" id="image" name="image"
                                 onchange="previewImage()" aria-describedby="inputGroupFileAddon01">
                             <label class="custom-file-label" for="inputGroupFile01">Pilih File</label>
                         </div>

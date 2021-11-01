@@ -7,7 +7,6 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
-
 class GoogleController extends Controller
 {
     public function authGoogle()
@@ -23,7 +22,7 @@ class GoogleController extends Controller
             Auth::login($find_user);
             return redirect('dashboard');
         } else {
-            return redirect('login');
+            return redirect('login')->with('error','Akun anda tidak terdaftar');
             // $newUser = User::create([
             //     'name'      => $user->name,
             //     'email'     => $user->email,

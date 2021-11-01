@@ -51,10 +51,10 @@
                                     <td>{{ $sbj->name }}</td>
                                     <td>
                                         <a href="{{ url('admin/manage-subject/' . $sbj->id . '/edit') }}"
-                                            class="btn btn-info">
+                                            class="btn btn-info btn-xs">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="javascript:void(0);" class="btn btn-danger delete"
+                                        <a href="javascript:void(0);" class="btn btn-danger btn-xs delete"
                                             data-id="{{ $sbj->id }}" data-name="{{ $sbj->name }}">
                                             <i class="fa fa-trash"></i>
                                         </a>

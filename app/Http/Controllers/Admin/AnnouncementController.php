@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Announcement;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AnnouncementController extends Controller
 {
@@ -14,7 +17,8 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
-        return view('admin.manage-announcement.index');
+        $data = Announcement::all();
+        return view('admin.manage-announcement.index', compact('data'));
     }
 
     /**
@@ -35,7 +39,38 @@ class AnnouncementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $message = [
+
+            // required
+            'title.required' => "Kolom judul tidak boleh kosong",
+            'start_time.required' => "Kolom tanggal tidak boleh kosong",
+            'end_time.required' => "Kolom tanggal tidak boleh kosong",
+            'description.required' => "Kolom deskripsi tidak boleh kosong",
+
+            'title.max' => "Jumlah karakter terlalu banyak",
+
+
+            // date
+            'start_time.date' => "Harus menggunakan format tanggal",
+            'end_time.date' => "Harus menggunakan format tanggal",
+        ];
+        $validate = Validator::make($request->all(), [
+            'title'           => 'required|max:255',
+            'start_time'    => 'required|date',
+            'end_time'    => 'required|date',
+            'description'    => 'required',
+        ], $message);
+        if ($validate->fails()) {
+            return redirect()->back()->with('error', 'Data gagal di tambahkan')->withErrors($validate)->withInput();
+        }
+
+        $post = new Announcement();
+        $post->title = $request->title;
+        $post->start_time = Carbon::parse($request->start_time)->format('Y-m-d');
+        $post->end_time = Carbon::parse($request->end_time)->format('Y-m-d');
+        $post->description = $request->description;
+        $post->save();
+        return redirect()->route('manage-announcement')->with('success','Data berhasil di tambahkan');
     }
 
     /**
@@ -57,7 +92,8 @@ class AnnouncementController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Announcement::find($id);
+        return view('admin.manage-announcement.edit', compact('data'));
     }
 
     /**
@@ -69,7 +105,39 @@ class AnnouncementController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $message = [
+
+            // required
+            'title.required' => "Kolom judul tidak boleh kosong",
+            'start_time.required' => "Kolom tanggal tidak boleh kosong",
+            'end_time.required' => "Kolom tanggal tidak boleh kosong",
+            'description.required' => "Kolom deskripsi tidak boleh kosong",
+
+            // max
+            'title.max' => "Jumlah karakter terlalu banyak",
+
+
+            // date
+            'start_time.date' => "Harus menggunakan format tanggal",
+            'end_time.date' => "Harus menggunakan format tanggal",
+        ];
+        $validate = Validator::make($request->all(), [
+            'title'           => 'required|max:255',
+            'start_time'    => 'required|date',
+            'end_time'    => 'required|date',
+            'description'    => 'required',
+        ], $message);
+        if ($validate->fails()) {
+            return redirect()->back()->with('error', 'Data gagal di tambahkan')->withErrors($validate)->withInput();
+        }
+
+        $post = Announcement::find($id);
+        $post->title = $request->title;
+        $post->start_time = Carbon::parse($request->start_time)->format('Y-m-d');
+        $post->end_time = Carbon::parse($request->end_time)->format('Y-m-d');
+        $post->description = $request->description;
+        $post->save();
+        return redirect()->route('manage-announcement')->with('success','Data berhasil di update');
     }
 
     /**
@@ -80,6 +148,8 @@ class AnnouncementController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Announcement::find($id);
+        $data->delete();
+        return redirect()->route('manage-announcement')->with('success','Data berhasil di hapus');
     }
 }
