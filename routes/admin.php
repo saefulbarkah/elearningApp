@@ -35,8 +35,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
 
     // manage schedule
     Route::get('/manage-schedule', [ScheduleController::class, 'index'])->name('manage-schedule');
-    Route::get('/manage-announcement', [AnnouncementController::class, 'index'])->name('manage-announcement');
 
     // manage announcement
-    Route::get('/annnouncement-create', [AnnouncementController::class, 'create'])->name('announcement-create');
+    Route::get('manage-announcement', [AnnouncementController::class, 'index'])->name('manage-announcement');
+    Route::get('annnouncement-create', [AnnouncementController::class, 'create'])->name('announcement-create');
+    Route::post('manage-announcement/store', [AnnouncementController::class, 'store'])->name('announcement-store');
+    Route::get('manage-announcement/{id}/edit', [AnnouncementController::class, 'edit'])->name('announcement-edit');
+    Route::post('manage-announcement/{id}/update', [AnnouncementController::class, 'update'])->name('announcement-update');
+    Route::get('manage-announcement/{id}/delete', [AnnouncementController::class, 'destroy'])->name('announcement-delete');
 });

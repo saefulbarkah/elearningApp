@@ -41,7 +41,7 @@
 <!-- END HEAD -->
 
 <body
-    class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white white-sidebar-color logo-indigo">
+class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white white-sidebar-color logo-indigo">
     <div class="page-wrapper">
         <!-- start header -->
         <div class="page-header navbar navbar-fixed-top">
@@ -147,20 +147,27 @@
                 <div class="page-content">
                     <div class="page-bar">
                         <div class="page-title-breadcrumb">
-                            <div class=" pull-left">
+                            <div class="pull-left">
                                 <div class="page-title">@yield('title-page')</div>
                             </div>
                         </div>
                     </div>
-                    <!-- add content here -->
                     @yield('content')
+                    <!-- add content here -->
                 </div>
             </div>
             <!-- end page content -->
         </div>
         <!-- end page container -->
         <!-- start footer -->
-        @include('layouts.component.footer')
+        <div class="page-footer fixed">
+			<div class="page-footer-inner"> 2021 &copy; RedStar Hospital Template By
+				<a href="https://radixtouch.com/cdn-cgi/l/email-protection#5624333225223724223e333b3316313b373f3a7835393b" target="_top" class="makerCss">Redstartheme</a>
+			</div>
+			<div class="scroll-to-top">
+				<i class="icon-arrow-up"></i>
+			</div>
+		</div>
         <!-- end footer -->
     </div>
     <script src="{{ asset('assets/bundles/jquery/jquery.min.js') }}"></script>
@@ -177,6 +184,8 @@
     <script src="{{ asset('assets/theme-color.js') }}"></script>
     <!-- Material -->
     <script src="{{ asset('assets/bundles/material/material.min.js') }}"></script>
+    <script src="{{ asset('assets/bundles/material/material.min.js') }}"></script>
+	<script src="{{ asset('assets/bundles/flatpicker/js/flatpicker.min.js') }}"></script>
     <!-- end js include path -->
     @stack('js')
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

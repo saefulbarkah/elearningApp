@@ -68,10 +68,10 @@
                                     style="width: 50px">
                             </td>
                             <td>
-                                <a href="{{ url('admin/manage-student/'.$data->id.'/edit') }}" class="btn btn-info">
+                                <a href="{{ url('admin/manage-student/'.$data->id.'/edit') }}" class="btn btn-info btn-xs">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                                <a href="javascript:void(0);" class="btn btn-danger delete"
+                                <a href="javascript:void(0);" class="btn btn-danger btn-xs delete"
                                     data-id="{{ $data->id }}" data-name="{{ $data->name }}">
                                     <i class="fa fa-trash"></i>
                                 </a>

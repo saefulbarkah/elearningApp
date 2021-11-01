@@ -30,12 +30,12 @@
                     </header>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('announcement-store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('admin/manage-announcement/'.$data->id.'/update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Judul</label>
                             <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" autocomplete="off">
+                                aria-describedby="emailHelp" autocomplete="off" value="{{ $data->title }}">
                                 @error('title')
                                 <div class="text-danger">* {{ $message }}</div>
                                 @enderror
@@ -49,7 +49,7 @@
                                     <label>Tanggal dimulai : </label>
                                     <div
                                         class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                                        <input class="mdl-textfield__input" type="text"  autocomplete="off" name="start_time" id="date" class="@error('start_time') is-invalid @enderror" >
+                                        <input class="mdl-textfield__input" type="text" value="{{ $data->start_time }}" autocomplete="off" name="start_time" id="date" class="@error('start_time') is-invalid @enderror" >
                                         <label class="mdl-textfield__label">Pilih tanggal</label>
                                     </div>
                                     @error('start_time')
@@ -60,7 +60,7 @@
                                     <label>Tanggal selesai : </label>
                                     <div
                                         class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                                        <input class="mdl-textfield__input" type="text" autocomplete="off" name="end_time" id="date" class="@error('end_time') is-invalid @enderror" >
+                                        <input class="mdl-textfield__input" type="text" value="{{ $data->end_time }}" autocomplete="off" name="end_time" id="date" class="@error('end_time') is-invalid @enderror" >
                                         <label class="mdl-textfield__label">Pilih tanggal</label>
                                     </div>
                                     @error('end_time')
@@ -70,7 +70,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <textarea id="summernote" name="description"></textarea>
+                            <textarea id="summernote" name="description">{{ $data->description }}</textarea>
                             @error('description')
                             <div class="text-danger">* {{ $message }}</div>
                             @enderror

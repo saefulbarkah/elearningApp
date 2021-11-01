@@ -15,7 +15,7 @@ class TeacherSeeder extends Seeder
         Teacher::create([
             'user_id' => '2',
             'nip' => '111123456',
-            'gender' => 'Laki-laki',
+            'gender' => 'L',
             'religion' => 'Islam',
             'address' => 'Kp.Citereup',
             'image'  => 'student-l.png',
