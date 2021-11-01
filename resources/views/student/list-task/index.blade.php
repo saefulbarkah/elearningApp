@@ -4,7 +4,7 @@
 <link href="{{ asset('assets/bundles/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
     type="text/css">
 @endpush
-@section('title-page', 'Daftar tugas')
+@section('title-page', 'Daftar Tugas')
 @section('content')
 <div class="row">
     <div class="col-sm-12">
@@ -12,7 +12,7 @@
             <div class="card-head">
                 <header>
                     <i class="fas fa-table"></i>
-                    Data tugas
+                    Data Tugas
                 </header>
                 <div class="tools">
                     <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
@@ -49,7 +49,7 @@
                             <td>Laravel 8</td>
                             <td>20 Agustus 2021 s/d 25 Agustus 2021</td>
                             <td>
-                                <span class="badge badge-danger">upload</span>
+                                <span class="badge badge-danger">Upload</span>
                             </td>
                             <td>
                                 1 Jam

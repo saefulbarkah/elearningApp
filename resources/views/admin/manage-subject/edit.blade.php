@@ -3,7 +3,7 @@
     {{-- toastr --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 @endpush
-@section('title-page', 'Tambah mata pelajaran')
+@section('title-page', 'EditMata Pelajaran')
 @section('content')
     <div class="row">
         <div class="col">

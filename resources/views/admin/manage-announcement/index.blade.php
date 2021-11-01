@@ -4,7 +4,7 @@
 <link href="{{ asset('assets/bundles/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
     type="text/css">
 @endpush
-@section('title-page', 'Daftar pengumuman')
+@section('title-page', 'Daftar Pengumuman')
 @section('content')
 <div class="row">
     <div class="col">
@@ -16,7 +16,7 @@
                 </header>
             </div>
             <div class="card-body">
-                <a href="{{ route('announcement-create') }}" class="btn btn-primary"> Tambah data pengumuman</a>
+                <a href="{{ route('announcement-create') }}" class="btn btn-primary"> Tambah Data Pengumuman</a>
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
             <div class="card-head">
                 <header>
                     <i class="fas fa-table"></i>
-                    Data pengumuman
+                    Data Pengumuman
                 </header>
                 <div class="tools">
                     <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
@@ -47,7 +47,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Minggu depan ujian</td>
+                            <td>Minggu Depan Ujian</td>
                             <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis ut tempora doloribus
                                 asperiores ullam. Adipisci iste repellat maiores deserunt at non saepe, cum quidem
                                 officiis molestiae ducimus optio id eos.</td>

@@ -4,15 +4,16 @@
 <link href="{{ asset('assets/bundles/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
     type="text/css">
 @endpush
-@section('title-page', 'Filter pengajar')
+@section( 'Filter Pengajar')
 @section('content')
-<div class="row">
+    <h2 id="title">Filter Guru</h2>
+<div class="row " id="data2">
     <div class="col-md-12">
-        <div class="card">
-            <div class="card-head">
+        <div class="card table-responsive ">
+            <div class="card-head ">
                 <header>
                     <i class="fas fa-table"></i>
-                    Data pengajar
+                    Data Guru
                 </header>
                 <div class="tools">
                     <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
@@ -24,8 +25,8 @@
                 <table id="example1" class="display" style="width:100%;">
                     <thead>
                         <tr>
-                            <th>Nama lengkap</th>
-                            <th>Mata pelajaran</th>
+                            <th>Nama Lengkap</th>
+                            <th>Mata Pelajaran</th>
                             <th>Gambar</th>
                             <th>Aksi</th>
                         </tr>
@@ -39,10 +40,10 @@
                                     alt="" width="30px">
                             </td>
                             <td>
-                                <a href="" class="btn btn-success">
-                                    <i class="fa fa-search"></i>
+                                <button id="detail" class="btn btn-success">
+                                    <i  class="fa fa-search"></i>
                                     Detail
-                                </a>
+                                </button>
                             </td>
                         </tr>
                     </tbody>
@@ -51,6 +52,8 @@
         </div>
     </div>
 </div>
+
+    @include('student.filter-teacher.detail')
 @push('js')
 <!-- data tables -->
 <script src="{{ asset('assets/bundles/datatables/jquery.dataTables.min.js') }}"></script>
@@ -58,3 +61,5 @@
 <script src="{{ asset('assets/data/table-data.js') }}"></script>
 @endpush
 @endsection
+
+

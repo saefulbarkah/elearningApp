@@ -4,15 +4,15 @@
 <link href="{{ asset('assets/bundles/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
     type="text/css">
 @endpush
-@section('title-page', 'Daftar materi')
 @section('content')
-<div class="row">
+    <h2 id="title">Daftar Materi</h2>
+<div class="row" id="data">
     <div class="col-md-12">
         <div class="card">
             <div class="card-head">
                 <header>
                     <i class="fas fa-table"></i>
-                    Data materi
+                    Data Materi
                 </header>
                 <div class="tools">
                     <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
@@ -33,23 +33,13 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Pemograman Dasar</td>
-                            <td>20 Agustus 2021</td>
-                            <td>
-                                <span class="badge badge-success">Teks</span>
-                            </td>
-                            <td>
-                                <a href="" class="btn-sm btn-success"> <i class="fas fa-search"></i> Detail</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Laravel 8</td>
-                            <td>20 Agustus 2021</td>
+                            <td>Indonesia </td>
+                            <td>26 Oktober 2021</td>
                             <td>
                                 <span class="badge badge-danger">File</span>
                             </td>
                             <td>
-                                <a href="" class="btn-sm btn-primary"> <i class="fas fa-download"></i> Unduh</a>
+                                <button id="button-masuk" class="btn-sm btn-success"> <i class="fas fa-search"></i> detail</button>
                             </td>
                         </tr>
                     </tbody>
@@ -59,10 +49,15 @@
         </div>
     </div>
 </div>
+
+    @include('student.list-material.detail')
+
 @push('js')
+
 <!-- data tables -->
 <script src="{{ asset('assets/bundles/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/bundles/datatables/plugins/bootstrap/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('assets/data/table-data.js') }}"></script>
 @endpush
 @endsection
+

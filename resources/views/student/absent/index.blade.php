@@ -4,7 +4,7 @@
 <link href="{{ asset('assets/bundles/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
     type="text/css">
 @endpush
-@section('title-page', 'Daftar kehadiran')
+@section('title-page', 'Daftar Kehadiran')
 @section('content')
         <div class="card card-box">
             <div class="card-head">

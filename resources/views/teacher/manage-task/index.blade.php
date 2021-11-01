@@ -4,7 +4,7 @@
 <link href="{{ asset('assets/bundles/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
     type="text/css">
 @endpush
-@section('title-page', 'Daftar tugas')
+@section('title-page', 'Daftar Tugas')
 @section('content')
 <div class="row">
     <div class="col">
@@ -16,7 +16,7 @@
                 </header>
             </div>
             <div class="card-body">
-                <a href="{{ route('subject-create') }}" class="btn btn-primary"> Tambah data tugas</a>
+                <a href="{{ route('subject-create') }}" class="btn btn-primary"> Tambah Data Tugas</a>
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
             <div class="card-head">
                 <header>
                     <i class="fas fa-table"></i>
-                    Data tugas
+                    Data Tugas
                 </header>
                 <div class="tools">
                     <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
@@ -41,10 +41,10 @@
                     <thead>
                         <tr>
                             <th>Judul</th>
-                            <th>Mata pelajaran</th>
+                            <th>Mata Pelajaran</th>
                             <th>kelas</th>
                             <th>Jurusan</th>
-                            <th>Tipe tugas</th>
+                            <th>Tipe Tugas</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>

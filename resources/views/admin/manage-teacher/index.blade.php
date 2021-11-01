@@ -7,7 +7,7 @@
     type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 @endpush
-@section('title-page', 'Daftar pengajar')
+@section('title-page', 'Daftar Pengajar')
 @section('content')
 <div class="row">
     <div class="col">
@@ -19,7 +19,7 @@
                 </header>
             </div>
             <div class="card-body">
-                <a href="{{ route('teacher-create') }}" class="btn btn-primary"> Tambah data pengajar</a>
+                <a href="{{ route('teacher-create') }}" class="btn btn-primary"> Tambah Data Pengajar</a>
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
             <div class="card-head">
                 <header>
                     <i class="fas fa-table"></i>
-                    Data pengajar
+                    Data Pengajar
                 </header>
                 <div class="tools">
                     <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
@@ -44,8 +44,8 @@
                     <thead>
                         <tr>
                             <th>NIP</th>
-                            <th>Nama lengkap</th>
-                            <th>Jenis kelamin</th>
+                            <th>Nama Lengkap</th>
+                            <th>Jenis Kelamin</th>
                             <th>Agama</th>
                             <th>Alamat</th>
                             <th>Gambar</th>

@@ -27,28 +27,28 @@
             </li>
             <li class="nav-item {{ Request::is('admin/manage-student*') ? 'active' : '' }}">
                 <a href="{{ route('manage-student') }}" class="nav-link nav-toggle"> <i class="fas fa-users"></i>
-                    <span class="title">Kelola data siswa</span>
+                    <span class="title">Kelola Data Siswa</span>
                 </a>
             </li>
             <li class="nav-item {{ Request::is('admin/manage-teacher*') ? 'active' : '' }}">
                 <a href="{{ route('manage-teacher') }}" class="nav-link nav-toggle"> <i class="fas fa-users"></i>
-                    <span class="title">Kelola data pengajar</span>
+                    <span class="title">Kelola Data Pengajar</span>
                 </a>
             </li>
             <li class="nav-item {{ Request::is('admin/manage-subject*') ? 'active' : '' }}">
                 <a href="{{ route('manage-subject') }}" class="nav-link nav-toggle"> <i class="fas fa-book"></i>
-                    <span class="title">Kelola mata pelajaran</span>
+                    <span class="title">Kelola Mata Pelajaran</span>
                 </a>
             </li>
             <li class="nav-item {{ Request::is('admin/manage-schedule*') ? 'active' : '' }}">
                 <a href="{{ route('manage-schedule') }}" class="nav-link nav-toggle"> <i class="fas fa-clock"></i>
-                    <span class="title">Jadwal mata pelajaran</span>
+                    <span class="title">Jadwal Mata Pelajaran</span>
                 </a>
             </li>
             <li class="nav-item {{ Request::is('admin/manage-announcement*') ? 'active' : '' }}">
                 <a href="{{ route('manage-announcement') }}" class="nav-link nav-toggle"> <i
                         class="fas fa-bullhorn"></i>
-                    <span class="title">Kelola pengumuman</span>
+                    <span class="title">Kelola Pengumuman</span>
                 </a>
             </li>
         </ul>

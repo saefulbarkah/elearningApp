@@ -4,7 +4,7 @@
 <link href="{{ asset('assets/bundles/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
     type="text/css">
 @endpush
-@section('title-page', 'Daftar jadwal mapel')
+@section('title-page', 'Daftar Jadwal Mapel')
 @section('content')
 <div class="row">
     <div class="col">
@@ -16,7 +16,7 @@
                 </header>
             </div>
             <div class="card-body">
-                <a href="" class="btn btn-primary"> Tambah data jadwal mapel</a>
+                <a href="" class="btn btn-primary"> Tambah Data Jadwal Pelajaran</a>
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
             <div class="card-head">
                 <header>
                     <i class="fas fa-table"></i>
-                    Data jadwal pelajaran
+                    Data Jadwal Pelajaran
                 </header>
                 <div class="tools">
                     <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
@@ -41,7 +41,7 @@
                     <thead>
                         <tr>
                             <th>Hari</th>
-                            <th>Jadwal mata pelajaran</th>
+                            <th>Jadwal Mata Pelajaran</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>

@@ -27,17 +27,17 @@
             </li>
             <li class="nav-item {{ Request::is('manage-material') ? 'active' : '' }}">
                 <a href="{{ route('manage-material') }}" class="nav-link nav-toggle"> <i class="fas fa-book"></i>
-                    <span class="title">Kelola materi</span>
+                    <span class="title">Kelola Materi</span>
                 </a>
             </li>
             <li class="nav-item {{ Request::is('manage-task') ? 'active' : '' }}">
                 <a href="{{ route('manage-task') }}" class="nav-link nav-toggle"> <i class="fas fa-book"></i>
-                    <span class="title">Kelola tugas</span>
+                    <span class="title">Kelola Tugas</span>
                 </a>
             </li>
             <li class="nav-item {{ Request::is('filter-student') ? 'active' : '' }}">
                 <a href="{{ route('filter-student') }}" class="nav-link nav-toggle"> <i class="fas fa-search"></i>
-                    <span class="title">Filter siswa</span>
+                    <span class="title">Filter Siswa</span>
                 </a>
             </li>
         </ul>

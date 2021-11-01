@@ -3,7 +3,7 @@
 {{-- toastr --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 @endpush
-@section('title-page', 'Tambah pengajar')
+@section('title-page', 'Tambah Pengajar')
 @section('content')
 <div class="row">
     <div class="col">
@@ -29,7 +29,7 @@
             <div class="card-head">
                 <header>
                     <i class="fas fa-edit"></i>
-                    Form input data guru
+                    Form Input Data Guru
                 </header>
             </div>
             <div class="card-body">

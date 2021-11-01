@@ -42,52 +42,19 @@
                 <!-- /.info-box -->
             </div>
             <!-- /.col -->
-            <div class="col-xl-4 col-md-6 col-12">
-                <div class="info-box bg-purple">
-                    <span class="info-box-icon push-bottom"><i class="fas fa-book"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Total mata pelajaran</span>
-                        <span class="info-box-number">52</span>
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 100%"></div>
-                        </div>
-                        <span class="progress-description">
-                        85% Increase in 28 Days
-                    </span>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-            </div>
+
             <!-- /.col -->
             <div class="col-xl-4 col-md-6 col-12">
                 <div class="info-box bg-success">
                     <span class="info-box-icon push-bottom"><i class="fas fa-bullhorn"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Total pengumuman</span>
+                        <span class="info-box-text">Total Pengumuman</span>
                         <span class="info-box-number">13,921</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 50%"></div>
                         </div>
                         <span class="progress-description">
                         50% Increase in 28 Days
-                    </span>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-            </div>
-            <div class="col-xl-4 col-md-6 col-12">
-                <div class="info-box bg-danger">
-                    <span class="info-box-icon push-bottom"><i class="fas fa-users"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Total pengguna</span>
-                        <span class="info-box-number">13,921</span>
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 50%"></div>
-                        </div>
-                        <span class="progress-description">
-                        20% Increase in 28 Days
                     </span>
                     </div>
                     <!-- /.info-box-content -->
@@ -159,7 +126,7 @@
                     <div class="col-md-7">
                         <div class="card">
                             <div class="card-head">
-                                <header><i class="fas fa-list"></i> Daftar materi</header>
+                                <header><i class="fas fa-list"></i> Daftar Materi</header>
                             </div>
                             <div class="card-body no-padding height-9">
                                 <div class="table-reponsive">
