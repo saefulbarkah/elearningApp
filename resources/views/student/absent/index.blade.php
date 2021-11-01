@@ -29,6 +29,9 @@
                             </label>
                         </div>
                         <div class="form-group mt-3">
+                            <textarea name="text" id="" cols="30" rows="10" class="form-control" placeholder="Masukan Keterangan"></textarea>
+                        </div>
+                        <div class="form-group mt-3">
                             <label for="exampleInputEmail1" class="mb-4"><i class="text-danger ">*</i>Upload gambar</label>
                             <img class="img-preview img-fluid mb-3 col-sm-5">
                             <div class="custom-file ">
