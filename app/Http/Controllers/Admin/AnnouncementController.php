@@ -47,12 +47,15 @@ class AnnouncementController extends Controller
             'end_time.required' => "Kolom tanggal tidak boleh kosong",
             'description.required' => "Kolom deskripsi tidak boleh kosong",
 
+            'title.max' => "Jumlah karakter terlalu banyak",
+
+
             // date
             'start_time.date' => "Harus menggunakan format tanggal",
             'end_time.date' => "Harus menggunakan format tanggal",
         ];
         $validate = Validator::make($request->all(), [
-            'title'           => 'required',
+            'title'           => 'required|max:255',
             'start_time'    => 'required|date',
             'end_time'    => 'required|date',
             'description'    => 'required',
@@ -110,12 +113,16 @@ class AnnouncementController extends Controller
             'end_time.required' => "Kolom tanggal tidak boleh kosong",
             'description.required' => "Kolom deskripsi tidak boleh kosong",
 
+            // max
+            'title.max' => "Jumlah karakter terlalu banyak",
+
+
             // date
             'start_time.date' => "Harus menggunakan format tanggal",
             'end_time.date' => "Harus menggunakan format tanggal",
         ];
         $validate = Validator::make($request->all(), [
-            'title'           => 'required',
+            'title'           => 'required|max:255',
             'start_time'    => 'required|date',
             'end_time'    => 'required|date',
             'description'    => 'required',
