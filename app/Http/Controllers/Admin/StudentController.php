@@ -24,7 +24,8 @@ class StudentController extends Controller
             ->join('grade_majors', 'grade_majors.id', '=', 'students.grade_major_id')
             ->join('majors', 'majors.id', '=', 'grade_majors.major_id')
             ->join('grades', 'grades.id', '=', 'grade_majors.grade_id')
-            ->select('users.name', 'students.*', 'majors.name as major_name', 'grades.name as grade_name')
+            ->select('users.name', 'students.*', 'majors.name as major_name', 'grades.name as grade_name','grade_majors.group',
+                    'users.religion','users.gender')
             ->get();
         // return $student;
         return view('admin.manage-student.index', compact('student'));
@@ -39,7 +40,7 @@ class StudentController extends Controller
     {
         $gradeMajors = GradeMajor::join('grades', 'grades.id', '=', 'grade_majors.grade_id')
             ->join('majors', 'majors.id', '=', 'grade_majors.major_id')
-            ->select('majors.name as major_name', 'grades.name as grade_name', 'grade_majors.id as gm_id')
+            ->select('majors.name as major_name', 'grades.name as grade_name', 'grade_majors.id as gm_id','grade_majors.group')
             ->get();
         // dd($gradeMajors);
         return view('admin.manage-student.create', compact('gradeMajors'));
@@ -92,6 +93,8 @@ class StudentController extends Controller
         $newUserStudent->name = $request->name;
         $newUserStudent->email = $request->email;
         $newUserStudent->password = Hash::make('rahasia1234');
+        $newUserStudent->gender  = $request->gender;
+        $newUserStudent->religion = $request->religion;
         $newUserStudent->save();
 
         // new Student
@@ -99,8 +102,6 @@ class StudentController extends Controller
         $student->user_id           = $newUserStudent->id;
         $student->nis               = $request->nis;
         $student->grade_major_id    = $request->grade_major_id;
-        $student->gender            = $request->gender;
-        $student->religion     = $request->religion;
         $student->address           = $request->address;
         if ($request->hasFile('image')) {
             $imageName = pathinfo($request->image->getClientOriginalName(), PATHINFO_FILENAME);
@@ -142,13 +143,13 @@ class StudentController extends Controller
     public function edit($id)
     {
         $student = Student::join('users', 'users.id', '=', 'students.user_id')
-            ->select('users.name as user_name', 'users.email as user_email', 'students.*')
+            ->select('users.name as user_name', 'users.email as user_email','users.religion','users.gender','students.*')
             ->find($id);
 
         // dd($student);
         $gradeMajors = GradeMajor::join('grades', 'grades.id', '=', 'grade_majors.grade_id')
             ->join('majors', 'majors.id', '=', 'grade_majors.major_id')
-            ->select('majors.name as major_name', 'grades.name as grade_name', 'grade_majors.id as gm_id')
+            ->select('majors.name as major_name', 'grades.name as grade_name', 'grade_majors.id as gm_id','grade_majors.group')
             ->get();
         return view('admin.manage-student.edit', compact('gradeMajors', 'student'));
     }
@@ -201,8 +202,6 @@ class StudentController extends Controller
         $student->user_id           = $request->user_id;
         $student->nis               = $request->nis;
         $student->grade_major_id    = $request->grade_major_id;
-        $student->gender            = $request->gender;
-        $student->religion     = $request->religion;
         $student->address           = $request->address;
         if ($request->hasFile('image')) {
             $imageName = pathinfo($request->image->getClientOriginalName(), PATHINFO_FILENAME);
@@ -226,6 +225,8 @@ class StudentController extends Controller
         $newUserStudent = User::find($student->user_id);
         $newUserStudent->name = $request->name;
         $newUserStudent->email = $request->email;
+        $newUserStudent->gender = $request->gender;
+        $newUserStudent->religion = $request->religion;
         $newUserStudent->save();
         return redirect()->route('manage-student')->with('success', 'Data berhasil di update');
     }

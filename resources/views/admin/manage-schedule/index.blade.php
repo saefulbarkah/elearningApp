@@ -1,8 +1,11 @@
 @extends('layouts.master')
 @push('css')
-    <!-- data tables -->
-    <link href="{{ asset('assets/bundles/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
-        type="text/css">
+ <!-- data tables -->
+<link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" rel="stylesheet"
+type="text/css">
+<link href="{{ asset('assets/bundles/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
+type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 @endpush
 @section('title-page', 'Daftar Jadwal Mapel')
 @section('content')
@@ -80,5 +83,12 @@
         <script src="{{ asset('assets/bundles/datatables/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('assets/bundles/datatables/plugins/bootstrap/dataTables.bootstrap4.min.js') }}"></script>
         <script src="{{ asset('assets/data/table-data.js') }}"></script>
+           {{-- toastr --}}
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        @if (Session::has('success'))
+        <script>
+            toastr.success("{!! Session::get('success') !!}");
+        </script>
+        @endif
     @endpush
 @endsection

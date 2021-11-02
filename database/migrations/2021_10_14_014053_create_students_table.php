@@ -20,8 +20,6 @@ class CreateStudentsTable extends Migration
             $table->unsignedBigInteger('grade_major_id');
             $table->foreign('grade_major_id')->references('id')->on('grade_majors')->onDelete('cascade');
             $table->string('nis')->unique();
-            $table->string('gender');
-            $table->string('religion');
             $table->text('address');
             $table->string('image')->nullable();
             $table->timestamps();

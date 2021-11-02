@@ -35,6 +35,16 @@
                     <span class="title">Kelola Data Pengajar</span>
                 </a>
             </li>
+            <li class="nav-item {{ Request::is('admin/manage-major*') ? 'active' : '' }}">
+                <a href="{{ route('manage-major') }}" class="nav-link nav-toggle"> <i class="fas fa-users"></i>
+                    <span class="title">Kelola Data Jurusan</span>
+                </a>
+            </li>
+            <li class="nav-item {{ Request::is('admin/manage-class*') ? 'active' : '' }}">
+                <a href="{{ route('manage-class') }}" class="nav-link nav-toggle"> <i class="fas fa-users"></i>
+                    <span class="title">Kelola Data Kelas</span>
+                </a>
+            </li>
             <li class="nav-item {{ Request::is('admin/manage-subject*') ? 'active' : '' }}">
                 <a href="{{ route('manage-subject') }}" class="nav-link nav-toggle"> <i class="fas fa-book"></i>
                     <span class="title">Kelola Mata Pelajaran</span>

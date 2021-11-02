@@ -76,7 +76,7 @@
                                 >{{
                                 $data->grade_name }} - {{
                                 $data->major_name
-                                }}</option>
+                                }} {{ $data->group }}</option>
                             @endforeach
                         </select>
                         @error('grade_major_id')

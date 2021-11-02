@@ -19,6 +19,7 @@ class CreateGradeMajorsTable extends Migration
             $table->foreign('grade_id')->references('id')->on('grades')->onDelete('cascade');
             $table->unsignedBigInteger('major_id');
             $table->foreign('major_id')->references('id')->on('majors')->onDelete('cascade');
+            $table->string('group')->nullable();
             $table->timestamps();
         });
     }

@@ -19,7 +19,7 @@
                 </header>
             </div>
             <div class="card-body">
-                <a href="{{ route('student-create') }}" class="btn btn-primary"> Tambah Data Siswa</a>
+                <a href="{{ route('major-create') }}" class="btn btn-primary"> Tambah Jurusan</a>
             </div>
         </div>
     </div>
@@ -30,7 +30,7 @@
             <div class="card-head">
                 <header>
                     <i class="fas fa-table"></i>
-                    Data Siswa
+                    Data Jurusan
                 </header>
                 <div class="tools">
                     <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
@@ -42,33 +42,16 @@
                 <table id="example1" class="display nowrap table-hover" style="width:100%;">
                     <thead>
                         <tr>
-                            <th>NIS</th>
-                            <th>Nama Lengkap</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Agama</th>
-                            <th>Alamat</th>
-                            <th>Kelas</th>
                             <th>Jurusan</th>
-                            <th>Gambar</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($student as $data)
+                        @foreach ($major as $data)
                         <tr>
-                            <td>{{ $data->nis }}</td>
                             <td>{{ $data->name }}</td>
-                            <td>{{ $data->gender }}</td>
-                            <td>{{ $data->religion }}</td>
-                            <td>{{ $data->address }}</td>
-                            <td>{{ $data->grade_name }}</td>
-                            <td>{{ $data->major_name }} {{ $data->group }}</td>
                             <td>
-                                <img src="{{ asset('images/'.$data->image) }}" alt="" class="img fluid"
-                                    style="width: 50px">
-                            </td>
-                            <td>
-                                <a href="{{ url('admin/manage-student/'.$data->id.'/edit') }}" class="btn btn-info btn-xs">
+                                <a href="{{ url('admin/manage-major/'.$data->id.'/edit') }}" class="btn btn-info btn-xs">
                                     <i class="fa fa-edit"></i>
                                 </a>
                                 <a href="javascript:void(0);" class="btn btn-danger btn-xs delete"
@@ -104,7 +87,7 @@
             })
             .then((willDelete) => {
             if (willDelete) {
-                window.location.href = "manage-student/"+dataId+"/delete"
+                window.location.href = "manage-major/"+dataId+"/delete"
             } else {
                 swal("Gagal menghapus data");
             }

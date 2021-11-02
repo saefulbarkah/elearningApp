@@ -68,7 +68,7 @@
                             @foreach ($gradeMajors as $data)
                             <option value="{{ $data->gm_id }}">{{ $data->grade_name }} - {{
                                 $data->major_name
-                                }}</option>
+                                }} {{ $data->group }}</option>
                             @endforeach
                         </select>
                         @error('grade_major_id')

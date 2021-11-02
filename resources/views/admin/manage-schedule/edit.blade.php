@@ -17,7 +17,7 @@
                     </header>
                 </div>
                 <div class="card-body">
-                    <a href="{{ route('manage-student') }}" class="btn btn-warning">
+                    <a href="{{ route('manage-schedule') }}" class="btn btn-warning">
                         <i class="fas fa-arrow-left"></i>
                         Kembali
                     </a>
@@ -76,12 +76,29 @@
                                 id="exampleFormControlSelect1">
                                 <option selected="" disabled="">---Pilih Kelas dan Jurusan ---</option>
                                 @foreach ($grade_major as $grm)
-                                    <option value="{{ $grm->id }}" {{ ($schedule->grade_major_id == $grm->id) ? 'selected' : '' }}>
-                                        {{ $grm->gr_name }} - {{ $grm->mj_name }}
+                                    <option value="{{ $grm->grm_id }}" {{ ($schedule->grade_major_id == $grm->grm_id) ? 'selected' : '' }}>
+                                        {{ $grm->gr_name }} - {{ $grm->mj_name }} {{ $grm->group }}
                                     </option>
                                 @endforeach
                             </select>
                             @error('grade_major_id')
+                                <div class="text-danger">* {{ $message }}</div>
+                            @enderror
+                        </div>
+                          <!-- Guru -->
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Guru</label>
+                            <select name="teacher_id"
+                                class="form-control custom-select @error('teacher_id') is-invalid @enderror"
+                                id="exampleFormControlSelect1">
+                                <option selected="" disabled="">---Pilih Guru ---</option>
+                                @foreach ($teacher as $tch)
+                                    <option value="{{ $tch->t_id }}" {{ ($schedule->teacher_id == $tch->t_id) ? 'selected' : '' }}>
+                                        {{ $tch->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('teacher_id')
                                 <div class="text-danger">* {{ $message }}</div>
                             @enderror
                         </div>

@@ -2,12 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AnnouncementController;
+use App\Http\Controllers\Admin\ClassController;
+use App\Http\Controllers\Admin\MajorController;
 use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeacherController;
-use App\Http\Controllers\Admin\TeacherSubjectController;
-use App\ScheduleSubject;
+
 
 Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () {
     // manage teacher
@@ -25,6 +26,22 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () 
     Route::get('/manage-student/{id}/edit', [StudentController::class, 'edit'])->name('student-edit');
     Route::post('/manage-student/{id}/update', [StudentController::class, 'update'])->name('student-update');
     Route::get('/manage-student/{id}/delete', [StudentController::class, 'destroy'])->name('student-delete');
+
+    //manage major
+    Route::get('/manage-major',[MajorController::class, 'index'])->name('manage-major');
+    Route::get('/manage-major/create',[MajorController::class, 'create'])->name('major-create');
+    Route::post('/manage-major/store',[MajorController::class, 'store'])->name('major-store');
+    Route::get('/manage-major/{id}/edit',[MajorController::class, 'edit'])->name('major-edit');
+    Route::post('/manage-major/{id}/update',[MajorController::class, 'update'])->name('major-update');
+    Route::get('/manage-major/{id}/delete',[MajorController::class, 'destroy'])->name('major-delete');
+
+    //manage class
+    Route::get('/manage-class',[ClassController::class, 'index'])->name('manage-class');
+    Route::get('/manage-class/create',[ClassController::class, 'create'])->name('class-create');
+    Route::post('/manage-class/store',[ClassController::class, 'store'])->name('class-store');
+    Route::get('/manage-class/{id}/edit',[ClassController::class, 'edit'])->name('class-edit');
+    Route::post('/manage-class/{id}/update',[ClassController::class, 'update'])->name('class-update');
+    Route::get('/manage-class/{id}/delete',[ClassController::class, 'destroy'])->name('class-delete');
 
     // manage subject
     Route::get('/manage-subject', [SubjectController::class, 'index'])->name('manage-subject');

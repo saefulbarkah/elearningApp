@@ -18,8 +18,6 @@ class CreateTeachersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('nip')->unique();
-            $table->string('gender');
-            $table->string('religion');
             $table->text('address');
             $table->string('image')->nullable();
             $table->timestamps();

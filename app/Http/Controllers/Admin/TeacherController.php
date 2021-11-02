@@ -19,7 +19,7 @@ class TeacherController extends Controller
     public function index()
     {
         $teacher = Teacher::join('users', 'users.id', '=', 'teachers.user_id')
-            ->select('users.name', 'teachers.*')
+            ->select('users.name','users.religion','users.gender','teachers.*')
             ->get();
         return view('admin.manage-teacher.index', compact('teacher'));
     }
@@ -78,14 +78,14 @@ class TeacherController extends Controller
         $newUserteacher->name = $request->name;
         $newUserteacher->email = $request->email;
         $newUserteacher->password = Hash::make('rahasia1234');
+        $newUserteacher->gender = $request->gender;
+        $newUserteacher->religion = $request->religion;
         $newUserteacher->save();
 
         // new Teacher
         $teacher = new Teacher();
         $teacher->user_id           = $newUserteacher->id;
         $teacher->nip               = $request->nip;
-        $teacher->gender            = $request->gender;
-        $teacher->religion          = $request->religion;
         $teacher->address           = $request->address;
         if ($request->hasFile('image')) {
             $imageName = pathinfo($request->image->getClientOriginalName(), PATHINFO_FILENAME);
@@ -127,7 +127,7 @@ class TeacherController extends Controller
     public function edit($id)
     {
         $teacher = Teacher::join('users', 'users.id', '=', 'teachers.user_id')
-            ->select('users.name as user_name', 'users.email as user_email', 'teachers.*')
+            ->select('users.name as user_name', 'users.email as user_email','users.religion','users.gender','teachers.*')
             ->find($id);
         return view('admin.manage-teacher.edit', compact('teacher'));
     }
@@ -176,8 +176,6 @@ class TeacherController extends Controller
         $teacher = Teacher::find($id);
         $teacher->user_id           = $request->user_id;
         $teacher->nip               = $request->nip;
-        $teacher->gender            = $request->gender;
-        $teacher->religion          = $request->religion;
         $teacher->address           = $request->address;
         if ($request->hasFile('image')) {
             $imageName = pathinfo($request->image->getClientOriginalName(), PATHINFO_FILENAME);
@@ -200,6 +198,8 @@ class TeacherController extends Controller
         $newUserTeacher = User::find($teacher->user_id);
         $newUserTeacher->name = $request->name;
         $newUserTeacher->email = $request->email;
+        $newUserTeacher->gender = $request->gender;
+        $newUserTeacher->religion = $request->religion;
         $newUserTeacher->save();
         return redirect()->route('manage-teacher')->with('success', 'Data berhasil di update');
     }

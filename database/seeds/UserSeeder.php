@@ -29,6 +29,8 @@ class UserSeeder extends Seeder
             'name'      => 'Raynaldi Syahputra Nonci',
             'email'     => 'raynaldi@gmail.com',
             'password'  => Hash::make('12345678'),
+            'gender' => 'L',
+            'religion' => 'Islam'
         ]);
         $teacher->assignRole('teacher');
 
@@ -38,6 +40,8 @@ class UserSeeder extends Seeder
             'name'      => 'Saeful Barkah',
             'email'     => 'saefulbarkah650@gmail.com',
             'password'  => Hash::make('12345678'),
+            'gender' => 'L',
+            'religion' => 'Islam'
         ]);
         $student->assignRole('student');
 
@@ -46,6 +50,8 @@ class UserSeeder extends Seeder
             'name'      => 'Deden Alif',
             'email'     => 'denlif34690@gmail.com',
             'password'  => Hash::make('12345678'),
+            'gender' => 'L',
+            'religion' => 'Islam'
         ]);
         $student->assignRole('student');
 
@@ -54,6 +60,8 @@ class UserSeeder extends Seeder
             'name'      => 'Rifaldi Satya Pratama',
             'email'     => 'rifaldipratama2004@gmail.com',
             'password'  => Hash::make('12345678'),
+            'gender' => 'L',
+            'religion' => 'Islam'
         ]);
         $student->assignRole('student');
 
@@ -62,6 +70,8 @@ class UserSeeder extends Seeder
             'name'      => 'Dendi Setia Maulidin',
             'email'     => 'dendisetiamaja@gmail.com',
             'password'  => Hash::make('12345678'),
+            'gender' => 'L',
+            'religion' => 'Islam'
         ]);
         $student->assignRole('student');
     }
