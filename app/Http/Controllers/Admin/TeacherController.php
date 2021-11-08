@@ -81,6 +81,8 @@ class TeacherController extends Controller
         $newUserteacher->gender = $request->gender;
         $newUserteacher->religion = $request->religion;
         $newUserteacher->save();
+        $newUserteacher->assignRole('teacher');
+
 
         // new Teacher
         $teacher = new Teacher();

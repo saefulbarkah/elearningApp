@@ -96,6 +96,7 @@ class StudentController extends Controller
         $newUserStudent->gender  = $request->gender;
         $newUserStudent->religion = $request->religion;
         $newUserStudent->save();
+        $newUserStudent->assignRole('student');
 
         // new Student
         $student = new Student();
