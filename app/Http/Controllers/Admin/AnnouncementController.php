@@ -52,12 +52,12 @@ class AnnouncementController extends Controller
 
             // date
             'start_time.date' => "Harus menggunakan format tanggal",
-            'end_time.date' => "Harus menggunakan format tanggal",
+            'end_time.after' => "Waktu tidak valid",
         ];
         $validate = Validator::make($request->all(), [
             'title'           => 'required|max:255',
             'start_time'    => 'required|date',
-            'end_time'    => 'required|date',
+            'end_time'    => 'after:start_time',
             'description'    => 'required',
         ], $message);
         if ($validate->fails()) {
@@ -119,12 +119,12 @@ class AnnouncementController extends Controller
 
             // date
             'start_time.date' => "Harus menggunakan format tanggal",
-            'end_time.date' => "Harus menggunakan format tanggal",
+            'end_time.after' => "Waktu tidak valid",
         ];
         $validate = Validator::make($request->all(), [
             'title'           => 'required|max:255',
             'start_time'    => 'required|date',
-            'end_time'    => 'required|date',
+            'end_time'    => 'after:start_time',
             'description'    => 'required',
         ], $message);
         if ($validate->fails()) {
