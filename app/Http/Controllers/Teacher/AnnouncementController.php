@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Teacher;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Announcement;
-
-class DashboardController extends Controller
+class AnnouncementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $data = Announcement::all();
-        return view('teacher.dashboard', compact('data'));
+        //
     }
 
     /**
@@ -48,7 +46,11 @@ class DashboardController extends Controller
      */
     public function show($id)
     {
-        //
+        $announc = Announcement::findOrFail($id);
+        $announcement = Announcement::where('id','!=',$id)->get();
+        // dd($announcement);
+
+        return view('teacher.announcement.detail',compact('announc','announcement'));
     }
 
     /**

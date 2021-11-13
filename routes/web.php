@@ -31,12 +31,10 @@ Route::get('/', function () {
 Route::get('auth/google', [GoogleController::class, 'authGoogle']);
 Route::get('auth/google/callback', [GoogleController::class, 'googleCallback']);
 
-Route::middleware(['auth', 'role:admin|teacher|student'])->group(function () {
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-});
 
 // prefix for student
 Route::group(['prefix' => 'student', 'middleware' => ['role:student']], function () {
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('student-dashboard');
     Route::get('absent', [AbsentController::class, 'index'])->name('absent');
     Route::get('material', [MaterialController::class, 'index'])->name('list-material');
     Route::get('task', [TaskController::class, 'index'])->name('list-task');

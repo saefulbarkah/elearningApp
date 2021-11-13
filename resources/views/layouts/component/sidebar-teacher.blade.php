@@ -20,17 +20,17 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item {{ Request::is('dashboard') ? 'active' : '' }}">
-                <a href="{{ route('dashboard') }}" class="nav-link nav-toggle"> <i class="fas fa-tachometer-alt"></i>
+            <li class="nav-item {{ Request::is('teacher/dashboard') ? 'active' : '' }}">
+                <a href="{{ route('teacher-dashboard') }}" class="nav-link nav-toggle"> <i class="fas fa-tachometer-alt"></i>
                     <span class="title">Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item {{ Request::is('manage-material') ? 'active' : '' }}">
+            <li class="nav-item {{ Request::is('teacher/manage-material') ? 'active' : '' }}">
                 <a href="{{ route('manage-material') }}" class="nav-link nav-toggle"> <i class="fas fa-book"></i>
                     <span class="title">Kelola Materi</span>
                 </a>
             </li>
-            <li class="nav-item {{ Request::is('manage-task') ? 'active' : '' }}">
+            <li class="nav-item {{ Request::is('teacher/manage-task') ? 'active' : '' }}">
                 <a href="{{ route('manage-task') }}" class="nav-link nav-toggle"> <i class="fas fa-book"></i>
                     <span class="title">Kelola Tugas</span>
                 </a>

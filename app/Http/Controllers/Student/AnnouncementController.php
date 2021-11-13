@@ -25,7 +25,7 @@ class AnnouncementController extends Controller
      */
     public function create()
     {
-        return view('admin.announcement.create');
+
     }
 
     /**

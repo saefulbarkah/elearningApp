@@ -16,7 +16,7 @@ class DashboardController extends Controller
     public function index()
     {
         $data = Announcement::all();
-        return view('dashboard', compact('data'));
+        return view('student.dashboard', compact('data'));
     }
 
     /**

@@ -8,9 +8,11 @@ use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeacherController;
+use App\Http\Controllers\Admin\DashboardController;
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function () {
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('admin-dashboard');
     // manage teacher
     Route::get('/manage-teacher', [TeacherController::class, 'index'])->name('manage-teacher');
     Route::get('/manage-teacher/create', [TeacherController::class, 'create'])->name('teacher-create');

@@ -20,8 +20,8 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item {{ Request::is('dashboard') ? 'active' : '' }}">
-                <a href="{{ route('dashboard') }}" class="nav-link nav-toggle"> <i class="fas fa-tachometer-alt"></i>
+            <li class="nav-item {{ Request::is('student/dashboard') ? 'active' : '' }}">
+                <a href="{{ route('student-dashboard') }}" class="nav-link nav-toggle"> <i class="fas fa-tachometer-alt"></i>
                     <span class="title">Dashboard</span>
                 </a>
             </li>
