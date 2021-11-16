@@ -13,41 +13,62 @@
                 </button>
             </div>
         </div>
-        <div class="card-body " >
+        <div class="card-body ">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <label><i class="text-danger">*</i>Judul : </label>
-                    <input type="text" class="form-control" placeholder="Judul">
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <label><i class="text-danger">*</i>Mata Pelajaran</label>
-                    <input type="text" class="form-control" placeholder="Mata Pelajaran">
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <label><i class="text-danger">*</i>Kelas</label>
-                    <select name="kelas" class="form-control">
-                        <option>Pilih Kelas</option>
-                        <option value="X">X</option>
-                        <option value="XI">XI</option>
-                        <option value="XII">XII</option>
-                    </select>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <label><i class="text-danger">*</i>Jurusan</label>
-                    <select name="Jurusan" class="form-control">
-                        <option>Pilih Jurusan</option>
-                        <option value="mm">Multimedia</option>
-                        <option value="rpl">RPL</option>
-                    </select>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <label><i class="text-danger">*</i>Pilih File</label>
-                    <input type="file" class="form-control" placeholder="Jurusan">
-                </div>
+                <form action="javascript:void(0);" class="frm-submit" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="col-lg-12 col-md-6 col-sm-6 col-xs-6">
+                        <label><i class="text-danger">*</i>Judul : </label>
+                        <input type="text" name="title" class="form-control" placeholder="Judul">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Mata Pelajaran</label>
+                        <select name="subject_id" class="form-control custom-select @error('gender')
+                        is-invalid
+                        @enderror" id="exampleFormControlSelect1">
+                            <option selected="" disabled="">---Pilih kelas ---</option>
+                            @foreach ($subject as $data)
+                            <option value="{{ $data->id }}">{{ $data->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('grade_major_id')
+                        <div class="text-danger">* {{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Kelas dan Jurusan</label>
+                        <select name="grade_major_id" class="form-control custom-select @error('gender')
+                        is-invalid
+                    @enderror" id="exampleFormControlSelect1">
+                            <option selected="" disabled="">---Pilih kelas ---</option>
+                            @foreach ($gradeMajors as $data)
+                            <option value="{{ $data->gm_id }}">{{ $data->grade_name }} - {{
+                                $data->major_name
+                                }} {{ $data->group }}</option>
+                            @endforeach
+                        </select>
+                        @error('grade_major_id')
+                        <div class="text-danger">* {{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Alamat</label>
+                        <textarea class="form-control @error('address')
+                            is-invalid
+                        @enderror" name="address" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        @error('address')
+                        <div class="text-danger">* {{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="col-lg-12 col-md-4 col-sm-4 col-xs-4">
+                        <label><i class="text-danger">*</i>Pilih File</label>
+                        <input type="file" class="form-control" name="file" placeholder="Jurusan">
+                    </div>
             </div>
-            <div class="col-lg-3 mt-2 float-end " >
-                <button type="submit" class="btn btn-success">Submit</button>
+            <div class="col-lg-3 mt-2 float-start">
+                <button type="submit" id="submit" class="btn btn-success">Submit</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
@@ -72,5 +93,17 @@
         $("#button-keluar").hide();
         $("#title").html('Daftar Materi');
     });
+</script>
+
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $(".frm-submit").click('#submit',(function(){
+        alert
+    ))}
 </script>
 @endpush
