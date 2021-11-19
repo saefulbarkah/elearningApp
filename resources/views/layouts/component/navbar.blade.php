@@ -2,7 +2,8 @@
     <!-- logo start -->
     <div class="page-logo">
         <a href="">
-            <span class="logo-default">E-LEARNING</span> </a>
+            <img src="{{asset('images/logi Mahaputra.png')}}" width="150" class="mb-5" height="auto" alt="">
+        </a>
     </div>
     <!-- logo end -->
     <ul class="nav navbar-nav navbar-left in">
