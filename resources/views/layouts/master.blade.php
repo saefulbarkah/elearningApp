@@ -12,6 +12,7 @@
     <meta name="description" content="Responsive Admin Template" />
     <meta name="author" content="RedstarHospital" />
     <title>Elearning</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- google font -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />
     <!-- icons -->
@@ -41,7 +42,7 @@
 <!-- END HEAD -->
 
 <body
-class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white white-sidebar-color logo-indigo">
+    class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white white-sidebar-color logo-indigo">
     <div class="page-wrapper">
         <!-- start header -->
         <div class="page-header navbar navbar-fixed-top">
@@ -161,13 +162,14 @@ class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md hea
         <!-- end page container -->
         <!-- start footer -->
         <div class="page-footer fixed">
-			<div class="page-footer-inner"> 2021 &copy; RedStar Hospital Template By
-				<a href="https://radixtouch.com/cdn-cgi/l/email-protection#5624333225223724223e333b3316313b373f3a7835393b" target="_top" class="makerCss">Redstartheme</a>
-			</div>
-			<div class="scroll-to-top">
-				<i class="icon-arrow-up"></i>
-			</div>
-		</div>
+            <div class="page-footer-inner"> 2021 &copy; RedStar Hospital Template By
+                <a href="https://radixtouch.com/cdn-cgi/l/email-protection#5624333225223724223e333b3316313b373f3a7835393b"
+                    target="_top" class="makerCss">Redstartheme</a>
+            </div>
+            <div class="scroll-to-top">
+                <i class="icon-arrow-up"></i>
+            </div>
+        </div>
         <!-- end footer -->
     </div>
     <script src="{{ asset('assets/bundles/jquery/jquery.min.js') }}"></script>
@@ -185,7 +187,7 @@ class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md hea
     <!-- Material -->
     <script src="{{ asset('assets/bundles/material/material.min.js') }}"></script>
     <script src="{{ asset('assets/bundles/material/material.min.js') }}"></script>
-	<script src="{{ asset('assets/bundles/flatpicker/js/flatpicker.min.js') }}"></script>
+    <script src="{{ asset('assets/bundles/flatpicker/js/flatpicker.min.js') }}"></script>
     <!-- end js include path -->
     @stack('js')
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

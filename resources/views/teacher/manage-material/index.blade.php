@@ -5,7 +5,7 @@
     type="text/css">
 @endpush
 @section('content')
- <h2 id="title">Daftarr Materi</h2>
+<h2 id="title">Daftarr Materi</h2>
 
 <div class="row" id="tambah">
     <div class="col-md-12">
@@ -33,30 +33,17 @@
                             <th>Mata Pelajaran</th>
                             <th>Kelas</th>
                             <th>Jurusan</th>
-                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($material as $data)
                         <tr>
-                            <td>Membuat rumus python</td>
-                            <td>Matematika</td>
-                            <td>XII</td>
-                            <td>RPL</td>
-                            <td>
-                                <button id="edit-button" class="btn btn-info">
-                                    <i class="fa fa-edit"></i>
-                                    Edit
-                                </button>
-                                <a href="" class="btn btn-danger">
-                                    <i class="fa fa-trash"></i>
-                                    Hapus
-                                </a>
-                                <button id="button-detail" class="btn btn-success">
-                                    <i class="fa fa-search"></i>
-                                    Detail
-                                </button>
-                            </td>
+                            <td>{{ $data->title }}</td>
+                            <td>{{ $data->subject_name }}</td>
+                            <td>{{ $data->grade_name }}</td>
+                            <td>{{ $data->major_name }}</td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -64,15 +51,15 @@
     </div>
 </div>
 {{--Tambah Materi--}}
- <div class="row" id="detail">
+<div class="row" id="detail">
     @include('teacher.manage-material.create')
- </div>
- <div class="row" id="edit">
+</div>
+<div class="row" id="edit">
     @include('teacher.manage-material.edit')
- </div>
- <div class="row" id="detail-materi">
+</div>
+<div class="row" id="detail-materi">
     @include('teacher.manage-material.detail')
- </div>
+</div>
 @push('js')
 <!-- data tables -->
 <script src="{{ asset('assets/bundles/datatables/jquery.dataTables.min.js') }}"></script>
@@ -80,5 +67,3 @@
 <script src="{{ asset('assets/data/table-data.js') }}"></script>
 @endpush
 @endsection
-
-

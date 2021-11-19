@@ -15,8 +15,7 @@
         </div>
         <div class="card-body ">
             <div class="row">
-                <form action="javascript:void(0);" class="frm-submit" method="POST" enctype="multipart/form-data">
-                    @csrf
+                <form id="formSubmit">
                     <div class="col-lg-12 col-md-6 col-sm-6 col-xs-6">
                         <label><i class="text-danger">*</i>Judul : </label>
                         <input type="text" name="title" class="form-control" placeholder="Judul">
@@ -31,7 +30,7 @@
                             <option value="{{ $data->id }}">{{ $data->name }}</option>
                             @endforeach
                         </select>
-                        @error('grade_major_id')
+                        @error('subject_id')
                         <div class="text-danger">* {{ $message }}</div>
                         @enderror
                     </div>
@@ -52,11 +51,11 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Alamat</label>
-                        <textarea class="form-control @error('address')
+                        <label for="exampleFormControlTextarea1">Deskripsi</label>
+                        <textarea class="form-control @error('description')
                             is-invalid
-                        @enderror" name="address" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        @error('address')
+                        @enderror" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        @error('description')
                         <div class="text-danger">* {{ $message }}</div>
                         @enderror
                     </div>
@@ -66,14 +65,14 @@
                     </div>
             </div>
             <div class="col-lg-3 mt-2 float-start">
-                <button type="submit" id="submit" class="btn btn-success">Submit</button>
+                <button id="submit" class="btn btn-success">Submit</button>
             </div>
             </form>
         </div>
     </div>
 </div>
 @push('js')
-<script>
+<script type="text/javascript">
     $("#detail").hide();
     $("#button-keluar").hide();
 
@@ -93,17 +92,32 @@
         $("#button-keluar").hide();
         $("#title").html('Daftar Materi');
     });
-</script>
-
-<script>
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-
-    $(".frm-submit").click('#submit',(function(){
-        alert
-    ))}
+    $("#submit").click(function(e){
+        e.preventDefault();
+        $.ajax({
+          data: $('#formSubmit').serialize(),
+          url: "{{ route('post-material') }}",
+          type: "POST",
+          dataType: 'json',
+          success: function (data) {
+              $("#tambah").show();
+              $("#detail").hide();
+              $("#button-masuk").show();
+              $("#button-keluar").hide();
+              $("#title").html('Daftar Materi');
+              alert('Data berhasil di tambahkan')
+              table.draw();
+          },
+          error: function (data) {
+              console.log('Error:', data);
+              $('#saveBtn').html('Save Changes');
+          }
+      });
+    });
 </script>
 @endpush

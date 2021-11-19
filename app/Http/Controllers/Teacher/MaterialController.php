@@ -21,9 +21,14 @@ class MaterialController extends Controller
             ->join('majors', 'majors.id', '=', 'grade_majors.major_id')
             ->select('majors.name as major_name', 'grades.name as grade_name', 'grade_majors.id as gm_id', 'grade_majors.group')
             ->get();
-
         $subject = Subject::all();
-        return view('teacher.manage-material.index', compact('gradeMajors', 'subject'));
+        $material = Material::join('grade_majors', 'grade_majors.id', '=', 'materials.grade_major_id')
+            ->join('grades', 'grades.id', '=', 'grade_majors.grade_id')
+            ->join('majors', 'majors.id', '=', 'grade_majors.major_id')
+            ->join('subjects', 'subjects.id', '=', 'materials.subject_id')
+            ->select('materials.*', 'grades.name as grade_name', 'majors.name as major_name', 'subjects.name as subject_name')
+            ->get();
+        return view('teacher.manage-material.index', compact('gradeMajors', 'subject', 'material'));
     }
 
     /**
@@ -52,13 +57,13 @@ class MaterialController extends Controller
         $material->description = $request->description;
         if ($request->hasFile('file')) {
             $fileName = pathinfo($request->file->getClientOriginalName(), PATHINFO_FILENAME);
-            $fileEx   = $request->file->getClientOriginalExtension();
+            $fileEx = $request->file->getClientOriginalExtension();
             $fileGroup = $fileName . '-' . time() . '.' . $fileEx;
             $fileMove = $request->file->move('file', $fileGroup);
             $material->file = $fileGroup;
         }
         $material->save();
-        // return response()->json(['url' => url('teacher/manage-material')]);
+        return response()->json(['success' => 'Got Simple Ajax Request.']);
     }
 
     /**
