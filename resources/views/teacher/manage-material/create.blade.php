@@ -104,20 +104,49 @@
           url: "{{ route('post-material') }}",
           type: "POST",
           dataType: 'json',
-          success: function (data) {
-              $("#tambah").show();
-              $("#detail").hide();
-              $("#button-masuk").show();
-              $("#button-keluar").hide();
-              $("#title").html('Daftar Materi');
-              alert('Data berhasil di tambahkan')
-              table.draw();
-          },
-          error: function (data) {
-              console.log('Error:', data);
-              $('#saveBtn').html('Save Changes');
-          }
-      });
+            success: function (response) {
+              alert('Data Tersimpan');
+                $('#tambah-materi').removeAttr('disabled');
+                $("#tambah").show();
+                $("#detail").hide();
+                $("#button-masuk").show();
+                $("#button-keluar").hide();
+                $("#title").html('Daftar Materi');
+                $('#formSubmit').trigger('reset');
+
+
+                // reset();
+                // $('#tambah-materi').html("TAMBAH");
+                // $('#tambah-materi').removeAttr('disabled');
+                // let oTable = $('#table-agama').dataTable();
+                // oTable.fnDraw(false);
+                // Swal.fire({
+                //     icon: 'success',
+                //     title: 'Berhasil',
+                //     text: 'Berhasil Menambah Data !',
+                // });
+                // $("#tambah").show();
+                // $("#detail").hide();
+                // $("#button-masuk").show();
+                // $("#button-keluar").hide();
+                // $("#title").html('Daftar Materi');
+                // if(response.status == 1) {
+                //
+                //
+                // } else if(response.status == 2) {
+                //     $('#tambah-materi').html("TAMBAH");
+                //     $('#tambah-materi').removeAttr('disabled');
+                //
+                // }
+            },
+            error:function(e)
+            {
+                $('#tambah-materi').html("TAMBAH");
+                $('#tambah-materi').removeAttr('disabled');
+
+            }
+        });
     });
 </script>
 @endpush
+
