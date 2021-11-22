@@ -33,8 +33,7 @@
     <link href="{{ asset('assets/css/formlayout.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/theme-color.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link href="{{ asset('assets/font-awesome/css/all.css') }}" rel="stylesheet">
     @stack('css')
     <!-- favicon -->
     <link rel="shortcut icon" href="img/favicon.ico" />
@@ -190,7 +189,7 @@
     <script src="{{ asset('assets/bundles/flatpicker/js/flatpicker.min.js') }}"></script>
     <!-- end js include path -->
     @stack('js')
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="{{ asset('assets/sweetalert.min.js') }}"></script>
 </body>
 
 
