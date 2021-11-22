@@ -110,7 +110,7 @@ class MajorController extends Controller
 
         ];
         $validate = Validator::make($request->all(), [
-            'name'           => 'required|unique:majors,name',
+            'name'           => 'required|unique:majors,name,' .$id
         ], $message);
         if ($validate->fails()) {
             return redirect()->back()->with('error', 'Data gagal di tambahkan')->withErrors($validate)->withInput();
