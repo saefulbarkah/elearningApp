@@ -105,7 +105,11 @@
           type: "POST",
           dataType: 'json',
             success: function (response) {
-              alert('Data Tersimpan');
+                Swal.fire(
+                    'Berhasil!',
+                    'Data berhasil di tambahkan!',
+                    'success'
+                )
                 $('#tambah-materi').removeAttr('disabled');
                 $("#tambah").show();
                 $("#detail").hide();
@@ -113,8 +117,6 @@
                 $("#button-keluar").hide();
                 $("#title").html('Daftar Materi');
                 $('#formSubmit').trigger('reset');
-
-
                 // reset();
                 // $('#tambah-materi').html("TAMBAH");
                 // $('#tambah-materi').removeAttr('disabled');
