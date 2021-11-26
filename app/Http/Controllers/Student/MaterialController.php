@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Material;
+use App\Student;
 use Illuminate\Http\Request;
 
 class MaterialController extends Controller
@@ -14,7 +16,11 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        return view('student.list-material.index');
+        $student = Student::where('user_id', '=', auth()->user()->id)->first();
+        $material = Material::where('grade_major_id', $student->grade_major_id)->get();
+        // return $material;
+        // dd($material);
+        return view('student.list-material.index', compact('material'));
     }
 
     /**
