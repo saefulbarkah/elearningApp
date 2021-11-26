@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Student;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -29,29 +30,19 @@ class ProfileController extends Controller
 
     public function update(Request $request, $id)
     {
-        if ($request->has('email')) {
-            $user = User::find($id);
-            $this->validate($request, [
-                'email' => 'required|unique:users,email,' . $id,
-            ], [
-                'email.required' => 'Kolom email tidak boleh kosong'
-            ]);
-            $user->update([
-                'email' => $request->email,
-            ]);
-        } else {
-            $userPw = User::find($id);
-            $this->validate($request, [
-                'password' => 'required|same:confirm|min:8',
-            ], [
-                'password.required' => 'Kolom kata sandi tidak boleh kosong',
-                'password.same'     => 'Kata sandi harus sama',
-                'password.min'      => 'Kata sandi minimal 8 karakter',
-            ]);
-            $userPw->update([
-                'password' => $request->password,
-            ]);
-        }
+        $user = User::find($id);
+        $this->validate($request, [
+            'password' => 'required|same:confirm|min:8',
+
+        ], [
+            'password.required' => 'Kata sandi wajib di isi',
+            'password.same'     => 'Kata sandi harus sama',
+            'password.min'      => 'Kata sandi minimal 8 karakter',
+        ]);
+        $user->update([
+            'password' => Hash::make($request->old('password')),
+
+        ]);
         return redirect()->back()->with('success', 'Profile berhasil di perbaharui');
     }
 }
