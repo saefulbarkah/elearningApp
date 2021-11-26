@@ -18,11 +18,11 @@
                 <form id="formSubmit">
                     <div class="col-lg-12 col-md-6 col-sm-6 col-xs-6">
                         <label><i class="text-danger">*</i>Judul : </label>
-                        <input type="text" name="title" class="form-control" placeholder="Judul">
+                        <input type="text" required name="title" class="form-control" placeholder="Judul">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Mata Pelajaran</label>
-                        <select name="subject_id" class="form-control custom-select @error('gender')
+                        <select name="subject_id" required class="form-control custom-select @error('gender')
                         is-invalid
                         @enderror" id="exampleFormControlSelect1">
                             <option selected="" disabled="">---Pilih kelas ---</option>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Kelas dan Jurusan</label>
-                        <select name="grade_major_id" class="form-control custom-select @error('gender')
+                        <select name="grade_major_id" required class="form-control custom-select @error('gender')
                         is-invalid
                     @enderror" id="exampleFormControlSelect1">
                             <option selected="" disabled="">---Pilih kelas ---</option>
@@ -52,7 +52,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Deskripsi</label>
-                        <textarea class="form-control @error('description')
+                        <textarea required class="form-control  @error('description')
                             is-invalid
                         @enderror" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
                         @error('description')
@@ -61,7 +61,7 @@
                     </div>
                     <div class="col-lg-12 col-md-4 col-sm-4 col-xs-4">
                         <label><i class="text-danger">*</i>Pilih File</label>
-                        <input type="file" class="form-control" name="file" placeholder="Jurusan">
+                        <input type="file" required class="form-control" name="file" placeholder="Jurusan">
                     </div>
             </div>
             <div class="col-lg-3 mt-2 float-start">
@@ -143,6 +143,11 @@
             },
             error:function(e)
             {
+                Swal.fire(
+                    'Gagal!',
+                    'Data gagal di tambahkan!',
+                    'error'
+                )
                 $('#tambah-materi').html("TAMBAH");
                 $('#tambah-materi').removeAttr('disabled');
 
