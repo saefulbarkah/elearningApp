@@ -34,13 +34,21 @@ Route::get('auth/google/callback', [GoogleController::class, 'googleCallback']);
 
 // prefix for student
 Route::group(['prefix' => 'student', 'middleware' => ['role:student']], function () {
+    // dashboard
     Route::get('dashboard', [DashboardController::class, 'index'])->name('student-dashboard');
+
+    // absent
     Route::get('absent', [AbsentController::class, 'index'])->name('absent');
+
+    // material
     Route::get('material', [MaterialController::class, 'index'])->name('list-material');
+    Route::get('material/download/file/{id}', [MaterialController::class, 'download']);
+
+    // task
     Route::get('task', [TaskController::class, 'index'])->name('list-task');
     Route::get('profile', [ProfileController::class, 'index'])->name('profile-student');
 
 
     // announcement
-    Route::get('announcement/{id}/detail',[AnnouncementController::class, 'show'])->name('announcement-detail');
+    Route::get('announcement/{id}/detail', [AnnouncementController::class, 'show'])->name('announcement-detail');
 });

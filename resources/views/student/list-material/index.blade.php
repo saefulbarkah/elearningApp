@@ -34,11 +34,12 @@
                             <tr>
                                 <td>{{ $item->title }}</td>
                                 <td>
-                                    <a href="{{ url('student/material/detail/'.$item->id) }}"
+                                    {{-- <a href="{{ url('student/material/detail/'.$item->id) }}"
                                         class="btn-sm btn-success"> <i class="fas fa-search"></i>
-                                        detail</a>
-                                    <a href="" class="btn-sm btn-warning"> <i class="fas fa-download"></i>
-                                        download</a>
+                                        detail</a> --}}
+                                    <a href="{{ url('student/material/download/file/'.$item->id) }}"
+                                        class="btn-sm btn-primary"> <i class="fas fa-download"></i>
+                                        unduh</a>
                                 </td>
                             </tr>
                             @endforeach

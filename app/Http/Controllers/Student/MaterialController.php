@@ -52,7 +52,8 @@ class MaterialController extends Controller
      */
     public function show($id)
     {
-        //
+        $material = Material::find($id);
+        return view('student.list-material.detail');
     }
 
     /**
@@ -87,5 +88,16 @@ class MaterialController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function download($id)
+    {
+        $material = Material::find($id);
+        $file = public_path() . "/file/" . $material->file;
+        // dd($file);
+        $header = [
+            'Content-type: application/pdf',
+        ];
+        return response()->download($file, $material->file, $header);
     }
 }
