@@ -32,16 +32,15 @@
                 <div class="card-body no-padding height-9">
                     <div class="table-reponsive">
                         <table class="table table-strip">
+                            @foreach ($data['material'] as $item)
                             <tr>
                                 <td>
-                                    <a href="">Pemograman Dasar</a>
+                                    <a href="{{ url('student/material/'.$item->id) }}">
+                                        {{ $item->title }}
+                                    </a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <a href="">Pemograman Website</a>
-                                </td>
-                            </tr>
+                            @endforeach
                         </table>
                     </div>
                 </div>
@@ -56,7 +55,7 @@
             <div class="card-body no-padding height-9">
                 <div class="table-reponsive">
                     <table class="table table-strip">
-                        @foreach ($data as $row)
+                        @foreach ($data['announcement'] as $row)
                         <tr>
                             <td>
                                 <a href="{{ url('student/announcement/'.$row->id.'/detail') }}">{{ $row->title }}</a>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Student;
 
 use App\Announcement;
 use App\Http\Controllers\Controller;
+use App\Material;
+use App\Student;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -15,7 +17,11 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $data = Announcement::all();
+        $student = Student::where('user_id', '=', auth()->user()->id)->first();
+        $data = [
+            'material'      => Material::where('grade_major_id', $student->grade_major_id)->get(),
+            'announcement'  => Announcement::all(),
+        ];
         return view('student.dashboard', compact('data'));
     }
 
