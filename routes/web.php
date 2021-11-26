@@ -46,7 +46,11 @@ Route::group(['prefix' => 'student', 'middleware' => ['role:student']], function
 
     // task
     Route::get('task', [TaskController::class, 'index'])->name('list-task');
+
+    // profile
     Route::get('profile', [ProfileController::class, 'index'])->name('profile-student');
+    Route::post('profile/update/{id}', [ProfileController::class, 'update'])->name('profile-update');
+    // Route::get('profile/update/pw/{id}', [ProfileController::class, 'update'])->name('password-user-update');
 
 
     // announcement
