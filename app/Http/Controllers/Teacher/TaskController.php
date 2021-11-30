@@ -22,9 +22,9 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function post()
     {
-        //
+        return view ('teacher.manage-task.create-task');
     }
 
     /**

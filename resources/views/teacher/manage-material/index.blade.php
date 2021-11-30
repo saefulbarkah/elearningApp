@@ -26,7 +26,8 @@
                 </div>
             </div>
             <div class="card-body ">
-                <table id="example1" class="display" style="width:100%;">
+                <div class="table-responsive">
+                <table id="example1" class="display " style="width:100%;">
                     <thead>
                         <tr>
                             <th>Judul</th>
@@ -46,6 +47,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>

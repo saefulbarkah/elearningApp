@@ -16,7 +16,7 @@
                 </header>
             </div>
             <div class="card-body">
-                <a href="{{ route('subject-create') }}" class="btn btn-primary"> Tambah Data Tugas</a>
+                <a href="{{ url('/teacher/create') }}" class="btn btn-primary"> Tambah Data Tugas</a>
             </div>
         </div>
     </div>
@@ -37,7 +37,8 @@
                 </div>
             </div>
             <div class="card-body ">
-                <table id="example1" class="display" style="width:100%;">
+                <div class="table-responsive">
+                <table id="example1" class="display " style="width:100%;">
                     <thead>
                         <tr>
                             <th>Judul</th>
@@ -74,6 +75,7 @@
                         </tr>
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>

@@ -12,25 +12,19 @@
                     <div class="card-body no-padding height-9">
                         <div class="row">
                             <div class="profile-userpic">
-                                <img src="{{ asset('images/'.$student->image) }}" class="img-responsive" alt="">
+                                <img src="{{ asset('images/'.$teacher->image) }}" class="img-responsive" alt="">
                                 <form action="{{ url('student/profile/image') }}" method="POST"
                                       enctype="multipart/form-data">
                                 </form>
                             </div>
                         </div>
                         <div class="profile-usertitle">
-                            <div class="profile-usertitle-name">{{ $student->user_name }}</div>
-                            <div class="profile-usertitle-job"> siswa </div>
+                            <div class="profile-usertitle-name">{{ $teacher->user_name }}</div>
+                            <div class="profile-usertitle-job"> Guru </div>
                         </div>
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b>Kelas</b> <span class="pull-right">{{ $student->grade_name }}</span>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Jurusan</b> <span class="pull-right">{{ $student->major_name }}</span>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Email</b> <span class="pull-right">{{ $student->user_email }}</span>
+                                <b>Email</b> <span class="pull-right">{{ $teacher->user_email }}</span>
                             </li>
                         </ul>
                     </div>
@@ -48,7 +42,7 @@
                             </header>
                         </div>
                         <div class="card-body pt-5 pb-5">
-                            <form method="POST" action="{{ url('student/profile/update',$student->user_id) }}"
+                            <form method="POST" action="{{ url('teacher/profile/update',$teacher->user_id) }}"
                                   enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
