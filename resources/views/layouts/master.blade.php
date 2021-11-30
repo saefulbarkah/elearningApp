@@ -160,7 +160,7 @@
         </div>
         <!-- end page container -->
         <!-- start footer -->
-        <div class="page-footer fixed">
+        {{-- <div class="page-footer fixed">
             <div class="page-footer-inner"> 2021 &copy; RedStar Hospital Template By
                 <a href="https://radixtouch.com/cdn-cgi/l/email-protection#5624333225223724223e333b3316313b373f3a7835393b"
                     target="_top" class="makerCss">Redstartheme</a>
@@ -168,7 +168,7 @@
             <div class="scroll-to-top">
                 <i class="icon-arrow-up"></i>
             </div>
-        </div>
+        </div> --}}
         <!-- end footer -->
     </div>
     <script src="{{ asset('assets/bundles/jquery/jquery.min.js') }}"></script>
