@@ -85,8 +85,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="p-5">
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Login</h1>
+                            <div class="pull-left image text-center">
+                                <img src="{{ asset('images/mahaputra1.png') }}" width="90%" height="auto" class="mb-3 img-circle user-img-circle"
+                                     alt="User Image" />
                             </div>
                             <form class="user" action="{{ route('login') }}" method="POST">
                                 @csrf
