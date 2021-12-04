@@ -21,7 +21,11 @@ class TeacherController extends Controller
     public function index()
     {
         $teacher = Teacher::join('users', 'users.id', '=', 'teachers.user_id')
-            ->select('users.name', 'users.religion', 'users.gender', 'teachers.*')
+            ->join('grade_majors', 'grade_majors.id', '=', 'teachers..grade_major_id')
+            ->join('majors', 'majors.id', '=', 'grade_majors.major_id')
+            ->join('grades', 'grades.id', '=', 'grade_majors.grade_id')
+            ->join('subjects', 'subjects.id', '=', 'teachers.subject_id')
+            ->select('users.name', 'users.religion', 'users.gender', 'teachers.*', 'grades.name as grade_name', 'majors.name as major_name', 'grade_majors.id as gm_id', 'group', 'subjects.name as subject_name')
             ->get();
         return view('admin.manage-teacher.index', compact('teacher'));
     }

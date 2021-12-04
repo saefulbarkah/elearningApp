@@ -46,8 +46,8 @@
                             <th>NIP</th>
                             <th>Nama Lengkap</th>
                             <th>Jenis Kelamin</th>
-                            <th>Agama</th>
-                            <th>Alamat</th>
+                            <th>Bidang Kelas</th>
+                            <th>Bidang Keahlian</th>
                             <th>Gambar</th>
                             <th>Aksi</th>
                         </tr>
@@ -58,8 +58,8 @@
                             <td>{{ $data->nip }}</td>
                             <td>{{ $data->name }}</td>
                             <td>{{ $data->gender }}</td>
-                            <td>{{ $data->religion }}</td>
-                            <td>{{ $data->address }}</td>
+                            <td>{{ $data->grade_name }} | {{ $data->major_name }} {{ $data->group }} </td>
+                            <td>{{ $data->subject_name }}</td>
                             <td>
                                 <img src="{{ asset('images/'.$data->image) }}" alt="" class="img fluid"
                                     style="width: 50px">
