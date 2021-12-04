@@ -14,6 +14,8 @@ class TeacherSeeder extends Seeder
     {
         Teacher::create([
             'user_id' => '2',
+            'subject_id' => 1,
+            'grade_major_id' => 1,
             'nip' => '111123456',
             'address' => 'Kp.Citereup',
             'image'  => 'student-l.png',
