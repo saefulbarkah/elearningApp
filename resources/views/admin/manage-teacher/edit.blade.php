@@ -2,6 +2,8 @@
 @push('css')
 {{-- toastr --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
 @endpush
 @section('title-page', 'Edit Pengajar')
 @section('content')
@@ -65,10 +67,38 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label for="exampleFormControlSelect1">Bidang keahlian</label>
+                        <select class="js-example-basic-single form-control @error('subject_id')
+                        is-invalid
+                         @enderror" name="subject_id">
+                            <option selected="" disabled="">---Pilih bidang keahlian---</option>
+                            @foreach ($subject as $item)
+                            <option value="{{ $item->id }}" {{ ($item->id == $teacher->subject_id) ? 'selected' : '' }} class="laki">{{ $item->name }}</option>
+                            @endforeach
+                         </select>
+                         @error('subject_id')
+                         <div class="text-danger">* {{ $message }}</div>
+                         @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Bidang kelas</label>
+                        <select class="js-example-basic-single form-control @error('grade_major_id')
+                        is-invalid
+                         @enderror" name="grade_major_id">
+                            <option selected="" disabled="">---Pilih Kelas---</option>
+                            @foreach ($gradeMajor as $item)
+                            <option value="{{ $item->gm_id }}" {{ ($item->gm_id == $teacher->grade_major_id) ? 'selected' : '' }} class="laki">{{ $item->grade_name }} | {{ $item->major_name }} {{ $item->group }}</option>
+                            @endforeach
+                         </select>
+                         @error('grade_major_id')
+                         <div class="text-danger">* {{ $message }}</div>
+                         @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="exampleFormControlSelect1">Jenis Kelamin</label>
-                        <select name="gender" class="form-control custom-select @error('gender')
+                        <select name="gender" class="js-example-basic-single form-control @error('gender')
                             is-invalid
-                        @enderror" id="exampleFormControlSelect1">
+                        @enderror">
                             <option selected="" disabled="">---Pilih Jenis Kelamin---</option>
                             <option value="L" @if ($teacher->gender == "L")
                                 selected
@@ -151,7 +181,14 @@
 
 @push('js')
 <!--Image-->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
+        $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+             $('select').select2({
+            theme: 'bootstrap4',
+        });
+    });
     function previewImage() {
                 const image = document.querySelector('#image');
                 const imgPreview = document.querySelector('.img-preview');

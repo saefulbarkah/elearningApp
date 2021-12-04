@@ -141,10 +141,15 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
+        $subject = Subject::all();
+        $gradeMajor = GradeMajor::join('grades', 'grades.id', '=', 'grade_majors.grade_id')
+            ->join('majors', 'majors.id', '=', 'grade_majors.major_id')
+            ->select('grades.name as grade_name', 'majors.name as major_name', 'grade_majors.id as gm_id', 'group')
+            ->get();
         $teacher = Teacher::join('users', 'users.id', '=', 'teachers.user_id')
             ->select('users.name as user_name', 'users.email as user_email', 'users.religion', 'users.gender', 'teachers.*')
             ->find($id);
-        return view('admin.manage-teacher.edit', compact('teacher'));
+        return view('admin.manage-teacher.edit', compact('teacher', 'subject', 'gradeMajor'));
     }
 
     /**
@@ -192,6 +197,8 @@ class TeacherController extends Controller
         $teacher->user_id           = $request->user_id;
         $teacher->nip               = $request->nip;
         $teacher->address           = $request->address;
+        $teacher->subject_id        = $request->subject_id;
+        $teacher->grade_major_id    = $request->grade_major_id;
         if ($request->hasFile('image')) {
             $imageName = pathinfo($request->image->getClientOriginalName(), PATHINFO_FILENAME);
             $imageEx   = $request->image->getClientOriginalExtension();
