@@ -76,20 +76,6 @@
                          @enderror
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Bidang kelas</label>
-                        <select class="js-example-basic-single form-control @error('grade_major_id')
-                        is-invalid
-                         @enderror" name="grade_major_id">
-                            <option selected="" disabled="">---Pilih Kelas---</option>
-                            @foreach ($gradeMajor as $item)
-                            <option value="{{ $item->gm_id }}" class="laki">{{ $item->grade_name }} | {{ $item->major_name }} {{ $item->group }}</option>
-                            @endforeach
-                         </select>
-                         @error('grade_major_id')
-                         <div class="text-danger">* {{ $message }}</div>
-                         @enderror
-                    </div>
-                    <div class="form-group">
                         <label for="exampleFormControlSelect1">Jenis Kelamin</label>
                         <select class="js-example-basic-single form-control @error('gender')
                         is-invalid

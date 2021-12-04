@@ -21,11 +21,8 @@ class TeacherController extends Controller
     public function index()
     {
         $teacher = Teacher::join('users', 'users.id', '=', 'teachers.user_id')
-            ->join('grade_majors', 'grade_majors.id', '=', 'teachers..grade_major_id')
-            ->join('majors', 'majors.id', '=', 'grade_majors.major_id')
-            ->join('grades', 'grades.id', '=', 'grade_majors.grade_id')
             ->join('subjects', 'subjects.id', '=', 'teachers.subject_id')
-            ->select('users.name', 'users.religion', 'users.gender', 'teachers.*', 'grades.name as grade_name', 'majors.name as major_name', 'grade_majors.id as gm_id', 'group', 'subjects.name as subject_name')
+            ->select('users.name', 'users.religion', 'users.gender', 'teachers.*', 'subjects.name as subject_name')
             ->get();
         return view('admin.manage-teacher.index', compact('teacher'));
     }
@@ -38,11 +35,7 @@ class TeacherController extends Controller
     public function create()
     {
         $subject = Subject::all();
-        $gradeMajor = GradeMajor::join('grades', 'grades.id', '=', 'grade_majors.grade_id')
-            ->join('majors', 'majors.id', '=', 'grade_majors.major_id')
-            ->select('grades.name as grade_name', 'majors.name as major_name', 'grade_majors.id as gm_id', 'group')
-            ->get();
-        return view('admin.manage-teacher.create', compact('subject', 'gradeMajor'));
+        return view('admin.manage-teacher.create', compact('subject'));
     }
 
     /**
@@ -64,7 +57,6 @@ class TeacherController extends Controller
             'address.required' => "Kolom alamat tidak boleh kosong",
             'religion.required' => "Agama wajib di pilih",
             'subject_id.required' => "Bidang keahlian wajib di pilih",
-            'grade_major_id.required' => "Kelas wajib di pilih",
 
             // unique
             'email.unique'   => "Email sudah di gunakan",
@@ -79,7 +71,6 @@ class TeacherController extends Controller
             'nip'            => 'required|unique:teachers,nip',
             'gender'         => 'required',
             'subject_id'         => 'required',
-            'grade_major_id'         => 'required',
             'religion'       => 'required',
             'address'        => 'required',
             'image'          => 'mimes:jpg,png'
@@ -105,7 +96,6 @@ class TeacherController extends Controller
         $teacher->nip               = $request->nip;
         $teacher->address           = $request->address;
         $teacher->subject_id        = $request->subject_id;
-        $teacher->grade_major_id    = $request->grade_major_id;
         if ($request->hasFile('image')) {
             $imageName = pathinfo($request->image->getClientOriginalName(), PATHINFO_FILENAME);
             $imageEx   = $request->image->getClientOriginalExtension();
@@ -146,14 +136,10 @@ class TeacherController extends Controller
     public function edit($id)
     {
         $subject = Subject::all();
-        $gradeMajor = GradeMajor::join('grades', 'grades.id', '=', 'grade_majors.grade_id')
-            ->join('majors', 'majors.id', '=', 'grade_majors.major_id')
-            ->select('grades.name as grade_name', 'majors.name as major_name', 'grade_majors.id as gm_id', 'group')
-            ->get();
         $teacher = Teacher::join('users', 'users.id', '=', 'teachers.user_id')
             ->select('users.name as user_name', 'users.email as user_email', 'users.religion', 'users.gender', 'teachers.*')
             ->find($id);
-        return view('admin.manage-teacher.edit', compact('teacher', 'subject', 'gradeMajor'));
+        return view('admin.manage-teacher.edit', compact('teacher', 'subject'));
     }
 
     /**
@@ -202,7 +188,6 @@ class TeacherController extends Controller
         $teacher->nip               = $request->nip;
         $teacher->address           = $request->address;
         $teacher->subject_id        = $request->subject_id;
-        $teacher->grade_major_id    = $request->grade_major_id;
         if ($request->hasFile('image')) {
             $imageName = pathinfo($request->image->getClientOriginalName(), PATHINFO_FILENAME);
             $imageEx   = $request->image->getClientOriginalExtension();

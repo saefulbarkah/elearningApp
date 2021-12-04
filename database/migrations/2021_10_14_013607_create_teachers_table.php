@@ -19,8 +19,6 @@ class CreateTeachersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('subject_id');
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
-            $table->unsignedBigInteger('grade_major_id');
-            $table->foreign('grade_major_id')->references('id')->on('grade_majors')->onDelete('cascade');
             $table->string('nip')->unique();
             $table->text('address');
             $table->string('image')->nullable();
