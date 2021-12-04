@@ -8,8 +8,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'teacher', 'middleware' => ['role:teacher']], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('teacher-dashboard');
+
+    // materi
     Route::get('manage-material', [MaterialController::class, 'index'])->name('manage-material');
+    Route::get('manage-material/create', [MaterialController::class, 'create']);
     Route::post('manage-material/post', [MaterialController::class, 'store'])->name('post-material');
+    Route::get('manage-material/edit/{id}', [MaterialController::class, 'edit']);
+    Route::post('manage-material/update/{id}', [MaterialController::class, 'update']);
+    Route::get('manage-material/delete/{id}', [MaterialController::class, 'destroy']);
+
+
+    //
     Route::get('manage-task', [TaskController::class, 'index'])->name('manage-task');
     Route::get('profile', [\App\Http\Controllers\Teacher\ProfileController::class, 'index'])->name('profile-teacher');
     Route::post('profile/update/{id}', [\App\Http\Controllers\Teacher\ProfileController::class, 'update']);

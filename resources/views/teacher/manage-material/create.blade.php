@@ -1,159 +1,121 @@
-<div class="col-md-12 col-sm-12">
-    <div class="card card-box">
-        <div class="card-head">
-            <header><i class="fa fa-plus-circle"></i>Tambah Materi</header>
-            <div class="tools mt-4">
-                <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
-                <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
-                <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+@extends('layouts.master')
+@push('css')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+@endpush
+@section('content')
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-head">
+                <header>
+                    <i class="fas fa-bars"></i>
+                    Menu
+                </header>
             </div>
-            <div class="float-end">
-                <button id="button-keluar" class="btn btn-warning float-end">
-                    <i class="icon-logout mt-2" style="font-size: 17px"></i>
-                </button>
+            <div class="card-body">
+                <a href="{{ route('manage-material') }}" class="btn btn-warning">
+                     <i class="fas fa-arrow-left"></i>
+                     Kembali
+                </a>
             </div>
         </div>
-        <div class="card-body ">
-            <div class="row">
-                <form id="formSubmit">
-                    <div class="col-lg-12 col-md-6 col-sm-6 col-xs-6">
-                        <label><i class="text-danger">*</i>Judul : </label>
-                        <input type="text" required name="title" class="form-control" placeholder="Judul">
-                    </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-head">
+                <header>
+                    <i class="fas fa-edit"></i>
+                    Form materi
+                </header>
+            </div>
+            <div class="card-body">
+                <form action="{{ url('teacher/manage-material/post') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Mata Pelajaran</label>
-                        <select name="subject_id" required class="form-control custom-select @error('gender')
-                        is-invalid
-                        @enderror" id="exampleFormControlSelect1">
-                            <option selected="" disabled="">---Pilih kelas ---</option>
-                            @foreach ($subject as $data)
-                            <option value="{{ $data->id }}">{{ $data->name }}</option>
-                            @endforeach
-                        </select>
-                        @error('subject_id')
+                        <label for="exampleInputEmail1">Judul materi</label>
+                        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title"
+                            id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off">
+                        @error('title')
                         <div class="text-danger">* {{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Kelas dan Jurusan</label>
-                        <select name="grade_major_id" required class="form-control custom-select @error('gender')
-                        is-invalid
-                    @enderror" id="exampleFormControlSelect1">
-                            <option selected="" disabled="">---Pilih kelas ---</option>
-                            @foreach ($gradeMajors as $data)
-                            <option value="{{ $data->gm_id }}">{{ $data->grade_name }} - {{
-                                $data->major_name
-                                }} {{ $data->group }}</option>
-                            @endforeach
-                        </select>
-                        @error('grade_major_id')
-                        <div class="text-danger">* {{ $message }}</div>
-                        @enderror
+                        <label for="exampleInputEmail1">Materi</label>
+                        <input type="text" disabled value="{{ $materi->name }}" class="form-control"
+                            id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off">
+                        <input type="hidden" value="{{ $materi->id }}" name="subject_id" class="form-control"
+                            id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Deskripsi</label>
-                        <textarea required class="form-control  @error('description')
+                        <label for="exampleFormControlSelect1">Kelas dan jurusan</label>
+                        <select class="js-example-basic-single form-control @error('grade_major_id')
+                        is-invalid
+                         @enderror" name="grade_major_id">
+                            <option selected="" disabled="">---Pilih Kelas dan jurusan---</option>
+                            @foreach ($gradeMajors as $item)
+                            <option value="{{ $item->gm_id }}" >{{ $item->grade_name }} | {{ $item->major_name }} {{ $item->group }}</option>
+                            @endforeach
+                         </select>
+                         @error('grade_major_id')
+                         <div class="text-danger">* {{ $message }}</div>
+                         @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Deskripsi materi</label>
+                        <textarea class="form-control @error('description')
                             is-invalid
                         @enderror" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
                         @error('description')
                         <div class="text-danger">* {{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="col-lg-12 col-md-4 col-sm-4 col-xs-4">
-                        <label><i class="text-danger">*</i>Pilih File</label>
-                        <input type="file" required class="form-control" name="file" placeholder="Jurusan">
+                    <div class="form-group mb-4">
+                        <label for="exampleInputEmail1" class="mb-4">Upload file materi</label>
+                        <img class="img-preview img-fluid mb-3 col-sm-5">
+                        <div class="custom-file mb-3">
+                            <input type="file" class="custom-file-input" name="file">
+                            <label class="custom-file-label" for="inputGroupFile01">Upload file</label>
+                        </div>
+                        @error('file')
+                        <div class="text-danger">* {{ $message }}</div>
+                        @enderror
                     </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="reset" class="btn btn-danger">Reset</button>
+                    </div>
+                </form>
             </div>
-            <div class="col-lg-3 mt-2 float-start">
-                <button id="submit" class="btn btn-success">Submit</button>
-            </div>
-            </form>
         </div>
     </div>
 </div>
 @push('js')
-<script type="text/javascript">
-    $("#detail").hide();
-    $("#button-keluar").hide();
-
-    $("#button-masuk").on('click', function (e) {
-        e.preventDefault();
-        $("#tambah").hide();
-        $("#detail").show();
-        $("#button-masuk").hide();
-        $("#button-keluar").show();
-        $("#title").html('Tambah Materi');
-    });
-    $("#button-keluar").on('click', function (e) {
-        e.preventDefault();
-        $("#tambah").show();
-        $("#detail").hide();
-        $("#button-masuk").show();
-        $("#button-keluar").hide();
-        $("#title").html('Daftar Materi');
-    });
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $("#submit").click(function(e){
-        e.preventDefault();
-        $.ajax({
-          data: $('#formSubmit').serialize(),
-          url: "{{ route('post-material') }}",
-          type: "POST",
-          dataType: 'json',
-            success: function (response) {
-                Swal.fire(
-                    'Berhasil!',
-                    'Data berhasil di tambahkan!',
-                    'success'
-                )
-                $('#tambah-materi').removeAttr('disabled');
-                $("#tambah").show();
-                $("#detail").hide();
-                $("#button-masuk").show();
-                $("#button-keluar").hide();
-                $("#title").html('Daftar Materi');
-                $('#formSubmit').trigger('reset');
-                // reset();
-                // $('#tambah-materi').html("TAMBAH");
-                // $('#tambah-materi').removeAttr('disabled');
-                // let oTable = $('#table-agama').dataTable();
-                // oTable.fnDraw(false);
-                // Swal.fire({
-                //     icon: 'success',
-                //     title: 'Berhasil',
-                //     text: 'Berhasil Menambah Data !',
-                // });
-                // $("#tambah").show();
-                // $("#detail").hide();
-                // $("#button-masuk").show();
-                // $("#button-keluar").hide();
-                // $("#title").html('Daftar Materi');
-                // if(response.status == 1) {
-                //
-                //
-                // } else if(response.status == 2) {
-                //     $('#tambah-materi').html("TAMBAH");
-                //     $('#tambah-materi').removeAttr('disabled');
-                //
-                // }
-            },
-            error:function(e)
-            {
-                Swal.fire(
-                    'Gagal!',
-                    'Data gagal di tambahkan!',
-                    'error'
-                )
-                $('#tambah-materi').html("TAMBAH");
-                $('#tambah-materi').removeAttr('disabled');
-
-            }
+<!--Image-->
+<script>
+        // In your Javascript (external .js resource or <script> tag)
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+             $('select').select2({
+            theme: 'bootstrap4',
         });
     });
 </script>
-@endpush
+<script src="{{ asset('assets/bundles/jquery-validation/js/jquery.validate.min.js') }}"></script>
+<script src="{{ asset('assets/bundles/jquery-validation/js/additional-methods.min.js') }}"></script>\
+<script src="{{ asset('assets/data/form-validation.js') }}"></script>
 
+{{-- toastr --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+@if (Session::has('error'))
+<script>
+    toastr.error("{!! Session::get('error') !!}");
+</script>
+@endif
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+@endpush
+@endsection
