@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\GradeMajor;
 use App\Http\Controllers\Controller;
+use App\Subject;
 use App\Teacher;
 use App\User;
 use Illuminate\Http\Request;
@@ -19,7 +21,7 @@ class TeacherController extends Controller
     public function index()
     {
         $teacher = Teacher::join('users', 'users.id', '=', 'teachers.user_id')
-            ->select('users.name','users.religion','users.gender','teachers.*')
+            ->select('users.name', 'users.religion', 'users.gender', 'teachers.*')
             ->get();
         return view('admin.manage-teacher.index', compact('teacher'));
     }
@@ -31,7 +33,12 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('admin.manage-teacher.create');
+        $subject = Subject::all();
+        $gradeMajor = GradeMajor::join('grades', 'grades.id', '=', 'grade_majors.grade_id')
+            ->join('majors', 'majors.id', '=', 'grade_majors.major_id')
+            ->select('grades.name as grade_name', 'majors.name as major_name', 'grade_majors.id as gm_id', 'group')
+            ->get();
+        return view('admin.manage-teacher.create', compact('subject', 'gradeMajor'));
     }
 
     /**
@@ -52,6 +59,8 @@ class TeacherController extends Controller
             'grade_major_id.required' => "Kelas dan jurusan wajib di pilih",
             'address.required' => "Kolom alamat tidak boleh kosong",
             'religion.required' => "Agama wajib di pilih",
+            'subject_id.required' => "Bidang keahlian wajib di pilih",
+            'grade_major_id.required' => "Kelas wajib di pilih",
 
             // unique
             'email.unique'   => "Email sudah di gunakan",
@@ -65,6 +74,8 @@ class TeacherController extends Controller
             'email'          => 'required|unique:users,email',
             'nip'            => 'required|unique:teachers,nip',
             'gender'         => 'required',
+            'subject_id'         => 'required',
+            'grade_major_id'         => 'required',
             'religion'       => 'required',
             'address'        => 'required',
             'image'          => 'mimes:jpg,png'
@@ -89,6 +100,8 @@ class TeacherController extends Controller
         $teacher->user_id           = $newUserteacher->id;
         $teacher->nip               = $request->nip;
         $teacher->address           = $request->address;
+        $teacher->subject_id        = $request->subject_id;
+        $teacher->grade_major_id    = $request->grade_major_id;
         if ($request->hasFile('image')) {
             $imageName = pathinfo($request->image->getClientOriginalName(), PATHINFO_FILENAME);
             $imageEx   = $request->image->getClientOriginalExtension();
@@ -129,7 +142,7 @@ class TeacherController extends Controller
     public function edit($id)
     {
         $teacher = Teacher::join('users', 'users.id', '=', 'teachers.user_id')
-            ->select('users.name as user_name', 'users.email as user_email','users.religion','users.gender','teachers.*')
+            ->select('users.name as user_name', 'users.email as user_email', 'users.religion', 'users.gender', 'teachers.*')
             ->find($id);
         return view('admin.manage-teacher.edit', compact('teacher'));
     }
