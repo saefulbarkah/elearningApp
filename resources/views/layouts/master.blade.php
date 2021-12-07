@@ -191,6 +191,7 @@
     @stack('js')
     <script src="{{ asset('assets/sweetalert.min.js') }}"></script>
     <script src="{{ asset('assets/sweetalert2@11.js') }}"></script>
+    <script src="{{ asset('assets/js/sweetalert.min.js') }}"></script>
 </body>
 
 
