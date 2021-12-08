@@ -15,6 +15,15 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->unsignedBigInteger('subject_id');
+            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
+            $table->unsignedBigInteger('grade_major_id');
+            $table->foreign('grade_major_id')->references('id')->on('grade_majors')->onDelete('cascade');
+            $table->text('description')->nullable();
+            $table->string('file');
+            $table->date('start_time');
+            $table->date('end_time');
             $table->timestamps();
         });
     }

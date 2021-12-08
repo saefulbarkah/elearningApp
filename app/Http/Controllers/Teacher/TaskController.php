@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Task;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -14,7 +15,21 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view('teacher.manage-task.index');
+        $data = Task::join('subjects', 'subjects.id', '=', 'tasks.subject_id')
+            ->join('grade_majors', 'grade_majors.id', '=', 'tasks.grade_major_id')
+            ->join('grades', 'grades.id', '=', 'grade_majors.grade_id')
+            ->join('majors', 'majors.id', '=', 'grade_majors.major_id')
+            ->select(
+                'tasks.title',
+                'tasks.description',
+                'tasks.file',
+                'majors.name as major_name',
+                'grades.name as grade_name',
+                'subjects.name as subject_name',
+                'tasks.start_time',
+                'tasks.end_time',
+            )->get();
+        return view('teacher.manage-task.index', compact('data'));
     }
 
     /**
@@ -22,9 +37,23 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function post()
+    public function create()
     {
-        return view ('teacher.manage-task.create-task');
+        $data = Task::join('subjects', 'subjects.id', '=', 'tasks.subject_id')
+            ->join('grade_majors', 'grade_majors.id', '=', 'tasks.grade_major_id')
+            ->join('grades', 'grades.id', '=', 'grade_majors.grade_id')
+            ->join('majors', 'majors.id', '=', 'grade_majors.major_id')
+            ->select(
+                'tasks.title',
+                'tasks.description',
+                'tasks.file',
+                'majors.name as major_name',
+                'grades.name as grade_name',
+                'subjects.name as subject_name',
+                'tasks.start_time',
+                'tasks.end_time',
+            )->get();
+        return view('teacher.manage-task.create-task');
     }
 
     /**

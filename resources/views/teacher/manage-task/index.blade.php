@@ -16,7 +16,7 @@
                 </header>
             </div>
             <div class="card-body">
-                <a href="{{ url('/teacher/create') }}" class="btn btn-primary"> Tambah Data Tugas</a>
+                <a href="{{ url('teacher/manage-task/create') }}" class="btn btn-primary"> Tambah Data Tugas</a>
             </div>
         </div>
     </div>
@@ -38,26 +38,27 @@
             </div>
             <div class="card-body ">
                 <div class="table-responsive">
-                <table id="example1" class="display " style="width:100%;">
+                <table id="example1" class="display nowrap">
                     <thead>
                         <tr>
                             <th>Judul</th>
                             <th>Mata Pelajaran</th>
                             <th>kelas</th>
                             <th>Jurusan</th>
-                            <th>Tipe Tugas</th>
+                            <th>Tanggal di mulai</th>
+                            <th>Tanggal selesai</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($data as $row)
                         <tr>
-                            <td>Membuat rumus python</td>
-                            <td>Matematika</td>
-                            <td>XII</td>
-                            <td>RPL</td>
-                            <td>
-                                <span class="badge badge-info">ganda</span>
-                            </td>
+                            <td>{{ $row->title }}</td>
+                            <td>{{ $row->subject_name }}</td>
+                            <td>{{ $row->grade_name }}</td>
+                            <td>{{ $row->major_name }}</td>
+                            <td>{{ $row->start_time }}</td>
+                            <td>{{ $row->end_time }}</td>
                             <td>
                                 <a href="" class="btn btn-info">
                                     <i class="fa fa-edit"></i>
@@ -67,12 +68,9 @@
                                     <i class="fa fa-trash"></i>
                                     Hapus
                                 </a>
-                                <a href="" class="btn btn-success">
-                                    <i class="fa fa-search"></i>
-                                    Detail
-                                </a>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
                 </div>

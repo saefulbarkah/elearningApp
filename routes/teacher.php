@@ -18,8 +18,11 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['role:teacher']], function
     Route::get('manage-material/delete/{id}', [MaterialController::class, 'destroy']);
 
 
-    //
+    //task
     Route::get('manage-task', [TaskController::class, 'index'])->name('manage-task');
+    Route::get('manage-task/create', [TaskController::class, 'create']);
+
+
     Route::get('profile', [\App\Http\Controllers\Teacher\ProfileController::class, 'index'])->name('profile-teacher');
     Route::post('profile/update/{id}', [\App\Http\Controllers\Teacher\ProfileController::class, 'update']);
     // announcement
