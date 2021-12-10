@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers\Teacher;
 
+use App\GradeMajor;
 use App\Http\Controllers\Controller;
+use App\Subject;
 use App\Task;
+use App\Teacher;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TaskController extends Controller
 {
@@ -15,6 +20,7 @@ class TaskController extends Controller
      */
     public function index()
     {
+        $getIdSubject = Teacher::where('user_id', '=', auth()->user()->id)->first();
         $data = Task::join('subjects', 'subjects.id', '=', 'tasks.subject_id')
             ->join('grade_majors', 'grade_majors.id', '=', 'tasks.grade_major_id')
             ->join('grades', 'grades.id', '=', 'grade_majors.grade_id')
@@ -28,7 +34,7 @@ class TaskController extends Controller
                 'subjects.name as subject_name',
                 'tasks.start_time',
                 'tasks.end_time',
-            )->get();
+            )->where('tasks.subject_id', '=', $getIdSubject->subject_id)->get();
         return view('teacher.manage-task.index', compact('data'));
     }
 
@@ -39,21 +45,13 @@ class TaskController extends Controller
      */
     public function create()
     {
-        $data = Task::join('subjects', 'subjects.id', '=', 'tasks.subject_id')
-            ->join('grade_majors', 'grade_majors.id', '=', 'tasks.grade_major_id')
-            ->join('grades', 'grades.id', '=', 'grade_majors.grade_id')
+        $gradeMajors = GradeMajor::join('grades', 'grades.id', '=', 'grade_majors.grade_id')
             ->join('majors', 'majors.id', '=', 'grade_majors.major_id')
-            ->select(
-                'tasks.title',
-                'tasks.description',
-                'tasks.file',
-                'majors.name as major_name',
-                'grades.name as grade_name',
-                'subjects.name as subject_name',
-                'tasks.start_time',
-                'tasks.end_time',
-            )->get();
-        return view('teacher.manage-task.create-task');
+            ->select('majors.name as major_name', 'grades.name as grade_name', 'grade_majors.id as gm_id', 'grade_majors.group')
+            ->get();
+        $teacher = Teacher::where('user_id', '=', auth()->user()->id)->first();
+        $subject = Subject::where('id', $teacher->subject_id)->first();
+        return view('teacher.manage-task.create-task', compact('gradeMajors', 'subject'));
     }
 
     /**
@@ -64,7 +62,53 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $message = [
+
+            // required
+            'title.required' => "Kolom judul tidak boleh kosong",
+            'start_time.required' => "Kolom tanggal tidak boleh kosong",
+            'end_time.required' => "Kolom tanggal tidak boleh kosong",
+            'description.required' => "Kolom deskripsi tidak boleh kosong",
+
+            'title.max' => "Jumlah karakter terlalu banyak",
+            'grade_major_id.required' => 'Kelas dan jurusan wajib di isi',
+            'description.required' => 'Deskripsi wajib di isi',
+            'file.required' => 'File wajib di isi',
+
+            // mimes
+            'file.mimes' => 'Format file salah, extension file harus .pdf',
+
+
+            // date
+            'start_time.date' => "Harus menggunakan format tanggal",
+            'start_time.after_or_equal' => "Waktu tidak valid",
+            'end_time.after' => "Waktu tidak valid",
+        ];
+
+        $validate = Validator::make($request->all(), [
+            'title'           => 'required|max:255',
+            'start_time'    => 'required|date|after_or_equal:' . Carbon::now()->format('Y-m-d'),
+            'end_time'    => 'required|after:start_time',
+            'description'    => 'required',
+            'subject_id'        => 'required',
+            'grade_major_id'    => 'required',
+            'file'              => 'mimes:pdf',
+
+        ], $message);
+        if ($validate->fails()) {
+            return redirect()->back()->with('error', 'Data gagal di tambahkan')->withErrors($validate)->withInput();
+        }
+
+        $post = new Task();
+        $post->title = $request->title;
+        $post->subject_id = $request->subject_id;
+        $post->grade_major_id = $request->grade_major_id;
+        $post->start_time = Carbon::parse($request->start_time)->format('Y-m-d');
+        $post->end_time = Carbon::parse($request->end_time)->format('Y-m-d');
+        $post->description = $request->description;
+        $post->save();
+        return redirect()->route('manage-task')->with('success', 'Data berhasil di tambahkan');
     }
 
     /**

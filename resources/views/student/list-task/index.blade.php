@@ -26,38 +26,19 @@
                         <tr>
                             <th>Judul</th>
                             <th>Tanggal</th>
-                            <th>Tipe Tugas</th>
-                            <th>Waktu</th>
                             <th class="ml-4">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Pemograman Dasar</td>
-                            <td>20 Agustus 2021 s/d 25 Agustus 2021</td>
-                            <td>
-                                <span class="badge badge-success">Ganda</span>
-                            </td>
-                            <td>
-                                1 Jam
-                            </td>
-                            <td>
-                                <a href="" class="btn-sm btn-success"> <i class="fas fa-edit"></i> Kerjakan</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Laravel 8</td>
-                            <td>20 Agustus 2021 s/d 25 Agustus 2021</td>
-                            <td>
-                                <span class="badge badge-danger">Upload</span>
-                            </td>
-                            <td>
-                                1 Jam
-                            </td>
-                            <td class="mr-auto">
-                                <a href="" class="btn-sm btn-success"> Kerjakan</a>
-                            </td>
-                        </tr>
+                        @foreach ($data as $row)
+                            <tr>
+                                <td>{{ $row->title }}</td>
+                                <td>
+                                    <span class="badge badge-info">{{ $row->start_time }}</span> s/d
+                                    <span class="badge badge-warning">{{ $row->end_time }}</span>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -21,7 +21,7 @@ class CreateTasksTable extends Migration
             $table->unsignedBigInteger('grade_major_id');
             $table->foreign('grade_major_id')->references('id')->on('grade_majors')->onDelete('cascade');
             $table->text('description')->nullable();
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->date('start_time');
             $table->date('end_time');
             $table->timestamps();

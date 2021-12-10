@@ -30,23 +30,17 @@
                     <i class="fas fa-table"></i>
                     Data Tugas
                 </header>
-                <div class="tools">
-                    <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
-                    <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
-                    <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
-                </div>
             </div>
             <div class="card-body ">
                 <div class="table-responsive">
-                <table id="example1" class="display nowrap">
+                <table id="example1" class="display nowrap" style="width: 100%">
                     <thead>
                         <tr>
                             <th>Judul</th>
                             <th>Mata Pelajaran</th>
                             <th>kelas</th>
                             <th>Jurusan</th>
-                            <th>Tanggal di mulai</th>
-                            <th>Tanggal selesai</th>
+                            <th>Tanggal</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -57,16 +51,17 @@
                             <td>{{ $row->subject_name }}</td>
                             <td>{{ $row->grade_name }}</td>
                             <td>{{ $row->major_name }}</td>
-                            <td>{{ $row->start_time }}</td>
-                            <td>{{ $row->end_time }}</td>
+                            <td>
+                                {{ $row->start_time }}
+                               -
+                                {{ $row->end_time }}
+                            </td>
                             <td>
                                 <a href="" class="btn btn-info">
                                     <i class="fa fa-edit"></i>
-                                    Edit
                                 </a>
                                 <a href="" class="btn btn-danger">
                                     <i class="fa fa-trash"></i>
-                                    Hapus
                                 </a>
                             </td>
                         </tr>

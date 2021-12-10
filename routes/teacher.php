@@ -21,6 +21,7 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['role:teacher']], function
     //task
     Route::get('manage-task', [TaskController::class, 'index'])->name('manage-task');
     Route::get('manage-task/create', [TaskController::class, 'create']);
+    Route::post('manage-task/post', [TaskController::class, 'store'])->name('task-store');
 
 
     Route::get('profile', [\App\Http\Controllers\Teacher\ProfileController::class, 'index'])->name('profile-teacher');
