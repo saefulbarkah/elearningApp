@@ -77,7 +77,7 @@ class TaskController extends Controller
             'file.required' => 'File wajib di isi',
 
             // mimes
-            'file.mimes' => 'Format file salah, extension file harus .pdf',
+            'file.mimes' => 'Format file salah',
 
 
             // date
@@ -93,7 +93,7 @@ class TaskController extends Controller
             'description'    => 'required',
             'subject_id'        => 'required',
             'grade_major_id'    => 'required',
-            'file'              => 'mimes:pdf',
+            'file'              => 'mimes:pdf,jpg,png,jpeg',
 
         ], $message);
         if ($validate->fails()) {
@@ -107,6 +107,13 @@ class TaskController extends Controller
         $post->start_time = Carbon::parse($request->start_time)->format('Y-m-d');
         $post->end_time = Carbon::parse($request->end_time)->format('Y-m-d');
         $post->description = $request->description;
+        if ($request->hasFile('file')) {
+            $fileName = pathinfo($request->file->getClientOriginalName(), PATHINFO_FILENAME);
+            $fileEx = $request->file->getClientOriginalExtension();
+            $fileGroup = $fileName . '-' . time() . '.' . $fileEx;
+            $fileMove = $request->file->move('file', $fileGroup);
+            $post->file = $fileGroup;
+        }
         $post->save();
         return redirect()->route('manage-task')->with('success', 'Data berhasil di tambahkan');
     }

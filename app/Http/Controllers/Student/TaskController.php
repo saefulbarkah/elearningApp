@@ -18,21 +18,20 @@ class TaskController extends Controller
     public function index()
     {
         $student = Student::where('user_id', '=', auth()->user()->id)->first();
-        // $data = Task::join('subjects', 'subjects.id', '=', 'tasks.subject_id')
-        //     ->join('grade_majors', 'grade_majors.id', '=', 'tasks.grade_major_id')
-        //     ->join('grades', 'grades.id', '=', 'grade_majors.grade_id')
-        //     ->join('majors', 'majors.id', '=', 'grade_majors.major_id')
-        //     ->select(
-        //         'tasks.title',
-        //         'tasks.description',
-        //         'tasks.file',
-        //         'majors.name as major_name',
-        //         'grades.name as grade_name',
-        //         'subjects.name as subject_name',
-        //         'tasks.start_time',
-        //         'tasks.end_time',
-        //     )->get();
-        $data = Task::where('grade_major_id', '=', $student->grade_major_id)->get();
+        $data = Task::join('subjects', 'subjects.id', '=', 'tasks.subject_id')
+            ->join('grade_majors', 'grade_majors.id', '=', 'tasks.grade_major_id')
+            ->join('grades', 'grades.id', '=', 'grade_majors.grade_id')
+            ->join('majors', 'majors.id', '=', 'grade_majors.major_id')
+            ->select(
+                'tasks.title',
+                'tasks.description',
+                'tasks.file',
+                'majors.name as major_name',
+                'grades.name as grade_name',
+                'subjects.name as subject_name',
+                'tasks.start_time',
+                'tasks.end_time',
+            )->where('grade_major_id', '=', $student->grade_major_id)->get();
         return view('student.list-task.index', compact('data'));
     }
 

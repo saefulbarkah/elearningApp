@@ -45,7 +45,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Materi</label>
+                        <label for="exampleInputEmail1">Mata pelajaran</label>
                         <input type="text" disabled value="{{ $materi->name }}" class="form-control"
                             id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off">
                         <input type="hidden" value="{{ $materi->id }}" name="subject_id" class="form-control"

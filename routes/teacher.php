@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Teacher\TaskCompletedController;
 use App\Http\Controllers\Teacher\AnnouncementController;
 use App\Http\Controllers\Teacher\DashboardController;
 use App\Http\Controllers\Teacher\MaterialController;
@@ -22,6 +23,9 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['role:teacher']], function
     Route::get('manage-task', [TaskController::class, 'index'])->name('manage-task');
     Route::get('manage-task/create', [TaskController::class, 'create']);
     Route::post('manage-task/post', [TaskController::class, 'store'])->name('task-store');
+
+    // taskCompleted
+    Route::get('task', [TaskCompletedController::class, 'index']);
 
 
     Route::get('profile', [\App\Http\Controllers\Teacher\ProfileController::class, 'index'])->name('profile-teacher');

@@ -94,7 +94,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <textarea id="summernote" name="description"></textarea>
+                        <label for="">Deskripsi</label>
+                        <textarea class="form-control" name="description" rows="5"></textarea>
                         @error('description')
                         <div class="text-danger">* {{ $message }}</div>
                         @enderror
@@ -118,17 +119,6 @@
     </div>
 </div>
 @push('js')
-<!-- Summernote -->
-<script src="{{ asset('assets/summernote-bs4.min.js') }}"></script>
-<script>
-    $(document).ready(function() {
-        $('#summernote').summernote({
-            placeholder: 'Deskripsi',
-            tabsize: 2,
-            height: 400
-        });
-    });
-</script>
 
 <script src="{{ asset('assets/data/date-time.init.js') }}"></script>
 <!--Image-->

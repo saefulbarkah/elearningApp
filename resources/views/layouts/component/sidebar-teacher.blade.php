@@ -30,10 +30,24 @@
                     <span class="title">Kelola Materi</span>
                 </a>
             </li>
-            <li class="nav-item {{ Request::is('teacher/manage-task') ? 'active' : '' }}">
-                <a href="{{ route('manage-task') }}" class="nav-link nav-toggle"> <i class="fas fa-book"></i>
-                    <span class="title">Kelola Tugas</span>
+            <li class="nav-item">
+                <a href="#" class="nav-link nav-toggle">
+                    <i class="fas fa-book"></i>
+                    <span class="title">Kelola tugas</span>
+                    <span class="arrow"></span>
                 </a>
+                <ul class="sub-menu">
+                    <li class="nav-item {{ Request::is('teacher/manage-task') ? 'active' : '' }}">
+                        <a href="{{ route('manage-task') }}" class="nav-link nav-toggle">
+                            <span class="title">Daftar tugas</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Request::is('teacher/manage-task') ? 'active' : '' }}">
+                        <a href="{{ route('manage-task') }}" class="nav-link nav-toggle">
+                            <span class="title">Hasil</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>
