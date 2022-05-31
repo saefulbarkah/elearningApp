@@ -25,9 +25,10 @@
     <link href="{{ asset('assets/bundles/flatpicker/css/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- Material Design Lite CSS -->
     <link rel="stylesheet" href="{{ asset('assets/bundles/material/material.min.css') }}">
-    <link rel="stylesheet" href="{{asset('css/material_style.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/material_style.css') }}">
     <!-- Theme Styles -->
-    <link href="{{ asset('assets/css/theme_style.css') }}" rel="stylesheet" id="rt_style_components" type="text/css" />
+    <link href="{{ asset('assets/css/theme_style.css') }}" rel="stylesheet" id="rt_style_components"
+        type="text/css" />
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/plugins.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/formlayout.css') }}" rel="stylesheet" type="text/css" />
@@ -48,97 +49,18 @@
             @include('layouts.component.navbar')
         </div>
         <!-- end header -->
-        <!-- start color quick setting -->
-        <div class="settingSidebar">
-            <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
-            </a>
-            <div class="settingSidebar-body ps-container ps-theme-default">
-                <div class=" fade show active">
-                    <div class="setting-panel-header">Setting Panel
-                    </div>
-                    <div class="quick-setting slimscroll-style">
-                        <ul id="themecolors">
-                            <li>
-                                <p class="sidebarSettingTitle">Sidebar Color</p>
-                            </li>
-                            <li class="complete">
-                                <div class="theme-color sidebar-theme">
-                                    <a href="#" data-theme="white"><span class="head"></span><span
-                                            class="cont"></span></a>
-                                    <a href="#" data-theme="dark"><span class="head"></span><span
-                                            class="cont"></span></a>
-                                    <a href="#" data-theme="blue"><span class="head"></span><span
-                                            class="cont"></span></a>
-                                    <a href="#" data-theme="indigo"><span class="head"></span><span
-                                            class="cont"></span></a>
-                                    <a href="#" data-theme="cyan"><span class="head"></span><span
-                                            class="cont"></span></a>
-                                    <a href="#" data-theme="green"><span class="head"></span><span
-                                            class="cont"></span></a>
-                                    <a href="#" data-theme="red"><span class="head"></span><span
-                                            class="cont"></span></a>
-                                </div>
-                            </li>
-                            <li>
-                                <p class="sidebarSettingTitle">Header Brand color</p>
-                            </li>
-                            <li class="theme-option">
-                                <div class="theme-color logo-theme">
-                                    <a href="#" data-theme="logo-white"><span class="head"></span><span
-                                            class="cont"></span></a>
-                                    <a href="#" data-theme="logo-dark"><span class="head"></span><span
-                                            class="cont"></span></a>
-                                    <a href="#" data-theme="logo-blue"><span class="head"></span><span
-                                            class="cont"></span></a>
-                                    <a href="#" data-theme="logo-indigo"><span class="head"></span><span
-                                            class="cont"></span></a>
-                                    <a href="#" data-theme="logo-cyan"><span class="head"></span><span
-                                            class="cont"></span></a>
-                                    <a href="#" data-theme="logo-green"><span class="head"></span><span
-                                            class="cont"></span></a>
-                                    <a href="#" data-theme="logo-red"><span class="head"></span><span
-                                            class="cont"></span></a>
-                                </div>
-                            </li>
-                            <li>
-                                <p class="sidebarSettingTitle">Header color</p>
-                            </li>
-                            <li class="theme-option">
-                                <div class="theme-color header-theme">
-                                    <a href="#" data-theme="header-white"><span class="head"></span><span
-                                            class="cont"></span></a>
-                                    <a href="#" data-theme="header-dark"><span class="head"></span><span
-                                            class="cont"></span></a>
-                                    <a href="#" data-theme="header-blue"><span class="head"></span><span
-                                            class="cont"></span></a>
-                                    <a href="#" data-theme="header-indigo"><span class="head"></span><span
-                                            class="cont"></span></a>
-                                    <a href="#" data-theme="header-cyan"><span class="head"></span><span
-                                            class="cont"></span></a>
-                                    <a href="#" data-theme="header-green"><span class="head"></span><span
-                                            class="cont"></span></a>
-                                    <a href="#" data-theme="header-red"><span class="head"></span><span
-                                            class="cont"></span></a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end color quick setting -->
         <!-- start page container -->
         <div class="page-container">
             <!-- start sidebar menu -->
             <div class="sidebar-container">
                 @role('admin')
-                @include('layouts.component.sidebar-admin')
+                    @include('layouts.component.sidebar-admin')
                 @endrole
                 @role('teacher')
-                @include('layouts.component.sidebar-teacher')
+                    @include('layouts.component.sidebar-teacher')
                 @endrole
                 @role('student')
-                @include('layouts.component.sidebar-student')
+                    @include('layouts.component.sidebar-student')
                 @endrole
             </div>
             <!-- end sidebar menu -->
