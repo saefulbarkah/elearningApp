@@ -110,10 +110,10 @@
     <script src="{{ asset('assets/bundles/material/material.min.js') }}"></script>
     <script src="{{ asset('assets/bundles/flatpicker/js/flatpicker.min.js') }}"></script>
     <!-- end js include path -->
-    @stack('js')
     <script src="{{ asset('assets/sweetalert.min.js') }}"></script>
     <script src="{{ asset('assets/sweetalert2@11.js') }}"></script>
     <script src="{{ asset('assets/js/sweetalert.min.js') }}"></script>
+    @stack('js')
 </body>
 
 
